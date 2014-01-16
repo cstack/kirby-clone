@@ -164,7 +164,7 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: KirbyWalkRight
-  m_Speed: .670000017
+  m_Speed: .5
   m_CycleOffset: 0
   m_Motions:
   - {fileID: 7400000, guid: 089a6f723e9ff469f95b0d4439777735, type: 2}
@@ -194,7 +194,7 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: KirbyWalkLeft
-  m_Speed: .600000024
+  m_Speed: .5
   m_CycleOffset: 0
   m_Motions:
   - {fileID: 7400000, guid: 6eb9cd3ff34794672a0be8f8f2da5279, type: 2}
