@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 64: {fileID: 6400000}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -52,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .148033679, y: 23.8534508, z: -.100000001}
-  m_LocalScale: {x: 63.0389786, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -.100000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -109,6 +110,17 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecee60f1f2707bc41a442201b34f057a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
