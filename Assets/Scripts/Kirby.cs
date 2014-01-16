@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KirbyScript : MonoBehaviour {
+public class Kirby : MonoBehaviour {
 	public float speed = 10f;
 
 	// Use this for initialization
