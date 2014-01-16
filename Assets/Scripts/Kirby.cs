@@ -15,12 +15,17 @@ public class Kirby : MonoBehaviour {
 	 */
 	public VerticalState verticalState = VerticalState.JUMPING;
 	private InhaleState inhaleState = InhaleState.NOT_INHALING;
+	private Animator animator;
 
 	public enum VerticalState {
 		GROUND, JUMPING, FLYING, KNOCKBACK
 	}
 	private enum InhaleState {
 		NOT_INHALING, INHALING, INHALED
+	}
+
+	void Start() {
+		animator = this.GetComponent<Animator> ();
 	}
 
 	void FixedUpdate() {
@@ -31,7 +36,7 @@ public class Kirby : MonoBehaviour {
 		if (verticalState == VerticalState.KNOCKBACK) {
 			if (Time.time > lastKnockBack + knockBackTime) {
 				verticalState = VerticalState.GROUND;
-				rigidbody.velocity = new Vector2(0, 0);
+				rigidbody2D.velocity = new Vector2(0, 0);
 			}
 		}
 	}
@@ -73,6 +78,13 @@ public class Kirby : MonoBehaviour {
 		}
 
 		float h = Input.GetAxis("Horizontal");
+
+		if (h > 0) {
+			animator.SetInteger ("Direction", 1);
+		} else if (h < 0) {
+			animator.SetInteger("Direction", 0);
+		}
+
 		Vector2 vel = rigidbody2D.velocity;
 		vel.x = h * speed;
 		rigidbody2D.velocity = vel;
@@ -94,7 +106,6 @@ public class Kirby : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.X)) {
 			if (verticalState == VerticalState.JUMPING) {
 				vel.y = Mathf.Min(vel.y, 0);
-				Debug.Log(vel.y);
 			}
 		}
 		rigidbody2D.velocity = vel;

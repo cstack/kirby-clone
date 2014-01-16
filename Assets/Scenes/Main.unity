@@ -670,6 +670,7 @@ GameObject:
   - 61: {fileID: 369935287}
   - 114: {fileID: 369935288}
   - 61: {fileID: 369935289}
+  - 95: {fileID: 369935290}
   m_Layer: 0
   m_Name: Kirby
   m_TagString: Untagged
@@ -765,6 +766,20 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .899999976, y: .100000001}
   m_Center: {x: 0, y: -.5}
+--- !u!95 &369935290
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369935283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 116565c94147346fb967cb902a1a1809, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1001 &407961352
 Prefab:
   m_ObjectHideFlags: 0
@@ -1966,9 +1981,9 @@ Transform:
   m_LocalPosition: {x: 16.3109055, y: 28.1284637, z: -.106201172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 104459849}
-  - {fileID: 933392245}
   - {fileID: 1797952474}
+  - {fileID: 933392245}
+  - {fileID: 104459849}
   m_Father: {fileID: 0}
 --- !u!1001 &1774916250
 Prefab:
