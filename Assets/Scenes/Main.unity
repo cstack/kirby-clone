@@ -749,8 +749,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpSpeed: 10
-  grounded: 0
+  jumpSpeed: 7
+  verticalState: 1
 --- !u!61 &369935289
 BoxCollider2D:
   m_ObjectHideFlags: 0

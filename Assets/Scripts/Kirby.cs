@@ -63,11 +63,20 @@ public class Kirby : MonoBehaviour {
 
 		Vector2 vel = rigidbody2D.velocity;
 		if (Input.GetKey(KeyCode.X)) {
-			if (verticalState == VerticalState.GROUND) vel.y = jumpSpeed;
-			rigidbody2D.velocity = vel;
+			if (verticalState == VerticalState.GROUND) {
+				vel.y = jumpSpeed;
+			}
 			verticalState = VerticalState.JUMPING;
 		}
+		if (Input.GetKeyUp(KeyCode.X)) {
+			if (verticalState == VerticalState.JUMPING) {
+				vel.y = Mathf.Min(vel.y, 0);
+				Debug.Log(vel.y);
+			}
+		}
+		rigidbody2D.velocity = vel;
 	}
+	
 
 	void HandleFlying() {
 		if (inhaleState == InhaleState.INHALING
