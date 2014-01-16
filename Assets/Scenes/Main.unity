@@ -155,11 +155,11 @@ Transform:
   m_LocalPosition: {x: 51.1151924, y: 26.8553123, z: -.100000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 66150127}
-  - {fileID: 930119214}
   - {fileID: 1131818077}
   - {fileID: 162948984}
   - {fileID: 469312213}
+  - {fileID: 66150127}
+  - {fileID: 930119214}
   - {fileID: 2033782455}
   m_Father: {fileID: 0}
 --- !u!1001 &65084608
@@ -530,6 +530,7 @@ GameObject:
   - 50: {fileID: 369935286}
   - 61: {fileID: 369935287}
   - 114: {fileID: 369935288}
+  - 61: {fileID: 369935289}
   m_Layer: 0
   m_Name: Kirby
   m_TagString: Untagged
@@ -581,7 +582,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -593,7 +594,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 369935283}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 294f78b884fcc0348a83aeb221ef602a, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
@@ -609,6 +610,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  jumpSpeed: 10
+--- !u!61 &369935289
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369935283}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .899999976, y: .100000001}
+  m_Center: {x: 0, y: -.5}
 --- !u!1 &469312211
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +753,7 @@ Transform:
   m_PrefabInternal: {fileID: 1450922381}
   m_GameObject: {fileID: 930119212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.49889374, y: -1.01172638, z: 0}
+  m_LocalPosition: {x: -1.51311493, y: -1.01172638, z: 0}
   m_LocalScale: {x: 2.99778485, y: 2.02344942, z: 1}
   m_Children:
   - {fileID: 1550867366}
@@ -1022,7 +1035,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.49889374
+      value: -1.51311493
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
       propertyPath: m_LocalPosition.y
