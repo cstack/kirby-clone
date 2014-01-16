@@ -4,7 +4,7 @@ using System.Collections;
 public class Kirby : MonoBehaviour {
 	public float speed = 10f;
 	public float jumpSpeed = 10f;
-	
+
 	/*
 	 * All Vertical/Inhale state combinations are valid except for
 	 * Flying/Inhaling and Flying/Inhaled
@@ -13,7 +13,7 @@ public class Kirby : MonoBehaviour {
 	private InhaleState inhaleState = InhaleState.NOT_INHALING;
 
 	private enum VerticalState {
-		GROUND, JUMPING, FLYING
+		GROUND, JUMPING, FLYING, FALLING
 	}
 	private enum InhaleState {
 		NOT_INHALING, INHALING, INHALED
@@ -26,12 +26,27 @@ public class Kirby : MonoBehaviour {
 		handleFlying();
 	}
 
+	void KnockBack() {
+		verticalState = VerticalState.FALLING;
+		rigidbody2D.velocity = new Vector2(-3, 3);
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.tag == "enemy") {
+			Destroy (collision.gameObject);
+			KnockBack();
+		} else {
+			verticalState = VerticalState.GROUND;
+		}
+	}
+
 	void handleInhaling() {
 		// TODO
 	}
 
 	void handleHorizontalMovement() {
-		if (inhaleState == InhaleState.INHALING) {
+		if (inhaleState == InhaleState.INHALING ||
+		    verticalState == VerticalState.FALLING) {
 			return;
 		}
 
