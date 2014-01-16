@@ -9,10 +9,10 @@ public class Kirby : MonoBehaviour {
 	 * All Vertical/Inhale state combinations are valid except for
 	 * Flying/Inhaling and Flying/Inhaled
 	 */
-	private VerticalState verticalState = VerticalState.JUMPING;
+	public VerticalState verticalState = VerticalState.JUMPING;
 	private InhaleState inhaleState = InhaleState.NOT_INHALING;
 
-	private enum VerticalState {
+	public enum VerticalState {
 		GROUND, JUMPING, FLYING, FALLING
 	}
 	private enum InhaleState {
@@ -20,10 +20,10 @@ public class Kirby : MonoBehaviour {
 	}
 
 	void Update () {
-		handleInhaling(); // This must come before other handlers
-		handleHorizontalMovement();
-		handleJumping();
-		handleFlying();
+		HandleInhaling(); // This must come before other handlers
+		HandleHorizontalMovement();
+		HandleJumping();
+		HandleFlying();
 	}
 
 	void KnockBack() {
@@ -40,11 +40,11 @@ public class Kirby : MonoBehaviour {
 		}
 	}
 
-	void handleInhaling() {
+	void HandleInhaling() {
 		// TODO
 	}
 
-	void handleHorizontalMovement() {
+	void HandleHorizontalMovement() {
 		if (inhaleState == InhaleState.INHALING ||
 		    verticalState == VerticalState.FALLING) {
 			return;
@@ -56,23 +56,32 @@ public class Kirby : MonoBehaviour {
 		rigidbody2D.velocity = vel;
 	}
 
-	void handleJumping() {
+	void HandleJumping() {
 		if (inhaleState == InhaleState.INHALING) {
 			return;
 		}
 
 		Vector2 vel = rigidbody2D.velocity;
 		if (Input.GetKey(KeyCode.X)) {
-			vel.y = jumpSpeed;
+			if (verticalState == VerticalState.GROUND) vel.y = jumpSpeed;
+			rigidbody2D.velocity = vel;
+			verticalState = VerticalState.JUMPING;
 		}
-		rigidbody2D.velocity = vel;
 	}
 
-	void handleFlying() {
+	void HandleFlying() {
 		if (inhaleState == InhaleState.INHALING
 		    || inhaleState == InhaleState.INHALED) {
 			return;
 		}
 		// TODO
+		if (Input.GetKey(KeyCode.UpArrow)) {
+			Vector2 vel = rigidbody2D.velocity;
+			vel.y = jumpSpeed;
+			verticalState = VerticalState.FLYING;
+			rigidbody2D.velocity = vel;
+		}
 	}
+
+
 }
