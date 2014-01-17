@@ -26,28 +26,32 @@ public class Kirby : MonoBehaviour {
 	}
 
 	void Start() {
-		animator = this.GetComponent<Animator> ();
+		animator = this.GetComponent<Animator>();
 	}
 
-	void FixedUpdate() {
-		HandleKnockBack();
-	}
-
-	void HandleKnockBack() {
+	void HandleKnockBack(ref Vector2 vel) {
 		if (verticalState == VerticalState.KNOCKBACK) {
 			if (Time.time > lastKnockBack + knockBackTime) {
 				verticalState = VerticalState.GROUND;
-				rigidbody2D.velocity = new Vector2(0, 0);
+				vel.x = 0;
+				vel.y = 0;
 			}
 		}
 	}
 
-	void Update () {
-		HandleInhaling(); // This must come before other handlers
-		HandleHorizontalMovement();
-		HandleJumping();
-		HandleFlying();
-	} 
+	void Update() {
+		/*
+		 * vel must **only** be modified, never reassigned. C# doesn't have the equivalent of Java's final keyword,
+		 * so this cannot be programmatically enforced.
+		 */
+		Vector2 vel = rigidbody2D.velocity;
+		HandleInhaling(ref vel); // This must come before other handlers
+		HandleKnockBack(ref vel);
+		HandleHorizontalMovement(ref vel);
+		HandleJumping(ref vel);
+		HandleFlying(ref vel);
+		rigidbody2D.velocity = vel;
+	}
 
 	void KnockBack(Collision2D other) {
 		verticalState = VerticalState.KNOCKBACK;
@@ -68,11 +72,11 @@ public class Kirby : MonoBehaviour {
 		}
 	}
 
-	void HandleInhaling() {
+	void HandleInhaling(ref Vector2 vel) {
 		// TODO
 	}
 
-	void HandleHorizontalMovement() {
+	void HandleHorizontalMovement(ref Vector2 vel) {
 		if (inhaleState == InhaleState.INHALING ||
 		    verticalState == VerticalState.KNOCKBACK) {
 			return;
@@ -86,18 +90,15 @@ public class Kirby : MonoBehaviour {
 			animator.SetInteger("Direction", 0);
 		}
 
-		Vector2 vel = rigidbody2D.velocity;
 		vel.x = h * speed;
-		rigidbody2D.velocity = vel;
 	}
 
-	void HandleJumping() {
+	void HandleJumping(ref Vector2 vel) {
 		if (inhaleState == InhaleState.INHALING
 		    || verticalState == VerticalState.KNOCKBACK) {
 			return;
 		}
 
-		Vector2 vel = rigidbody2D.velocity;
 		if (Input.GetKey(KeyCode.X)) {
 			if (verticalState == VerticalState.GROUND) {
 				vel.y = jumpSpeed;
@@ -109,18 +110,16 @@ public class Kirby : MonoBehaviour {
 				vel.y = Mathf.Min(vel.y, 0);
 			}
 		}
-		rigidbody2D.velocity = vel;
 	}
 	
 
-	void HandleFlying() {
+	void HandleFlying(ref Vector2 vel) {
 		if (inhaleState == InhaleState.INHALING ||
 		    inhaleState == InhaleState.INHALED ||
 		    verticalState == VerticalState.KNOCKBACK) {
 			return;
 		}
 
-		Vector2 vel = rigidbody2D.velocity;
 		if (verticalState == VerticalState.FLYING) {
 			vel.y = -1 * flySpeed;
 		}
@@ -128,6 +127,5 @@ public class Kirby : MonoBehaviour {
 			vel.y = flySpeed;
 			verticalState = VerticalState.FLYING;
 		}
-		rigidbody2D.velocity = vel;
 	}
 }
