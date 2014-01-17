@@ -5,6 +5,10 @@ public class Kirby : MonoBehaviour {
 	public float speed = 10f;
 	public float jumpSpeed = 10f;
 
+	public float knockBackSpeed = 6;
+	public float knockBackTime = 0.5f;
+	public float lastKnockBack = 0;
+
 	/*
 	 * All Vertical/Inhale state combinations are valid except for
 	 * Flying/Inhaling and Flying/Inhaled
@@ -13,10 +17,23 @@ public class Kirby : MonoBehaviour {
 	private InhaleState inhaleState = InhaleState.NOT_INHALING;
 
 	public enum VerticalState {
-		GROUND, JUMPING, FLYING, FALLING
+		GROUND, JUMPING, FLYING, KNOCKBACK
 	}
 	private enum InhaleState {
 		NOT_INHALING, INHALING, INHALED
+	}
+
+	void FixedUpdate() {
+		HandleKnockBack();
+	}
+
+	void HandleKnockBack() {
+		if (verticalState == VerticalState.KNOCKBACK) {
+			if (Time.time > lastKnockBack + knockBackTime) {
+				verticalState = VerticalState.GROUND;
+				rigidbody.velocity = new Vector2(0, 0);
+			}
+		}
 	}
 
 	void Update () {
@@ -24,17 +41,22 @@ public class Kirby : MonoBehaviour {
 		HandleHorizontalMovement();
 		HandleJumping();
 		HandleFlying();
-	}
+	} 
 
-	void KnockBack() {
-		verticalState = VerticalState.FALLING;
-		rigidbody2D.velocity = new Vector2(-3, 3);
+	void KnockBack(Collision2D other) {
+		verticalState = VerticalState.KNOCKBACK;
+		float xVel = knockBackSpeed;
+		if (other.transform.position.x > transform.position.x) {
+			xVel *= -1;
+		}
+		lastKnockBack = Time.time;
+		rigidbody2D.velocity = new Vector2(xVel, 0);
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "enemy") {
 			Destroy (collision.gameObject);
-			KnockBack();
+			KnockBack(collision);
 		} else {
 			verticalState = VerticalState.GROUND;
 		}
@@ -46,7 +68,7 @@ public class Kirby : MonoBehaviour {
 
 	void HandleHorizontalMovement() {
 		if (inhaleState == InhaleState.INHALING ||
-		    verticalState == VerticalState.FALLING) {
+		    verticalState == VerticalState.KNOCKBACK) {
 			return;
 		}
 
@@ -57,7 +79,8 @@ public class Kirby : MonoBehaviour {
 	}
 
 	void HandleJumping() {
-		if (inhaleState == InhaleState.INHALING) {
+		if (inhaleState == InhaleState.INHALING
+		    || verticalState == VerticalState.KNOCKBACK) {
 			return;
 		}
 
@@ -79,8 +102,9 @@ public class Kirby : MonoBehaviour {
 	
 
 	void HandleFlying() {
-		if (inhaleState == InhaleState.INHALING
-		    || inhaleState == InhaleState.INHALED) {
+		if (inhaleState == InhaleState.INHALING ||
+		    inhaleState == InhaleState.INHALED ||
+		    verticalState == VerticalState.KNOCKBACK) {
 			return;
 		}
 		// TODO
