@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class Kirby : MonoBehaviour {
-	public float speed = 10f;
-	public float jumpSpeed = 10f;
+	public float speed = 6f;
+	public float jumpSpeed = 12.5f;
+	public float flySpeed = 7f;
 
-	public float knockBackSpeed = 6;
-	public float knockBackTime = 0.5f;
-	public float lastKnockBack = 0;
+	public float knockBackSpeed = 8f;
+	public float knockBackTime = 0.2f;
+	public float lastKnockBack = 0f;
 
 	/*
 	 * All Vertical/Inhale state combinations are valid except for
@@ -118,14 +119,15 @@ public class Kirby : MonoBehaviour {
 		    verticalState == VerticalState.KNOCKBACK) {
 			return;
 		}
-		// TODO
-		if (Input.GetKey(KeyCode.UpArrow)) {
-			Vector2 vel = rigidbody2D.velocity;
-			vel.y = jumpSpeed;
-			verticalState = VerticalState.FLYING;
-			rigidbody2D.velocity = vel;
+
+		Vector2 vel = rigidbody2D.velocity;
+		if (verticalState == VerticalState.FLYING) {
+			vel.y = -1 * flySpeed;
 		}
+		if (Input.GetKey(KeyCode.UpArrow)) {
+			vel.y = flySpeed;
+			verticalState = VerticalState.FLYING;
+		}
+		rigidbody2D.velocity = vel;
 	}
-
-
 }
