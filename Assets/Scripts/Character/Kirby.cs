@@ -1,17 +1,20 @@
-﻿using UnityEngine;
+﻿using AnimationEnums;
 using System.Collections;
 using System.Globalization;
+using UnityEngine;
 
 public class Kirby : StateMachineBase {
 	public float speed = 6f;
 	public float jumpSpeed = 12.5f;
 	public float flySpeed = 7f;
 
-	public float knockBackSpeed = 8f;
-	public float knockBackTime = 0.2f;
+	public float knockbackSpeed = 8f;
+	public float knockbackTime = 0.2f;
+
+	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private Collision2D enemyOther;
 
-	private Animator animator;
+	private AnimationManager am;
 
 	// For debugging purposes
 	public State curState;
@@ -20,17 +23,14 @@ public class Kirby : StateMachineBase {
 		IDLE_OR_WALKING, JUMPING, FLYING, KNOCKBACK, SLIDING, INHALING, INHALED
 	}
 
-	private enum Direction {
-		LEFT, RIGHT
-	}
-
 	void setState(State state) {
 		curState = state;
 		CurrentState = state;
+		am.State = (int) state;
 	}
 
 	void Start() {
-		animator = this.GetComponent<Animator>();
+		am = new AnimationManager(this.GetComponent<Animator>());
 		setState(State.JUMPING);
 	}
 
@@ -47,11 +47,10 @@ public class Kirby : StateMachineBase {
 	void HandleHorizontalMovement(ref Vector2 vel) {
 		float h = Input.GetAxis("Horizontal");
 		if (h > 0) {
-			animator.SetInteger("Direction", (int) Direction.RIGHT);
+			am.Dir = Direction.RIGHT;
 		} else if (h < 0) {
-			animator.SetInteger("Direction", (int) Direction.LEFT);
+			am.Dir = Direction.LEFT;
 		}
-
 		vel.x = h * speed;
 	}
 
@@ -66,6 +65,12 @@ public class Kirby : StateMachineBase {
 		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			setState(State.FLYING);
+		} else {
+			if (vel.x == 0) {
+				am.animate((int) IdleOrWalking.IDLE);
+			} else {
+				am.animate((int) IdleOrWalking.WALKING);
+			}
 		}
 		rigidbody2D.velocity = vel;
 	}
@@ -115,12 +120,12 @@ public class Kirby : StateMachineBase {
 	#region KNOCKBACK
 
 	IEnumerator KnockbackEnterState() {
-		float xVel = knockBackSpeed;
+		float xVel = knockbackSpeed;
 		if (enemyOther.transform.position.x > transform.position.x) {
 			xVel *= -1;
 		}
 		rigidbody2D.velocity = new Vector2(xVel, 0);
-		yield return new WaitForSeconds(knockBackTime);
+		yield return new WaitForSeconds(knockbackTime);
 		setState(State.IDLE_OR_WALKING);
 		rigidbody2D.velocity = Vector2.zero;
 	}
