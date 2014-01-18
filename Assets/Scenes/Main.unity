@@ -155,14 +155,14 @@ Transform:
   m_LocalPosition: {x: 51.1151924, y: 26.8553123, z: -.100000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 930119214}
+  - {fileID: 1325937220}
+  - {fileID: 1666888471}
   - {fileID: 1131818077}
-  - {fileID: 162948984}
   - {fileID: 264101709}
   - {fileID: 469312213}
   - {fileID: 66150127}
-  - {fileID: 1666888471}
-  - {fileID: 930119214}
-  - {fileID: 1325937220}
+  - {fileID: 162948984}
   - {fileID: 2033782455}
   m_Father: {fileID: 0}
 --- !u!1001 &65084608
@@ -228,7 +228,7 @@ GameObject:
   - 61: {fileID: 66150126}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,7 +506,7 @@ GameObject:
   - 61: {fileID: 162948983}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546,7 +546,7 @@ GameObject:
   - 61: {fileID: 264101710}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,9 +763,8 @@ MonoBehaviour:
   speed: 6
   jumpSpeed: 12.5
   flySpeed: 7
-  knockBackSpeed: 8
-  knockBackTime: .200000003
-  lastKnockBack: 0
+  knockbackSpeed: 8
+  knockbackTime: .200000003
   curState: 0
 --- !u!61 &369935289
 BoxCollider2D:
@@ -863,7 +862,7 @@ GameObject:
   - 61: {fileID: 469312212}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -999,7 +998,7 @@ GameObject:
   - 61: {fileID: 930119213}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1277,7 +1276,7 @@ GameObject:
   - 61: {fileID: 1131818076}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1459,7 +1458,7 @@ GameObject:
   - 61: {fileID: 1325937221}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1939,7 +1938,7 @@ GameObject:
   - 61: {fileID: 1666888472}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
