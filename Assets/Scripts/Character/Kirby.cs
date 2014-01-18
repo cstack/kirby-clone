@@ -1,131 +1,132 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Globalization;
 
-public class Kirby : MonoBehaviour {
+public class Kirby : StateMachineBase {
 	public float speed = 6f;
 	public float jumpSpeed = 12.5f;
 	public float flySpeed = 7f;
 
 	public float knockBackSpeed = 8f;
 	public float knockBackTime = 0.2f;
-	public float lastKnockBack = 0f;
+	private Collision2D enemyOther;
 
-	/*
-	 * All Vertical/Inhale state combinations are valid except for
-	 * Flying/Inhaling and Flying/Inhaled
-	 */
-	public VerticalState verticalState = VerticalState.JUMPING;
-	private InhaleState inhaleState = InhaleState.NOT_INHALING;
 	private Animator animator;
 
-	public enum VerticalState {
-		GROUND, JUMPING, FLYING, KNOCKBACK
+	// For debugging purposes
+	public State curState;
+
+	public enum State {
+		IDLE_OR_WALKING, JUMPING, FLYING, KNOCKBACK, SLIDING, INHALING, INHALED
 	}
-	private enum InhaleState {
-		NOT_INHALING, INHALING, INHALED
+
+	private enum Direction {
+		LEFT, RIGHT
+	}
+
+	void setState(State state) {
+		curState = state;
+		CurrentState = state;
 	}
 
 	void Start() {
 		animator = this.GetComponent<Animator>();
+		setState(State.JUMPING);
 	}
 
-	void HandleKnockBack(ref Vector2 vel) {
-		if (verticalState == VerticalState.KNOCKBACK) {
-			if (Time.time > lastKnockBack + knockBackTime) {
-				verticalState = VerticalState.GROUND;
-				vel.x = 0;
-				vel.y = 0;
-			}
+	void CommonOnCollisionEnter2D(Collision2D other) {
+		if (other.gameObject.tag == "ground") {
+			setState(State.IDLE_OR_WALKING);
+		} else if (other.gameObject.tag == "enemy") {
+			enemyOther = other;
+			Destroy(other.gameObject);
+			setState(State.KNOCKBACK);
 		}
-	}
-
-	void Update() {
-		/*
-		 * vel must **only** be modified, never reassigned. C# doesn't have the equivalent of Java's final keyword,
-		 * so this cannot be programmatically enforced.
-		 */
-		Vector2 vel = rigidbody2D.velocity;
-		HandleInhaling(ref vel); // This must come before other handlers
-		HandleKnockBack(ref vel);
-		HandleHorizontalMovement(ref vel);
-		HandleJumping(ref vel);
-		HandleFlying(ref vel);
-		rigidbody2D.velocity = vel;
-	}
-
-	void KnockBack(Collision2D other) {
-		verticalState = VerticalState.KNOCKBACK;
-		float xVel = knockBackSpeed;
-		if (other.transform.position.x > transform.position.x) {
-			xVel *= -1;
-		}
-		lastKnockBack = Time.time;
-		rigidbody2D.velocity = new Vector2(xVel, 0);
-	}
-
-	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.tag == "enemy") {
-			Destroy (collision.gameObject);
-			KnockBack(collision);
-		} else {
-			verticalState = VerticalState.GROUND;
-		}
-	}
-
-	void HandleInhaling(ref Vector2 vel) {
-		// TODO
 	}
 
 	void HandleHorizontalMovement(ref Vector2 vel) {
-		if (inhaleState == InhaleState.INHALING ||
-		    verticalState == VerticalState.KNOCKBACK) {
-			return;
-		}
-
 		float h = Input.GetAxis("Horizontal");
-
 		if (h > 0) {
-			animator.SetInteger ("Direction", 1);
+			animator.SetInteger("Direction", (int) Direction.RIGHT);
 		} else if (h < 0) {
-			animator.SetInteger("Direction", 0);
+			animator.SetInteger("Direction", (int) Direction.LEFT);
 		}
 
 		vel.x = h * speed;
 	}
 
-	void HandleJumping(ref Vector2 vel) {
-		if (inhaleState == InhaleState.INHALING
-		    || verticalState == VerticalState.KNOCKBACK) {
-			return;
-		}
+	#region IDLE_OR_WALKING
 
+	void IdleOrWalkingUpdate() {
+		Vector2 vel = rigidbody2D.velocity;
+		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X)) {
-			if (verticalState == VerticalState.GROUND) {
-				vel.y = jumpSpeed;
-			}
-			verticalState = VerticalState.JUMPING;
-		}
-		if (Input.GetKeyUp(KeyCode.X)) {
-			if (verticalState == VerticalState.JUMPING) {
-				vel.y = Mathf.Min(vel.y, 0);
-			}
-		}
-	}
-	
-
-	void HandleFlying(ref Vector2 vel) {
-		if (inhaleState == InhaleState.INHALING ||
-		    inhaleState == InhaleState.INHALED ||
-		    verticalState == VerticalState.KNOCKBACK) {
-			return;
-		}
-
-		if (verticalState == VerticalState.FLYING) {
-			vel.y = -1 * flySpeed;
-		}
-		if (Input.GetKey(KeyCode.UpArrow)) {
+			vel.y = jumpSpeed;
+			setState(State.JUMPING);
+		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
-			verticalState = VerticalState.FLYING;
+			setState(State.FLYING);
 		}
+		rigidbody2D.velocity = vel;
 	}
+
+	void IdleOrWalkingOnCollisionEnter2D(Collision2D other) {
+		CommonOnCollisionEnter2D(other);
+	}
+
+	#endregion
+
+	#region JUMPING
+
+	void JumpingUpdate() {
+		Vector2 vel = rigidbody2D.velocity;
+		HandleHorizontalMovement(ref vel);
+		if (Input.GetKeyUp(KeyCode.X)) {
+			vel.y = Mathf.Min(vel.y, 0);
+		}
+		rigidbody2D.velocity = vel;
+	}
+
+	void JumpingOnCollisionEnter2D(Collision2D other) {
+		CommonOnCollisionEnter2D(other);
+	}
+
+	#endregion
+
+	#region FLYING
+
+	void FlyingUpdate() {
+		Vector2 vel = rigidbody2D.velocity;
+		HandleHorizontalMovement(ref vel);
+		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.UpArrow)) {
+			vel.y = flySpeed;
+		} else {
+			vel.y = Mathf.Max(vel.y, -1 * flySpeed);
+		}
+		rigidbody2D.velocity = vel;
+	}
+
+	void FlyingOnCollisionEnter2D(Collision2D other) {
+		CommonOnCollisionEnter2D(other);
+	}
+
+	#endregion
+
+	#region KNOCKBACK
+
+	IEnumerator KnockbackEnterState() {
+		float xVel = knockBackSpeed;
+		if (enemyOther.transform.position.x > transform.position.x) {
+			xVel *= -1;
+		}
+		rigidbody2D.velocity = new Vector2(xVel, 0);
+		yield return new WaitForSeconds(knockBackTime);
+		setState(State.IDLE_OR_WALKING);
+		rigidbody2D.velocity = Vector2.zero;
+	}
+
+	#endregion
+
+	#region SLIDING
+	#endregion
 }

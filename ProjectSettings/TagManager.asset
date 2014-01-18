@@ -4,6 +4,8 @@
 TagManager:
   tags:
   - enemy
+  - ground
+  - Ammo
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

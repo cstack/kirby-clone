@@ -208,6 +208,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 63.0389786
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
   m_RootGameObject: {fileID: 2033782453}
@@ -749,12 +753,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afc20fe218be4e048fc884cac69c98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  rigidbody: {fileID: 0}
+  animation: {fileID: 0}
+  controller: {fileID: 0}
+  networkView: {fileID: 0}
+  collider: {fileID: 0}
+  gameObject: {fileID: 0}
   speed: 6
   jumpSpeed: 12.5
+  flySpeed: 7
   knockBackSpeed: 8
   knockBackTime: .200000003
   lastKnockBack: 0
-  verticalState: 1
+  curState: 0
 --- !u!61 &369935289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2246,7 +2258,7 @@ GameObject:
   - 61: {fileID: 2033782454}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
