@@ -11,6 +11,11 @@ public class Kirby : StateMachineBase {
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
 
+	private Direction dir;
+	private enum Direction {
+		LEFT, RIGHT
+	}
+
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private Collision2D enemyOther;
 
@@ -32,6 +37,7 @@ public class Kirby : StateMachineBase {
 	void Start() {
 		am = new AnimationManager(this.GetComponent<Animator>());
 		setState(State.JUMPING);
+		dir = Direction.RIGHT;
 	}
 
 	void CommonOnCollisionEnter2D(Collision2D other) {
@@ -46,12 +52,20 @@ public class Kirby : StateMachineBase {
 
 	void HandleHorizontalMovement(ref Vector2 vel) {
 		float h = Input.GetAxis("Horizontal");
-		if (h > 0) {
-			am.Dir = Direction.RIGHT;
-		} else if (h < 0) {
-			am.Dir = Direction.LEFT;
+		if (h > 0 && dir != Direction.RIGHT) {
+			Flip();
+		} else if (h < 0 && dir != Direction.LEFT) {
+			Flip();
 		}
 		vel.x = h * speed;
+	}
+
+	void Flip() {
+		dir = (dir == Direction.RIGHT) ? Direction.LEFT : Direction.RIGHT;
+
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
 	}
 
 	#region IDLE_OR_WALKING
