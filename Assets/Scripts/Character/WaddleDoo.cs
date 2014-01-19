@@ -3,20 +3,13 @@ using System.Collections;
 
 public class WaddleDoo : StateMachineBase {
 	public float speed = 2f;
-	public float range = 2f;
+	public float range = 3f;
 
 	private enum State {
-		WALK_LEFT, CHARGE, ATTACK
+		WalkLeft, Charge, Attack
 	}
 
-	private State state = State.WALK_LEFT;
 	private Transform target;
-	private AnimationManager am;
-
-	void setState(State state) {
-		CurrentState = state;
-		am.State = (int) state;
-	}
 
 	void updateXVelocity(float x) {
 		Vector2 vel = rigidbody2D.velocity;
@@ -26,8 +19,7 @@ public class WaddleDoo : StateMachineBase {
 	
 	void Start() {
 		target = GameObject.Find ("Kirby").transform;
-		am = new AnimationManager(this.GetComponent<Animator>());
-		setState (State.WALK_LEFT);
+		CurrentState = State.WalkLeft;
 	}
 
 	IEnumerator WalkLeftEnterState() {
@@ -40,12 +32,15 @@ public class WaddleDoo : StateMachineBase {
 	}
 
 	void WalkLeftUpdate() {
+		updateXVelocity (-1 * speed);
 		if (distanceToTarget () <= range) {
-			setState (State.CHARGE);
+			CurrentState = State.Charge;
 		}
 	}
 
-	void ChargeEnterState() {
-		updateXVelocity (0);
+	IEnumerator ChargeEnterState() {
+		updateXVelocity (0f);
+		yield return new WaitForSeconds(2f);
+		CurrentState = State.Attack;
 	}
 }
