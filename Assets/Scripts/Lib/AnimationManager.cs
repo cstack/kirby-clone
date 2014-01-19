@@ -7,6 +7,10 @@ namespace AnimationEnums {
 	public enum IdleOrWalking {
 		Idle, Walking
 	}
+
+	public enum Jumping {
+		Jumping, Spinning
+	}
 }
 
 public class AnimationManager {

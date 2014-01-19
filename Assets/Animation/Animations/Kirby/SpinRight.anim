@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: KirbyIdleRight
+  m_Name: SpinRight
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -18,7 +18,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300016, guid: a24a1895a3ff443aea2d39825c60e1be, type: 3}
+      value: {fileID: 21300034, guid: a24a1895a3ff443aea2d39825c60e1be, type: 3}
+    - time: .0833333358
+      value: {fileID: 21300018, guid: a24a1895a3ff443aea2d39825c60e1be, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -31,7 +33,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .0833333358
+    m_StopTime: .166666672
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

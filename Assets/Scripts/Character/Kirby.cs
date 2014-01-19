@@ -11,6 +11,8 @@ public class Kirby : StateMachineBase {
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
 
+	private bool isSpinning = false;
+
 	private Direction dir;
 	private enum Direction {
 		Left, Right
@@ -98,12 +100,24 @@ public class Kirby : StateMachineBase {
 	#region JUMPING
 
 	void JumpingUpdate() {
+		Debug.Log("Jumping");
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKeyUp(KeyCode.X)) {
 			vel.y = Mathf.Min(vel.y, 0);
 		}
+		if (!isSpinning && Mathf.Abs(vel.y) < 0.4) {
+			isSpinning = true;
+			StartCoroutine(SpinAnimation());
+		}
 		rigidbody2D.velocity = vel;
+	}
+
+	IEnumerator SpinAnimation() {
+		am.animate((int) Jumping.Spinning);
+		yield return new WaitForSeconds(0.2f);
+		am.animate((int) Jumping.Jumping);
+		isSpinning = false;
 	}
 
 	void JumpingOnCollisionEnter2D(Collision2D other) {
