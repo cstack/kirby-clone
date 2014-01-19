@@ -5,6 +5,8 @@ public class WaddleDoo : StateMachineBase {
 	public float speed = 2f;
 	public float range = 3f;
 
+	public GameObject EnergyWhipPrefab;
+
 	private enum State {
 		WalkLeft, Charge, Attack
 	}
@@ -42,5 +44,11 @@ public class WaddleDoo : StateMachineBase {
 		updateXVelocity (0f);
 		yield return new WaitForSeconds(2f);
 		CurrentState = State.Attack;
+	}
+
+	IEnumerator AttackEnterState() {
+		GameObject energyWhip = Instantiate (EnergyWhipPrefab) as GameObject;
+		energyWhip.transform.position = transform.position;
+		yield return null;
 	}
 }
