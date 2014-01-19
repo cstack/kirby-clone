@@ -1,14 +1,11 @@
 ﻿using AnimationEnums;
+using System;
 using System.Collections;
 using UnityEngine;
 
 namespace AnimationEnums {
 	public enum IdleOrWalking {
-		IDLE, WALKING
-	}
-	
-	public enum Direction {
-		LEFT, RIGHT
+		Idle, Walking
 	}
 }
 
@@ -28,8 +25,8 @@ public class AnimationManager {
 		}
 		set {
 			state = value;
-			animator.SetInteger("State", value);
-			animator.SetInteger("SubState", 0);
+			string stateName = ((Kirby.State) state).ToString();
+			animator.Play(stateName);
 		}
 	}
 

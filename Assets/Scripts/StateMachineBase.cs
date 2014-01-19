@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -128,22 +127,13 @@ public abstract class StateMachineBase : MonoBehaviour {
 	 * Uses reflection to get delegate method for state. Naming convention is StateMethod.
 	 */
 	T ConfigureDelegate<T>(string methodName, T Default) where T : class {
-		string[] stateNameSplit = currentState.ToString().Split(new string[] {"_"}, StringSplitOptions.None);
-		string stateName = "";
-		TextInfo ti = new CultureInfo("en-US", false).TextInfo;
-		foreach (string s in stateNameSplit) {
-			stateName += ti.ToTitleCase(ti.ToLower(s));
-		}
-
 		var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public |
 			System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.InvokeMethod;
-		var method = GetType().GetMethod(stateName + methodName, flags);
+		var method = GetType().GetMethod(currentState.ToString() + methodName, flags);
 
-//		Debug.Log("Getting method " + (stateName + methodName));
 		if (method != null) {
 			return Delegate.CreateDelegate(typeof(T), this, method) as T;
 		} else {
-//			Debug.Log("Method not found");
 			return Default;
 		}
 	}

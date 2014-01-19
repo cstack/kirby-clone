@@ -13,7 +13,7 @@ public class Kirby : StateMachineBase {
 
 	private Direction dir;
 	private enum Direction {
-		LEFT, RIGHT
+		Left, Right
 	}
 
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
@@ -25,7 +25,7 @@ public class Kirby : StateMachineBase {
 	public State curState;
 
 	public enum State {
-		IDLE_OR_WALKING, JUMPING, FLYING, KNOCKBACK, SLIDING, INHALING, INHALED
+		IdleOrWalking, Jumping, Flying, Knockback, Sliding, Inhaling, Inhaled
 	}
 
 	void setState(State state) {
@@ -36,32 +36,32 @@ public class Kirby : StateMachineBase {
 
 	void Start() {
 		am = new AnimationManager(this.GetComponent<Animator>());
-		setState(State.JUMPING);
-		dir = Direction.RIGHT;
+		setState(State.Jumping);
+		dir = Direction.Right;
 	}
 
 	void CommonOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "ground") {
-			setState(State.IDLE_OR_WALKING);
+			setState(State.IdleOrWalking);
 		} else if (other.gameObject.tag == "enemy") {
 			enemyOther = other;
 			Destroy(other.gameObject);
-			setState(State.KNOCKBACK);
+			setState(State.Knockback);
 		}
 	}
 
 	void HandleHorizontalMovement(ref Vector2 vel) {
 		float h = Input.GetAxis("Horizontal");
-		if (h > 0 && dir != Direction.RIGHT) {
+		if (h > 0 && dir != Direction.Right) {
 			Flip();
-		} else if (h < 0 && dir != Direction.LEFT) {
+		} else if (h < 0 && dir != Direction.Left) {
 			Flip();
 		}
 		vel.x = h * speed;
 	}
 
 	void Flip() {
-		dir = (dir == Direction.RIGHT) ? Direction.LEFT : Direction.RIGHT;
+		dir = (dir == Direction.Right) ? Direction.Left : Direction.Right;
 
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
@@ -75,15 +75,15 @@ public class Kirby : StateMachineBase {
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X)) {
 			vel.y = jumpSpeed;
-			setState(State.JUMPING);
+			setState(State.Jumping);
 		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
-			setState(State.FLYING);
+			setState(State.Flying);
 		} else {
 			if (vel.x == 0) {
-				am.animate((int) IdleOrWalking.IDLE);
+				am.animate((int) IdleOrWalking.Idle);
 			} else {
-				am.animate((int) IdleOrWalking.WALKING);
+				am.animate((int) IdleOrWalking.Walking);
 			}
 		}
 		rigidbody2D.velocity = vel;
@@ -140,7 +140,7 @@ public class Kirby : StateMachineBase {
 		}
 		rigidbody2D.velocity = new Vector2(xVel, 0);
 		yield return new WaitForSeconds(knockbackTime);
-		setState(State.IDLE_OR_WALKING);
+		setState(State.IdleOrWalking);
 		rigidbody2D.velocity = Vector2.zero;
 	}
 
