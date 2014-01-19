@@ -1,52 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaddleDoo : MonoBehaviour {
+public class WaddleDoo : StateMachineBase {
 	public float speed = 2f;
 	public float range = 2f;
 
 	private enum State {
-		WALK_LEFT, WALK_RIGHT, ATTACK
+		WALK_LEFT, CHARGE, ATTACK
 	}
 
 	private State state = State.WALK_LEFT;
 	private Transform target;
+	private AnimationManager am;
 
-	// Use this for initialization
-	void Start () {
-		target = GameObject.Find ("Kirby").transform;
+	void setState(State state) {
+		CurrentState = state;
+		am.State = (int) state;
+	}
+
+	void updateXVelocity(float x) {
+		Vector2 vel = rigidbody2D.velocity;
+		vel.x = x;
+		rigidbody2D.velocity = vel;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		UpdateState ();
-		updateVelocity ();
+	void Start() {
+		target = GameObject.Find ("Kirby").transform;
+		am = new AnimationManager(this.GetComponent<Animator>());
+		setState (State.WALK_LEFT);
 	}
 
-	void UpdateState() {
-		float myX = transform.position.x;
-		if (Mathf.Abs (myX - target.position.x) < range) {
-			state = State.ATTACK;
-		} else if (target.position.x < myX) {
-			state = State.WALK_LEFT;
-		} else {
-			state = State.WALK_RIGHT;
-		}
-
+	IEnumerator WalkLeftEnterState() {
+		updateXVelocity (-1 * speed);
+		yield return null;
 	}
 
-	void updateVelocity() {
-		float vel_x = 0f;
-		switch (state) {
-		case (State.WALK_LEFT):
-			vel_x = -1 * speed;
-			break;
-		case (State.WALK_RIGHT):
-			vel_x = speed;
-			break;
+	float distanceToTarget() {
+		return Vector2.Distance (transform.position, target.position);
+	}
+
+	void WalkLeftUpdate() {
+		if (distanceToTarget () <= range) {
+			setState (State.CHARGE);
 		}
-		Vector2 vel = rigidbody2D.velocity;
-		vel.x = vel_x;
-		rigidbody2D.velocity = vel;
+	}
+
+	void ChargeEnterState() {
+		updateXVelocity (0);
 	}
 }
