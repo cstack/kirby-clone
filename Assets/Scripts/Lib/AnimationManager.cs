@@ -3,34 +3,22 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace AnimationEnums {
-	public enum IdleOrWalking {
-		Idle, Walking
-	}
-
-	public enum Jumping {
-		Jumping, Spinning
-	}
-}
-
 public class AnimationManager {
 
 	private Animator animator;
 
-	private int state;
+	private Enum state;
 
 	public AnimationManager(Animator animator) {
 		this.animator = animator;
 	}
 
-	public int State {
-		get {
-			return state;
-		}
+	public Enum State {
 		set {
 			state = value;
-			string stateName = ((Kirby.State) state).ToString();
-			animator.Play(stateName);
+			animator.SetInteger("State", Convert.ToInt32(state));
+			String animationName = value.ToString();
+			animator.Play(value.ToString());
 		}
 	}
 

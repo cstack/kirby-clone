@@ -3,6 +3,16 @@ using System.Collections;
 using System.Globalization;
 using UnityEngine;
 
+namespace AnimationEnums {
+	public enum IdleOrWalking {
+		Idle, Walking
+	}
+	
+	public enum Jumping {
+		Jumping, Spinning
+	}
+}
+
 public class Kirby : StateMachineBase {
 	public float speed = 6f;
 	public float jumpSpeed = 12.5f;
@@ -21,8 +31,6 @@ public class Kirby : StateMachineBase {
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private Collision2D enemyOther;
 
-	private AnimationManager am;
-
 	// For debugging purposes
 	public State curState;
 
@@ -30,25 +38,18 @@ public class Kirby : StateMachineBase {
 		IdleOrWalking, Jumping, Flying, Knockback, Sliding, Inhaling, Inhaled
 	}
 
-	void setState(State state) {
-		curState = state;
-		CurrentState = state;
-		am.State = (int) state;
-	}
-
 	void Start() {
-		am = new AnimationManager(this.GetComponent<Animator>());
-		setState(State.Jumping);
+		CurrentState = State.Jumping;
 		dir = Direction.Right;
 	}
 
 	void CommonOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "ground") {
-			setState(State.IdleOrWalking);
+			CurrentState = State.IdleOrWalking;
 		} else if (other.gameObject.tag == "enemy") {
 			enemyOther = other;
 			Destroy(other.gameObject);
-			setState(State.Knockback);
+			CurrentState = State.Knockback;
 		}
 	}
 
@@ -77,10 +78,10 @@ public class Kirby : StateMachineBase {
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X)) {
 			vel.y = jumpSpeed;
-			setState(State.Jumping);
+			CurrentState = State.Jumping;
 		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
-			setState(State.Flying);
+			CurrentState = State.Flying;
 		} else {
 			if (vel.x == 0) {
 				am.animate((int) IdleOrWalking.Idle);
@@ -100,7 +101,6 @@ public class Kirby : StateMachineBase {
 	#region JUMPING
 
 	void JumpingUpdate() {
-		Debug.Log("Jumping");
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKeyUp(KeyCode.X)) {
@@ -154,7 +154,7 @@ public class Kirby : StateMachineBase {
 		}
 		rigidbody2D.velocity = new Vector2(xVel, 0);
 		yield return new WaitForSeconds(knockbackTime);
-		setState(State.IdleOrWalking);
+		CurrentState = State.IdleOrWalking;
 		rigidbody2D.velocity = Vector2.zero;
 	}
 
