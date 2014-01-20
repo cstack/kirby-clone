@@ -23,13 +23,15 @@ public class Kirby : StateMachineBase {
 
 	private bool isSpinning = false;
 
+	bool invulnurable;
+
 	private Direction dir;
 	private enum Direction {
 		Left, Right
 	}
 
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
-	private Collision2D enemyOther;
+	private GameObject enemyOther;
 
 	public enum State {
 		IdleOrWalking, Jumping, Flying, Knockback, Sliding, Inhaling, Inhaled
@@ -44,7 +46,7 @@ public class Kirby : StateMachineBase {
 		if (other.gameObject.tag == "ground") {
 			CurrentState = State.IdleOrWalking;
 		} else if (other.gameObject.tag == "enemy") {
-			enemyOther = other;
+			enemyOther = other.gameObject;
 			Destroy(other.gameObject);
 			CurrentState = State.Knockback;
 		}
@@ -159,4 +161,19 @@ public class Kirby : StateMachineBase {
 
 	#region SLIDING
 	#endregion
+
+	public void TakeHit(EnergyWhipParticle particle) {
+		if (invulnurable) {
+			return;
+		}
+		enemyOther = particle.gameObject;
+		CurrentState = State.Knockback;
+		StartCoroutine ("Invulnerability");
+	}
+
+	public IEnumerator Invulnerability() {
+		invulnurable = true;
+		yield return new WaitForSeconds (2f);
+		invulnurable = false;
+	}
 }

@@ -308,6 +308,7 @@ MonoBehaviour:
   networkView: {fileID: 0}
   collider: {fileID: 0}
   gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 2
   range: 3
   EnergyWhipPrefab: {fileID: 100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
@@ -701,7 +702,7 @@ GameObject:
   - 95: {fileID: 369935290}
   m_Layer: 0
   m_Name: Kirby
-  m_TagString: Untagged
+  m_TagString: kirby
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -784,12 +785,12 @@ MonoBehaviour:
   networkView: {fileID: 0}
   collider: {fileID: 0}
   gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 6
   jumpSpeed: 12.5
   flySpeed: 7
   knockbackSpeed: 8
   knockbackTime: .200000003
-  curState: 0
 --- !u!61 &369935289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1102,6 +1103,7 @@ MonoBehaviour:
   networkView: {fileID: 0}
   collider: {fileID: 0}
   gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 2
   range: 3
   EnergyWhipPrefab: {fileID: 100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
@@ -1439,46 +1441,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1774916250}
   m_GameObject: {fileID: 1150727796}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1168339426
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 6.58758926
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 26.2346802
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-  m_RootGameObject: {fileID: 1881718941}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1001 &1263330882
 Prefab:
   m_ObjectHideFlags: 0
@@ -2191,6 +2153,7 @@ MonoBehaviour:
   networkView: {fileID: 0}
   collider: {fileID: 0}
   gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 2
   range: 3
   EnergyWhipPrefab: {fileID: 100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
@@ -2260,46 +2223,6 @@ Animator:
   m_ApplyRootMotion: 0
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!1 &1881718941
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-  m_PrefabInternal: {fileID: 1168339426}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1881718943}
-  - 114: {fileID: 1881718942}
-  m_Layer: 0
-  m_Name: EnergyWhip
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1881718942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 772cd70abe5be4d2fbbb9bca520023f4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1168339426}
-  m_GameObject: {fileID: 1881718941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4131ecc68bc5640afaf0a6c5fddeb455, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 100000, guid: 418fac63d81ee488b8f75fbdee2f9954, type: 2}
---- !u!4 &1881718943
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
-  m_PrefabInternal: {fileID: 1168339426}
-  m_GameObject: {fileID: 1881718941}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.58758926, y: 26.2346802, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &1922172643
 GameObject:
   m_ObjectHideFlags: 0
