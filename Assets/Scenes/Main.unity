@@ -269,6 +269,7 @@ GameObject:
   - 50: {fileID: 104459847}
   - 114: {fileID: 104459846}
   - 61: {fileID: 104459845}
+  - 95: {fileID: 104459850}
   m_Layer: 0
   m_Name: WaddleDoo
   m_TagString: enemy
@@ -284,7 +285,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 2090309571}
   m_GameObject: {fileID: 104459844}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 294f78b884fcc0348a83aeb221ef602a, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
@@ -300,8 +301,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8a72cf99924a96b412063347f5780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  rigidbody: {fileID: 0}
+  animation: {fileID: 0}
+  controller: {fileID: 0}
+  networkView: {fileID: 0}
+  collider: {fileID: 0}
+  gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 2
-  range: 2
+  range: 3
+  timeBetweenAttacks: 3
+  jumpSpeed: 8
 --- !u!50 &104459847
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -340,7 +351,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortingLayerID: 2116633999
-  m_Sprite: {fileID: 21300002, guid: 2a6428be6959a48fdbed423424a95f8e, type: 3}
+  m_Sprite: {fileID: 21300066, guid: 516e820c5a1ce4dfead88c71184a4ab5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &104459849
 Transform:
@@ -353,6 +364,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1729248773}
+--- !u!95 &104459850
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: dbcba72d4cf094a358c59daa0a6c566b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2090309571}
+  m_GameObject: {fileID: 104459844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da020f9c7e0f44b6d9642e4b8749d2e8, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &127058881
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +703,7 @@ GameObject:
   - 95: {fileID: 369935290}
   m_Layer: 0
   m_Name: Kirby
-  m_TagString: Untagged
+  m_TagString: kirby
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -760,12 +786,12 @@ MonoBehaviour:
   networkView: {fileID: 0}
   collider: {fileID: 0}
   gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 6
   jumpSpeed: 12.5
   flySpeed: 7
   knockbackSpeed: 8
   knockbackTime: .200000003
-  curState: 0
 --- !u!61 &369935289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -956,11 +982,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .153690338
+      value: .446186066
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.71574974
+      value: -2.64696503
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1039,6 +1065,7 @@ GameObject:
   - 50: {fileID: 933392243}
   - 114: {fileID: 933392242}
   - 61: {fileID: 933392241}
+  - 95: {fileID: 933392246}
   m_Layer: 0
   m_Name: WaddleDoo
   m_TagString: enemy
@@ -1054,7 +1081,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1385086307}
   m_GameObject: {fileID: 933392240}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 294f78b884fcc0348a83aeb221ef602a, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
@@ -1070,8 +1097,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8a72cf99924a96b412063347f5780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  rigidbody: {fileID: 0}
+  animation: {fileID: 0}
+  controller: {fileID: 0}
+  networkView: {fileID: 0}
+  collider: {fileID: 0}
+  gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 2
-  range: 2
+  range: 3
+  timeBetweenAttacks: 3
+  jumpSpeed: 8
 --- !u!50 &933392243
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1110,7 +1147,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortingLayerID: 2116633999
-  m_Sprite: {fileID: 21300002, guid: 2a6428be6959a48fdbed423424a95f8e, type: 3}
+  m_Sprite: {fileID: 21300066, guid: 516e820c5a1ce4dfead88c71184a4ab5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &933392245
 Transform:
@@ -1119,10 +1156,25 @@ Transform:
   m_PrefabInternal: {fileID: 1385086307}
   m_GameObject: {fileID: 933392240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.30806923, y: -1.74083138, z: .00620117038}
+  m_LocalPosition: {x: 25.6924553, y: -2.68327522, z: .00620117038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1729248773}
+--- !u!95 &933392246
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: dbcba72d4cf094a358c59daa0a6c566b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1385086307}
+  m_GameObject: {fileID: 933392240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da020f9c7e0f44b6d9642e4b8749d2e8, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &935747114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,11 +1634,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.30806923
+      value: 25.6924553
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.74083138
+      value: -2.68327522
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1992,8 +2044,8 @@ Transform:
   m_LocalPosition: {x: 16.3109055, y: 28.1284637, z: -.106201172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1797952474}
   - {fileID: 933392245}
+  - {fileID: 1797952474}
   - {fileID: 104459849}
   m_Father: {fileID: 0}
 --- !u!1001 &1774916250
@@ -2064,6 +2116,7 @@ GameObject:
   - 50: {fileID: 1797952472}
   - 114: {fileID: 1797952471}
   - 61: {fileID: 1797952470}
+  - 95: {fileID: 1797952475}
   m_Layer: 0
   m_Name: WaddleDoo
   m_TagString: enemy
@@ -2079,7 +2132,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 875423993}
   m_GameObject: {fileID: 1797952469}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 294f78b884fcc0348a83aeb221ef602a, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
@@ -2095,8 +2148,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8a72cf99924a96b412063347f5780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  rigidbody: {fileID: 0}
+  animation: {fileID: 0}
+  controller: {fileID: 0}
+  networkView: {fileID: 0}
+  collider: {fileID: 0}
+  gameObject: {fileID: 0}
+  CurrentStateName: 
   speed: 2
-  range: 2
+  range: 3
+  timeBetweenAttacks: 3
+  jumpSpeed: 8
 --- !u!50 &1797952472
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2135,7 +2198,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortingLayerID: 2116633999
-  m_Sprite: {fileID: 21300002, guid: 2a6428be6959a48fdbed423424a95f8e, type: 3}
+  m_Sprite: {fileID: 21300066, guid: 516e820c5a1ce4dfead88c71184a4ab5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1797952474
 Transform:
@@ -2144,10 +2207,25 @@ Transform:
   m_PrefabInternal: {fileID: 875423993}
   m_GameObject: {fileID: 1797952469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .153690338, y: -2.71574974, z: .00620117038}
+  m_LocalPosition: {x: .446186066, y: -2.64696503, z: .00620117038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1729248773}
+--- !u!95 &1797952475
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: dbcba72d4cf094a358c59daa0a6c566b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875423993}
+  m_GameObject: {fileID: 1797952469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da020f9c7e0f44b6d9642e4b8749d2e8, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1922172643
 GameObject:
   m_ObjectHideFlags: 0
