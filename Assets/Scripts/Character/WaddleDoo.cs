@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using AnimationEnums;
+
+namespace AnimationEnums {
+	public enum Jump {
+		Upward, Downward
+	}
+}
 
 public class WaddleDoo : StateMachineBase {
 	public float speed = 2f;
 	public float range = 3f;
 	public float timeBetweenAttacks = 3f;
+	public float jumpSpeed = 8f;
 
-	public EnergyWhip EnergyWhipPrefab;
+	private EnergyWhip energyWhipPrefab;
 
 	private enum State {
-		WalkLeft, Charge, Attack
+		WalkLeft, Charge, Attack, Jump
 	}
 
 	private Transform target;
@@ -21,9 +29,16 @@ public class WaddleDoo : StateMachineBase {
 		vel.x = x;
 		rigidbody2D.velocity = vel;
 	}
+
+	void updateYVelocity(float y) {
+		Vector2 vel = rigidbody2D.velocity;
+		vel.y = y;
+		rigidbody2D.velocity = vel;
+	}
 	
 	void Start() {
 		target = GameObject.Find ("Kirby").transform;
+		energyWhipPrefab = (EnergyWhip) Resources.LoadAssetAtPath ("Assets/Prefabs/Abilities/EnergyWhip.prefab", typeof(EnergyWhip));
 		CurrentState = State.WalkLeft;
 	}
 
@@ -39,7 +54,11 @@ public class WaddleDoo : StateMachineBase {
 	void WalkLeftUpdate() {
 		updateXVelocity (-1 * speed);
 		if (canAttack && distanceToTarget () <= range) {
-			CurrentState = State.Charge;
+			if (Random.value < 0.5) {
+				CurrentState = State.Charge;
+			} else {
+				CurrentState = State.Jump;
+			}
 		}
 	}
 
@@ -50,13 +69,37 @@ public class WaddleDoo : StateMachineBase {
 	}
 
 	IEnumerator AttackEnterState() {
-		EnergyWhip energyWhip = Instantiate (EnergyWhipPrefab) as EnergyWhip;
+		EnergyWhip energyWhip = Instantiate (energyWhipPrefab) as EnergyWhip;
 		energyWhip.gameObject.transform.position = transform.position;
 		yield return new WaitForSeconds(energyWhip.duration);
-		Destroy (energyWhip);
-		canAttack = false;
+		Destroy (energyWhip.gameObject);
+		StartCoroutine (CoolDown ());
 		CurrentState = State.WalkLeft;
-		yield return new WaitForSeconds(timeBetweenAttacks);
+	}
+
+	IEnumerator CoolDown() {
+		canAttack = false;
+		yield return new WaitForSeconds (timeBetweenAttacks);
 		canAttack = true;
 	}
+
+	#region JUMP
+
+	IEnumerator JumpEnterState() {
+		updateYVelocity (jumpSpeed);
+		yield return null;
+	}
+
+	void JumpOnCollisionEnter2D(Collision2D other) {
+		if (other.gameObject.tag == "ground") {
+			StartCoroutine(CoolDown());
+			CurrentState = State.WalkLeft;
+		}
+	}
+
+	void JumpUpdate() {
+		am.animate (rigidbody2D.velocity.y > 0 ? (int) Jump.Upward : (int) Jump.Downward);
+	}
+
+	#endregion
 }

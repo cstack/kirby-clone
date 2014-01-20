@@ -285,7 +285,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 2090309571}
   m_GameObject: {fileID: 104459844}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 294f78b884fcc0348a83aeb221ef602a, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
@@ -311,7 +311,8 @@ MonoBehaviour:
   CurrentStateName: 
   speed: 2
   range: 3
-  EnergyWhipPrefab: {fileID: 100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
+  timeBetweenAttacks: 3
+  jumpSpeed: 8
 --- !u!50 &104459847
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1080,7 +1081,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1385086307}
   m_GameObject: {fileID: 933392240}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 294f78b884fcc0348a83aeb221ef602a, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
@@ -1106,7 +1107,8 @@ MonoBehaviour:
   CurrentStateName: 
   speed: 2
   range: 3
-  EnergyWhipPrefab: {fileID: 100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
+  timeBetweenAttacks: 3
+  jumpSpeed: 8
 --- !u!50 &933392243
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2042,8 +2044,8 @@ Transform:
   m_LocalPosition: {x: 16.3109055, y: 28.1284637, z: -.106201172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1797952474}
   - {fileID: 933392245}
+  - {fileID: 1797952474}
   - {fileID: 104459849}
   m_Father: {fileID: 0}
 --- !u!1001 &1774916250
@@ -2130,7 +2132,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 875423993}
   m_GameObject: {fileID: 1797952469}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 294f78b884fcc0348a83aeb221ef602a, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
@@ -2156,7 +2158,8 @@ MonoBehaviour:
   CurrentStateName: 
   speed: 2
   range: 3
-  EnergyWhipPrefab: {fileID: 100000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
+  timeBetweenAttacks: 3
+  jumpSpeed: 8
 --- !u!50 &1797952472
 Rigidbody2D:
   m_ObjectHideFlags: 0
