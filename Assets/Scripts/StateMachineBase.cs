@@ -51,6 +51,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 	public Func<IEnumerator> ExitState = DoNothingCoroutine;
 	public Enum currentState;
 
+	protected AnimationManager am;
 
 	static IEnumerator DoNothingCoroutine() {
 		yield break;
@@ -73,10 +74,13 @@ public abstract class StateMachineBase : MonoBehaviour {
 		collider    = base.collider;
 		transform   = base.transform;
 		animation   = base.animation;
+		am = new AnimationManager (GetComponent<Animator>());
 		rigidbody   = base.rigidbody;
 		networkView = base.networkView;
 		controller  = GetComponent<CharacterController>();
 	}
+
+	public String CurrentStateName;
 
 	public Enum CurrentState {
 		get {
@@ -84,7 +88,9 @@ public abstract class StateMachineBase : MonoBehaviour {
 		}
 		set {
 			currentState = value;
-			ConfigureCurrentState();			
+			am.State = value;
+			ConfigureCurrentState();
+			CurrentStateName = currentState.ToString();
 		}
 	}
 
