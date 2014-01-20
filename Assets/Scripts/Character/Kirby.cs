@@ -65,9 +65,18 @@ public class Kirby : StateMachineBase {
 	void Flip() {
 		dir = (dir == Direction.Right) ? Direction.Left : Direction.Right;
 
+		// Flip the sprite over the anchor point
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+
+		/*
+		 * Since the flip flips over the anchor point which is the bottom left of the sprite, we need to shift the
+		 * sprite to make it look like we flipped over the vertical center axis of the sprite.
+		 */
+		Vector3 position = transform.position;
+		position.x -= scale.x;
+		transform.position = position;
 	}
 
 	#region IDLE_OR_WALKING
