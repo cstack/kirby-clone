@@ -37,7 +37,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110261001}
   m_DstState: {fileID: 110200000}
   m_TransitionDuration: .100000001
@@ -55,7 +55,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110283281}
   m_DstState: {fileID: 110200000}
   m_TransitionDuration: .25
@@ -73,7 +73,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110271538}
   m_DstState: {fileID: 110200000}
   m_TransitionDuration: .100000001
@@ -91,7 +91,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110200000}
   m_DstState: {fileID: 110283281}
   m_TransitionDuration: 0
@@ -109,7 +109,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110258089}
   m_DstState: {fileID: 110200000}
   m_TransitionDuration: 0
@@ -127,7 +127,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110271538}
   m_DstState: {fileID: 110250683}
   m_TransitionDuration: 0
@@ -145,7 +145,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110200000}
   m_DstState: {fileID: 110261001}
   m_TransitionDuration: .100000001
@@ -163,7 +163,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110288456}
   m_DstState: {fileID: 110272951}
   m_TransitionDuration: .100000001
@@ -181,7 +181,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110250683}
   m_DstState: {fileID: 110271538}
   m_TransitionDuration: .25
@@ -199,7 +199,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110272951}
   m_DstState: {fileID: 110288456}
   m_TransitionDuration: .100000001
@@ -217,7 +217,7 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110258089}
   m_DstState: {fileID: 110261001}
   m_TransitionDuration: 0
@@ -235,14 +235,14 @@ Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   m_SrcState: {fileID: 110271538}
   m_DstState: {fileID: 110271538}
   m_TransitionDuration: .100000001
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent:
+    m_ConditionEvent: 
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -257,13 +257,13 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 089a6f723e9ff469f95b0d4439777735, type: 2}
+  - {fileID: 7400000, guid: 13ef08c74471560438c7cec7ec07807b, type: 2}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110798719}
   m_Position: {x: 264, y: 36, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110250683
 State:
   m_ObjectHideFlags: 3
@@ -278,7 +278,7 @@ State:
   m_Position: {x: 276, y: 120, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110258089
 State:
   m_ObjectHideFlags: 3
@@ -294,7 +294,7 @@ State:
   m_Position: {x: 528, y: -12, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110261001
 State:
   m_ObjectHideFlags: 3
@@ -304,13 +304,13 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 51b4ea1345659734dba8b7216c02b04e, type: 2}
+  - {fileID: 7400000, guid: ede93e5bb9a282041bee900668e397ea, type: 2}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110798719}
   m_Position: {x: 264, y: -48, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110271538
 State:
   m_ObjectHideFlags: 3
@@ -325,7 +325,7 @@ State:
   m_Position: {x: 276, y: 48, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110272951
 State:
   m_ObjectHideFlags: 3
@@ -335,13 +335,13 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 91ed10ca097877e4e862909677e297f8, type: 2}
+  - {fileID: 7400000, guid: 22b04f967f270d544963293e1a94e4b5, type: 2}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110745583}
   m_Position: {x: 372, y: -12, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110283281
 State:
   m_ObjectHideFlags: 3
@@ -356,7 +356,7 @@ State:
   m_Position: {x: 48, y: 120, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110287359
 State:
   m_ObjectHideFlags: 3
@@ -366,13 +366,13 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: a60989bb5f1cbfd409b0256ae6796510, type: 2}
+  - {fileID: 7400000, guid: 58fd05f9579260644ac2be7243ff8714, type: 2}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110716230}
   m_Position: {x: 432, y: 12, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1102 &110288456
 State:
   m_ObjectHideFlags: 3
@@ -382,13 +382,13 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: c8dbfe9a3eb27624481f1048fa155318, type: 2}
+  - {fileID: 7400000, guid: 97d5ba38392e4c440a507eda974d681b, type: 2}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110745583}
   m_Position: {x: 372, y: -108, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
-  m_Tag:
+  m_Tag: 
 --- !u!1107 &110700000
 StateMachine:
   serializedVersion: 2
@@ -422,9 +422,7 @@ StateMachine:
       - {fileID: 110127990}
     data:
       first: {fileID: 110212098}
-      second:
-      - {fileID: 110160846}
-      - {fileID: 110138763}
+      second: []
     data:
       first: {fileID: 110261001}
       second:
