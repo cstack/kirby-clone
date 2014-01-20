@@ -80,6 +80,8 @@ public abstract class StateMachineBase : MonoBehaviour {
 		controller  = GetComponent<CharacterController>();
 	}
 
+	public String CurrentStateName;
+
 	public Enum CurrentState {
 		get {
 			return currentState;
@@ -88,6 +90,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 			currentState = value;
 			am.State = value;
 			ConfigureCurrentState();
+			CurrentStateName = currentState.ToString();
 		}
 	}
 

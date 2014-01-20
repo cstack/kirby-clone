@@ -31,9 +31,6 @@ public class Kirby : StateMachineBase {
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private Collision2D enemyOther;
 
-	// For debugging purposes
-	public State curState;
-
 	public enum State {
 		IdleOrWalking, Jumping, Flying, Knockback, Sliding, Inhaling, Inhaled
 	}
