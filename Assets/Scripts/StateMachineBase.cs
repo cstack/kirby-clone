@@ -29,6 +29,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 	[HideInInspector]
 	public new GameObject gameObject;
 
+	public Dictionary<string, Delegate> delegateCache = new Dictionary<string, Delegate>();
 	public Action DoUpdate = DoNothing;
 	public Action DoLateUpdate = DoNothing;
 	public Action DoFixedUpdate = DoNothing;
@@ -52,6 +53,8 @@ public abstract class StateMachineBase : MonoBehaviour {
 	public Enum currentState;
 
 	protected AnimationManager am;
+
+	public String CurrentStateName;
 
 	static IEnumerator DoNothingCoroutine() {
 		yield break;
@@ -79,9 +82,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		networkView = base.networkView;
 		controller  = GetComponent<CharacterController>();
 	}
-
-	public String CurrentStateName;
-
+	
 	public Enum CurrentState {
 		get {
 			return currentState;
@@ -133,15 +134,25 @@ public abstract class StateMachineBase : MonoBehaviour {
 	 * Uses reflection to get delegate method for state. Naming convention is StateMethod.
 	 */
 	T ConfigureDelegate<T>(string methodName, T Default) where T : class {
-		var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public |
-			System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.InvokeMethod;
-		var method = GetType().GetMethod(currentState.ToString() + methodName, flags);
+		string delegateName = currentState.ToString() + methodName;
+		Delegate d;
 
-		if (method != null) {
-			return Delegate.CreateDelegate(typeof(T), this, method) as T;
-		} else {
-			return Default;
+		// Check the cache first
+		delegateCache.TryGetValue(delegateName, out d);
+
+		if (d == null) {
+			// Delegate wasn't found in cache, so use reflection
+			var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public |
+				System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.InvokeMethod;
+			var method = GetType().GetMethod(delegateName, flags);
+			if (method != null) {
+				d = Delegate.CreateDelegate(typeof(T), this, method);
+			} else {
+				d = Default as Delegate;
+			}
+			delegateCache.Add(delegateName, d);
 		}
+		return d as T;
 	}
 	
 	protected void EnableGUI() {
