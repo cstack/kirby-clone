@@ -29,28 +29,28 @@ public abstract class StateMachineBase : MonoBehaviour {
 	[HideInInspector]
 	public new GameObject gameObject;
 
-	public Dictionary<string, Delegate> delegateCache = new Dictionary<string, Delegate>();
-	public Action DoUpdate = DoNothing;
-	public Action DoLateUpdate = DoNothing;
-	public Action DoFixedUpdate = DoNothing;
-	public Action<Collider> DoOnTriggerEnter = DoNothingCollider;
-	public Action<Collider> DoOnTriggerStay = DoNothingCollider;
-	public Action<Collider> DoOnTriggerExit = DoNothingCollider;
-	public Action<Collision> DoOnCollisionEnter = DoNothingCollision;
-	public Action<Collision> DoOnCollisionStay = DoNothingCollision;
-	public Action<Collision> DoOnCollisionExit = DoNothingCollision;
-	public Action<Collision2D> DoOnCollisionEnter2D = DoNothingCollision2D;
-	public Action<Collision2D> DoOnCollisionStay2D = DoNothingCollision2D;
-	public Action<Collision2D> DoOnCollisionExit2D = DoNothingCollision2D;
-	public Action DoOnMouseEnter = DoNothing;
-	public Action DoOnMouseUp = DoNothing;
-	public Action DoOnMouseDown = DoNothing;
-	public Action DoOnMouseOver = DoNothing;
-	public Action DoOnMouseExit = DoNothing;
-	public Action DoOnMouseDrag = DoNothing;
-	public Action DoOnGUI = DoNothing;
-	public Func<IEnumerator> ExitState = DoNothingCoroutine;
-	public Enum currentState;
+	private Dictionary<string, Delegate> delegateCache = new Dictionary<string, Delegate>();
+	private Action DoUpdate = DoNothing;
+	private Action DoLateUpdate = DoNothing;
+	private Action DoFixedUpdate = DoNothing;
+	private Action<Collider> DoOnTriggerEnter = DoNothingCollider;
+	private Action<Collider> DoOnTriggerStay = DoNothingCollider;
+	private Action<Collider> DoOnTriggerExit = DoNothingCollider;
+	private Action<Collision> DoOnCollisionEnter = DoNothingCollision;
+	private Action<Collision> DoOnCollisionStay = DoNothingCollision;
+	private Action<Collision> DoOnCollisionExit = DoNothingCollision;
+	private Action<Collision2D> DoOnCollisionEnter2D = DoNothingCollision2D;
+	private Action<Collision2D> DoOnCollisionStay2D = DoNothingCollision2D;
+	private Action<Collision2D> DoOnCollisionExit2D = DoNothingCollision2D;
+	private Action DoOnMouseEnter = DoNothing;
+	private Action DoOnMouseUp = DoNothing;
+	private Action DoOnMouseDown = DoNothing;
+	private Action DoOnMouseOver = DoNothing;
+	private Action DoOnMouseExit = DoNothing;
+	private Action DoOnMouseDrag = DoNothing;
+	private Action DoOnGUI = DoNothing;
+	private Func<IEnumerator> ExitState = DoNothingCoroutine;
+	private Enum currentState;
 
 	protected AnimationManager am;
 
@@ -77,7 +77,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		collider    = base.collider;
 		transform   = base.transform;
 		animation   = base.animation;
-		am = new AnimationManager (GetComponent<Animator>());
+		am          = new AnimationManager (GetComponent<Animator>());
 		rigidbody   = base.rigidbody;
 		networkView = base.networkView;
 		controller  = GetComponent<CharacterController>();

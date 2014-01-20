@@ -34,7 +34,7 @@ public class Kirby : StateMachineBase {
 	private GameObject enemyOther;
 
 	public enum State {
-		IdleOrWalking, Jumping, Flying, Knockback, Sliding, Inhaling, Inhaled
+		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled
 	}
 
 	void Start() {
@@ -81,6 +81,8 @@ public class Kirby : StateMachineBase {
 		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			CurrentState = State.Flying;
+		} else if (Input.GetKey(KeyCode.DownArrow)) {
+			CurrentState = State.Ducking;
 		} else {
 			if (vel.x == 0) {
 				am.animate((int) IdleOrWalking.Idle);
@@ -155,6 +157,16 @@ public class Kirby : StateMachineBase {
 		yield return new WaitForSeconds(knockbackTime);
 		CurrentState = State.IdleOrWalking;
 		rigidbody2D.velocity = Vector2.zero;
+	}
+
+	#endregion
+
+	#region DUCKING
+
+	public void DuckingUpdate() {
+		if (Input.GetKeyUp(KeyCode.DownArrow)) {
+			CurrentState = State.IdleOrWalking;
+		}
 	}
 
 	#endregion

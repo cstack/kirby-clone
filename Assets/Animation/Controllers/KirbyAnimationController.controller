@@ -264,6 +264,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110226620
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Ducking
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: b2ebe1125847bb247a4633fcd8e3b4bb, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 254, y: -182, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110250683
 State:
   m_ObjectHideFlags: 3
@@ -396,8 +411,9 @@ StateMachine:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 0}
-  m_States: []
+  m_DefaultState: {fileID: 110226620}
+  m_States:
+  - {fileID: 110226620}
   m_ChildStateMachine:
   - {fileID: 110798719}
   - {fileID: 110716230}

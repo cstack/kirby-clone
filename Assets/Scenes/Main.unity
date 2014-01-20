@@ -740,7 +740,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortingLayerID: 2116633999
-  m_Sprite: {fileID: 21300016, guid: a24a1895a3ff443aea2d39825c60e1be, type: 3}
+  m_Sprite: {fileID: 21300024, guid: 37ba0ed3415de8b4f92cd4f4aa334e66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &369935286
 Rigidbody2D:
