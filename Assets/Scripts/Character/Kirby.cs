@@ -139,7 +139,7 @@ public class Kirby : StateMachineBase {
 		}
 		rigidbody2D.velocity = vel;
 	}
-
+	
 	void FlyingOnCollisionEnter2D(Collision2D other) {
 		CommonOnCollisionEnter2D(other);
 	}
@@ -180,7 +180,7 @@ public class Kirby : StateMachineBase {
 		}
 		enemyOther = particle.gameObject;
 		CurrentState = State.Knockback;
-		StartCoroutine ("Invulnerability");
+		StartCoroutine("Invulnerability");
 	}
 
 	public IEnumerator Invulnerability() {
