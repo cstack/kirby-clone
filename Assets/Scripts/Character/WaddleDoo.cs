@@ -4,14 +4,17 @@ using System.Collections;
 public class WaddleDoo : StateMachineBase {
 	public float speed = 2f;
 	public float range = 3f;
+	public float timeBetweenAttacks = 3f;
 
-	public GameObject EnergyWhipPrefab;
+	public EnergyWhip EnergyWhipPrefab;
 
 	private enum State {
 		WalkLeft, Charge, Attack
 	}
 
 	private Transform target;
+
+	bool canAttack = true;
 
 	void updateXVelocity(float x) {
 		Vector2 vel = rigidbody2D.velocity;
@@ -35,7 +38,7 @@ public class WaddleDoo : StateMachineBase {
 
 	void WalkLeftUpdate() {
 		updateXVelocity (-1 * speed);
-		if (distanceToTarget () <= range) {
+		if (canAttack && distanceToTarget () <= range) {
 			CurrentState = State.Charge;
 		}
 	}
@@ -47,8 +50,13 @@ public class WaddleDoo : StateMachineBase {
 	}
 
 	IEnumerator AttackEnterState() {
-		GameObject energyWhip = Instantiate (EnergyWhipPrefab) as GameObject;
-		energyWhip.transform.position = transform.position;
-		yield return null;
+		EnergyWhip energyWhip = Instantiate (EnergyWhipPrefab) as EnergyWhip;
+		energyWhip.gameObject.transform.position = transform.position;
+		yield return new WaitForSeconds(energyWhip.duration);
+		Destroy (energyWhip);
+		canAttack = false;
+		CurrentState = State.WalkLeft;
+		yield return new WaitForSeconds(timeBetweenAttacks);
+		canAttack = true;
 	}
 }
