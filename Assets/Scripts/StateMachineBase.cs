@@ -83,7 +83,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		collider    = base.collider;
 		transform   = base.transform;
 		animation   = base.animation;
-		am          = new AnimationManager (GetComponent<Animator>());
+		am          = new AnimationManager (GetComponentInChildren<Animator>());
 		rigidbody   = base.rigidbody;
 		networkView = base.networkView;
 		controller  = GetComponent<CharacterController>();
