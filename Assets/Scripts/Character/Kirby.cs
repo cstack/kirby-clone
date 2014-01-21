@@ -43,13 +43,7 @@ public class Kirby : StateMachineBase {
 	}
 
 	void CommonOnCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.tag == "ground") {
-			if (other.contacts.Length > 0 &&
-			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
-				// Collision was on bottom
-				CurrentState = State.IdleOrWalking;
-			}
-		} else if (other.gameObject.tag == "enemy") {
+		if (other.gameObject.tag == "enemy") {
 			enemyOther = other.gameObject;
 			Destroy(other.gameObject);
 			CurrentState = State.Knockback;
@@ -137,6 +131,13 @@ public class Kirby : StateMachineBase {
 
 	void JumpingOnCollisionEnter2D(Collision2D other) {
 		CommonOnCollisionEnter2D(other);
+		if (other.gameObject.tag == "ground") {
+			if (other.contacts.Length > 0 &&
+			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
+				// Collision was on bottom
+				CurrentState = State.IdleOrWalking;
+			}
+		}
 	}
 
 	#endregion
