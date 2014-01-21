@@ -115,12 +115,16 @@ public class Kirby : StateMachineBase {
 	void JumpingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
-		if (Input.GetKeyUp(KeyCode.X)) {
-			vel.y = Mathf.Min(vel.y, 0);
-		}
-		if (!isSpinning && Mathf.Abs(vel.y) < 0.4) {
-			isSpinning = true;
-			StartCoroutine(SpinAnimation());
+		if (Input.GetKey(KeyCode.UpArrow)) {
+			CurrentState = State.Flying;
+		} else {
+			if (Input.GetKeyUp(KeyCode.X)) {
+				vel.y = Mathf.Min(vel.y, 0);
+			}
+			if (!isSpinning && Mathf.Abs(vel.y) < 0.4) {
+				isSpinning = true;
+				StartCoroutine(SpinAnimation());
+			}
 		}
 		rigidbody2D.velocity = vel;
 	}
