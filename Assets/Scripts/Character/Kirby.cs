@@ -171,7 +171,10 @@ public class Kirby : StateMachineBase {
 			animator.speed = 1f;
 		} else {
 			vel.y = Mathf.Max(vel.y, -1 * flySpeed * 0.7f);
-			animator.speed = 0.3f;
+			AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+			if (info.IsName("FlyingMiddle")) {
+				animator.speed = 0.3f;
+			}
 		}
 		if (Input.GetKey(KeyCode.Z)) {
 			animator.speed = 1f;
