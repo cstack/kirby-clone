@@ -36,6 +36,9 @@ public abstract class StateMachineBase : MonoBehaviour {
 	private Action<Collider> DoOnTriggerEnter = DoNothingCollider;
 	private Action<Collider> DoOnTriggerStay = DoNothingCollider;
 	private Action<Collider> DoOnTriggerExit = DoNothingCollider;
+	private Action<Collider2D> DoOnTriggerEnter2D = DoNothingCollider2D;
+	private Action<Collider2D> DoOnTriggerStay2D = DoNothingCollider2D;
+	private Action<Collider2D> DoOnTriggerExit2D = DoNothingCollider2D;
 	private Action<Collision> DoOnCollisionEnter = DoNothingCollision;
 	private Action<Collision> DoOnCollisionStay = DoNothingCollision;
 	private Action<Collision> DoOnCollisionExit = DoNothingCollision;
@@ -70,6 +73,9 @@ public abstract class StateMachineBase : MonoBehaviour {
 	}
 
 	static void DoNothingCollision2D(Collision2D other) {
+	}
+
+	static void DoNothingCollider2D(Collider2D other) {
 	}
 
 	void Awake() {
@@ -116,6 +122,9 @@ public abstract class StateMachineBase : MonoBehaviour {
 		DoOnTriggerEnter     = ConfigureDelegate<Action<Collider>>("OnTriggerEnter", DoNothingCollider);
 		DoOnTriggerExit      = ConfigureDelegate<Action<Collider>>("OnTriggerExir", DoNothingCollider);
 		DoOnTriggerStay      = ConfigureDelegate<Action<Collider>>("OnTriggerEnter", DoNothingCollider);
+		DoOnTriggerEnter2D = ConfigureDelegate<Action<Collider2D>>("OnTriggerEnter2D", DoNothingCollider2D);
+		DoOnTriggerExit2D  = ConfigureDelegate<Action<Collider2D>>("OnTriggerExit2D", DoNothingCollider2D);
+		DoOnTriggerStay2D  = ConfigureDelegate<Action<Collider2D>>("OnTriggerStay2D", DoNothingCollider2D);
 		DoOnCollisionEnter   = ConfigureDelegate<Action<Collision>>("OnCollisionEnter", DoNothingCollision);
 		DoOnCollisionExit    = ConfigureDelegate<Action<Collision>>("OnCollisionExit", DoNothingCollision);
 		DoOnCollisionStay    = ConfigureDelegate<Action<Collision>>("OnCollisionStay", DoNothingCollision);
@@ -201,6 +210,18 @@ public abstract class StateMachineBase : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		DoOnTriggerStay(other);
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		DoOnTriggerEnter2D(other);
+	}
+	
+	void OnTriggerExit2D(Collider2D other) {
+		DoOnTriggerExit2D(other);
+	}
+	
+	void OnTriggerStay2D(Collider2D other) {
+		DoOnTriggerStay2D(other);
 	}
 
 	void OnCollisionEnter(Collision other) {
