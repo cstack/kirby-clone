@@ -147,6 +147,9 @@ public class Kirby : StateMachineBase {
 
 	void JumpingOnCollisionEnter2D(Collision2D other) {
 		CommonOnCollisionEnter2D(other);
+	}
+
+	void JumpingOnCollisionStay2D(Collision2D other) {
 		if (other.gameObject.tag == "ground") {
 			if (other.contacts.Length > 0 &&
 			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
