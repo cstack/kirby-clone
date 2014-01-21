@@ -25,9 +25,6 @@ public class Kirby : StateMachineBase {
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
 	public bool isExhaling = false;
-	
-	// For debugging
-	public float timeScale = 1f;
 
 	private bool isSpinning = false;
 
@@ -48,7 +45,6 @@ public class Kirby : StateMachineBase {
 	}
 
 	void Start() {
-		Time.timeScale = timeScale;
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
@@ -188,7 +184,7 @@ public class Kirby : StateMachineBase {
 
 	IEnumerator Exhale() {
 		am.animate((int) Flying.Exhaling);
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.4f);
 		CurrentState = State.Jumping;
 		isExhaling = false;
 	}
