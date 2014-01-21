@@ -25,6 +25,8 @@ public class Kirby : StateMachineBase {
 
 	bool invulnurable;
 
+	private Animator animator;
+
 	private Direction dir;
 	private enum Direction {
 		Left, Right
@@ -38,6 +40,7 @@ public class Kirby : StateMachineBase {
 	}
 
 	void Start() {
+		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
 	}
@@ -149,8 +152,10 @@ public class Kirby : StateMachineBase {
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
+			animator.speed = 1f;
 		} else {
-			vel.y = Mathf.Max(vel.y, -1 * flySpeed);
+			vel.y = Mathf.Max(vel.y, -1 * flySpeed * 0.7f);
+			animator.speed = 0.3f;
 		}
 		rigidbody2D.velocity = vel;
 	}
