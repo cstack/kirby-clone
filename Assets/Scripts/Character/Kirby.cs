@@ -9,7 +9,7 @@ namespace AnimationEnums {
 	}
 	
 	public enum Jumping {
-		Jumping, Spinning
+		Jumping, Spinning, Exhale
 	}
 }
 
@@ -153,6 +153,9 @@ public class Kirby : StateMachineBase {
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			animator.speed = 1f;
+		} else if (Input.GetKey(KeyCode.Z)) {
+			CurrentState = State.Jumping;
+			am.animate((int) Jumping.Exhale);
 		} else {
 			vel.y = Mathf.Max(vel.y, -1 * flySpeed * 0.7f);
 			animator.speed = 0.3f;
