@@ -11,6 +11,10 @@ namespace AnimationEnums {
 	public enum Jumping {
 		Jumping, Spinning, Exhale
 	}
+
+	public enum Flying {
+		Flying, Exhaling
+	}
 }
 
 public class Kirby : StateMachineBase {
@@ -20,6 +24,10 @@ public class Kirby : StateMachineBase {
 
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
+	public bool isExhaling = false;
+	
+	// For debugging
+	public float timeScale = 1f;
 
 	private bool isSpinning = false;
 
@@ -40,6 +48,7 @@ public class Kirby : StateMachineBase {
 	}
 
 	void Start() {
+		Time.timeScale = timeScale;
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
@@ -150,21 +159,32 @@ public class Kirby : StateMachineBase {
 	#endregion
 
 	#region FLYING
-
+	
 	void FlyingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			animator.speed = 1f;
-		} else if (Input.GetKey(KeyCode.Z)) {
-			CurrentState = State.Jumping;
-			am.animate((int) Jumping.Exhale);
 		} else {
 			vel.y = Mathf.Max(vel.y, -1 * flySpeed * 0.7f);
 			animator.speed = 0.3f;
 		}
+		if (Input.GetKey(KeyCode.Z)) {
+			animator.speed = 1f;
+			if (!isExhaling) {
+				isExhaling = true;
+				StartCoroutine(Exhale());
+			}
+		}
 		rigidbody2D.velocity = vel;
+	}
+
+	IEnumerator Exhale() {
+		am.animate((int) Flying.Exhaling);
+		yield return new WaitForSeconds(0.5f);
+		CurrentState = State.Jumping;
+		isExhaling = false;
 	}
 	
 	void FlyingOnCollisionEnter2D(Collision2D other) {

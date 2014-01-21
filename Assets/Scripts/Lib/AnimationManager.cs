@@ -19,6 +19,7 @@ public class AnimationManager {
 			animator.SetInteger("State", Convert.ToInt32(state));
 			String animationName = value.ToString();
 			animator.Play(animationName);
+			animator.SetInteger("SubState", 0);
 		}
 	}
 
