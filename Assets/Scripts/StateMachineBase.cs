@@ -83,7 +83,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		collider    = base.collider;
 		transform   = base.transform;
 		animation   = base.animation;
-		am          = new AnimationManager (GetComponentInChildren<Animator>());
+		am          = new AnimationManager(GetComponentInChildren<Animator>());
 		rigidbody   = base.rigidbody;
 		networkView = base.networkView;
 		controller  = GetComponent<CharacterController>();
@@ -122,9 +122,9 @@ public abstract class StateMachineBase : MonoBehaviour {
 		DoOnTriggerEnter     = ConfigureDelegate<Action<Collider>>("OnTriggerEnter", DoNothingCollider);
 		DoOnTriggerExit      = ConfigureDelegate<Action<Collider>>("OnTriggerExir", DoNothingCollider);
 		DoOnTriggerStay      = ConfigureDelegate<Action<Collider>>("OnTriggerEnter", DoNothingCollider);
-		DoOnTriggerEnter2D = ConfigureDelegate<Action<Collider2D>>("OnTriggerEnter2D", DoNothingCollider2D);
-		DoOnTriggerExit2D  = ConfigureDelegate<Action<Collider2D>>("OnTriggerExit2D", DoNothingCollider2D);
-		DoOnTriggerStay2D  = ConfigureDelegate<Action<Collider2D>>("OnTriggerStay2D", DoNothingCollider2D);
+		DoOnTriggerEnter2D   = ConfigureDelegate<Action<Collider2D>>("OnTriggerEnter2D", DoNothingCollider2D);
+		DoOnTriggerExit2D    = ConfigureDelegate<Action<Collider2D>>("OnTriggerExit2D", DoNothingCollider2D);
+		DoOnTriggerStay2D    = ConfigureDelegate<Action<Collider2D>>("OnTriggerStay2D", DoNothingCollider2D);
 		DoOnCollisionEnter   = ConfigureDelegate<Action<Collision>>("OnCollisionEnter", DoNothingCollision);
 		DoOnCollisionExit    = ConfigureDelegate<Action<Collision>>("OnCollisionExit", DoNothingCollision);
 		DoOnCollisionStay    = ConfigureDelegate<Action<Collision>>("OnCollisionStay", DoNothingCollision);

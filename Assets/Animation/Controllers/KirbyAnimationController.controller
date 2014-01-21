@@ -176,6 +176,24 @@ Transition:
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
+--- !u!1101 &110153968
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110287359}
+  m_DstState: {fileID: 110268249}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: SubState
+    m_EventTreshold: 1
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
 --- !u!1101 &110167324
 Transition:
   m_ObjectHideFlags: 3
@@ -311,7 +329,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: b2ebe1125847bb247a4633fcd8e3b4bb, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 254, y: -182, z: 0}
+  m_Position: {x: 252, y: -180, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -362,6 +380,22 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110268249
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Exhale
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: b269b80271839724c86b31e44e68ed49, type: 2}
+  - {fileID: 0}
+  m_ParentStateMachine: {fileID: 110716230}
+  m_Position: {x: 432, y: 96, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110271538
 State:
   m_ObjectHideFlags: 3
@@ -402,10 +436,10 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 0}
+  - {fileID: 7400000, guid: d2349a6de87a602499b3c9e9bf506eb2, type: 2}
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110716230}
-  m_Position: {x: 684, y: -36, z: 0}
+  m_Position: {x: 684, y: -60, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -492,6 +526,12 @@ StateMachine:
   - {x: 24, y: -168, z: 0}
   m_OrderedTransitions:
     data:
+      first: {fileID: 0}
+      second: []
+    data:
+      first: {fileID: 0}
+      second: []
+    data:
       first: {fileID: 110281965}
       second:
       - {fileID: 110148036}
@@ -525,7 +565,8 @@ StateMachine:
       - {fileID: 110139926}
     data:
       first: {fileID: 110287359}
-      second: []
+      second:
+      - {fileID: 110153968}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 12, y: -24, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -541,6 +582,7 @@ StateMachine:
   - {fileID: 110287359}
   - {fileID: 110299309}
   - {fileID: 110281965}
+  - {fileID: 110268249}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions: {}

@@ -9,7 +9,11 @@ namespace AnimationEnums {
 	}
 	
 	public enum Jumping {
-		Jumping, Spinning
+		Jumping, Spinning, Exhale
+	}
+
+	public enum Flying {
+		Flying, Exhaling
 	}
 }
 
@@ -20,10 +24,16 @@ public class Kirby : StateMachineBase {
 
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
+	public bool isExhaling = false;
+	
+	// For debugging
+	public float timeScale = 1f;
 
 	private bool isSpinning = false;
 
 	bool invulnurable;
+
+	private Animator animator;
 
 	private Direction dir;
 	private enum Direction {
@@ -38,18 +48,14 @@ public class Kirby : StateMachineBase {
 	}
 
 	void Start() {
+		Time.timeScale = timeScale;
+		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
 	}
 
 	void CommonOnCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.tag == "ground") {
-			if (other.contacts.Length > 0 &&
-			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
-				// Collision was on bottom
-				CurrentState = State.IdleOrWalking;
-			}
-		} else if (other.gameObject.tag == "enemy") {
+		if (other.gameObject.tag == "enemy") {
 			enemyOther = other.gameObject;
 			Destroy(other.gameObject);
 			CurrentState = State.Knockback;
@@ -118,12 +124,16 @@ public class Kirby : StateMachineBase {
 	void JumpingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
-		if (Input.GetKeyUp(KeyCode.X)) {
-			vel.y = Mathf.Min(vel.y, 0);
-		}
-		if (!isSpinning && Mathf.Abs(vel.y) < 0.4) {
-			isSpinning = true;
-			StartCoroutine(SpinAnimation());
+		if (Input.GetKey(KeyCode.UpArrow)) {
+			CurrentState = State.Flying;
+		} else {
+			if (Input.GetKeyUp(KeyCode.X)) {
+				vel.y = Mathf.Min(vel.y, 0);
+			}
+			if (!isSpinning && Mathf.Abs(vel.y) < 0.4) {
+				isSpinning = true;
+				StartCoroutine(SpinAnimation());
+			}
 		}
 		rigidbody2D.velocity = vel;
 	}
@@ -139,19 +149,45 @@ public class Kirby : StateMachineBase {
 		CommonOnCollisionEnter2D(other);
 	}
 
+	void JumpingOnCollisionStay2D(Collision2D other) {
+		if (other.gameObject.tag == "ground") {
+			if (other.contacts.Length > 0 &&
+			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
+				// Collision was on bottom
+				CurrentState = State.IdleOrWalking;
+			}
+		}
+	}
+
 	#endregion
 
 	#region FLYING
-
+	
 	void FlyingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
+			animator.speed = 1f;
 		} else {
-			vel.y = Mathf.Max(vel.y, -1 * flySpeed);
+			vel.y = Mathf.Max(vel.y, -1 * flySpeed * 0.7f);
+			animator.speed = 0.3f;
+		}
+		if (Input.GetKey(KeyCode.Z)) {
+			animator.speed = 1f;
+			if (!isExhaling) {
+				isExhaling = true;
+				StartCoroutine(Exhale());
+			}
 		}
 		rigidbody2D.velocity = vel;
+	}
+
+	IEnumerator Exhale() {
+		am.animate((int) Flying.Exhaling);
+		yield return new WaitForSeconds(0.5f);
+		CurrentState = State.Jumping;
+		isExhaling = false;
 	}
 	
 	void FlyingOnCollisionEnter2D(Collision2D other) {
