@@ -216,6 +216,9 @@ public class Kirby : StateMachineBase {
 		if (Input.GetKeyUp(KeyCode.DownArrow)) {
 			CurrentState = State.IdleOrWalking;
 		}
+		Vector2 vel = rigidbody2D.velocity;
+		vel.x *= 0.9f;
+		rigidbody2D.velocity = vel;
 	}
 
 	#endregion
