@@ -168,7 +168,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		useGUILayout = DoOnGUI != DoNothing;
 	}
 	
-	void Update() {
+	public void Update() {
 		DoUpdate();
 	}
 	
@@ -212,7 +212,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		DoOnTriggerStay(other);
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	public void OnTriggerEnter2D(Collider2D other) {
 		DoOnTriggerEnter2D(other);
 	}
 	
@@ -236,7 +236,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		DoOnCollisionStay(other);
 	}
 
-	void OnCollisionEnter2D(Collision2D other) {
+	public void OnCollisionEnter2D(Collision2D other) {
 		DoOnCollisionEnter2D(other);
 	}
 	

@@ -8,7 +8,7 @@ namespace AnimationEnums {
 	}
 }
 
-public class WaddleDoo : CharacterBase {
+public class WaddleDoo : EnemyBase {
 	public float speed = 2f;
 	public float range = 3f;
 	public float timeBetweenAttacks = 3f;
@@ -24,8 +24,9 @@ public class WaddleDoo : CharacterBase {
 
 	bool canAttack = true;
 
-	void Start() {
-		target = GameObject.Find ("Kirby").transform;
+	new void Start() {
+		base.Start ();
+		target = kirby.transform;
 		energyWhipPrefab = (EnergyWhip) Resources.LoadAssetAtPath ("Assets/Prefabs/Abilities/EnergyWhip.prefab", typeof(EnergyWhip));
 		CurrentState = State.WalkLeft;
 	}
