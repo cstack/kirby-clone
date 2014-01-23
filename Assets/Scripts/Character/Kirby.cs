@@ -70,24 +70,6 @@ public class Kirby : CharacterBase {
 		vel.x = h * speed;
 	}
 
-	void Flip() {
-		dir = (dir == Direction.Right) ? Direction.Left : Direction.Right;
-
-		// Flip the sprite over the anchor point
-		Transform sprite = transform.Find ("Sprite");
-		Vector3 scale = sprite.localScale;
-		scale.x *= -1;
-		sprite.localScale = scale;
-
-		/*
-		 * Since the flip flips over the anchor point which is the bottom left of the sprite, we need to shift the
-		 * sprite to make it look like we flipped over the vertical center axis of the sprite.
-		 */
-		Vector3 position = sprite.transform.position;
-		position.x -= scale.x;
-		sprite.transform.position = position;
-	}
-
 	#region IDLE_OR_WALKING
 
 	void IdleOrWalkingUpdate() {
