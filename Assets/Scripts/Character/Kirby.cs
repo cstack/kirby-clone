@@ -200,6 +200,9 @@ public class Kirby : CharacterBase {
 	#region KNOCKBACK
 
 	IEnumerator KnockbackEnterState() {
+		GameObject go = GameObject.Find("HealthBarItem" + health);
+		Animator animator = go.GetComponent<Animator>();
+		animator.SetBool("Remove", true);
 		health -= 1;
 		if (health == 0) {
 			CurrentState = State.Die;

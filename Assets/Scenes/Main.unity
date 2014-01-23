@@ -434,6 +434,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
+      propertyPath: m_Name
+      value: HealthBarItem6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
   m_RootGameObject: {fileID: 695495507}
@@ -797,7 +801,7 @@ GameObject:
   - 95: {fileID: 383663046}
   - 212: {fileID: 383663045}
   m_Layer: 0
-  m_Name: HealthBarItem
+  m_Name: HealthBarItem4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1020,7 +1024,7 @@ GameObject:
   - 95: {fileID: 533453250}
   - 212: {fileID: 533453249}
   m_Layer: 0
-  m_Name: HealthBarItem
+  m_Name: HealthBarItem5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1131,7 +1135,7 @@ GameObject:
   - 95: {fileID: 695495510}
   - 212: {fileID: 695495509}
   m_Layer: 0
-  m_Name: HealthBarItem
+  m_Name: HealthBarItem6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1807,6 +1811,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
+      propertyPath: m_Name
+      value: HealthBarItem1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
   m_RootGameObject: {fileID: 1152813119}
@@ -1949,7 +1957,7 @@ GameObject:
   - 95: {fileID: 1152813122}
   - 212: {fileID: 1152813121}
   m_Layer: 0
-  m_Name: HealthBarItem
+  m_Name: HealthBarItem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2096,6 +2104,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
+      propertyPath: m_Name
+      value: HealthBarItem2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
   m_RootGameObject: {fileID: 1756580323}
@@ -2112,7 +2124,7 @@ GameObject:
   - 95: {fileID: 1309884788}
   - 212: {fileID: 1309884787}
   m_Layer: 0
-  m_Name: HealthBarItem
+  m_Name: HealthBarItem3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2467,6 +2479,10 @@ Prefab:
     - target: {fileID: 400000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
+      propertyPath: m_Name
+      value: HealthBarItem3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
@@ -2929,6 +2945,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
+      propertyPath: m_Name
+      value: HealthBarItem5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
   m_RootGameObject: {fileID: 533453247}
@@ -2945,7 +2965,7 @@ GameObject:
   - 95: {fileID: 1756580326}
   - 212: {fileID: 1756580325}
   m_Layer: 0
-  m_Name: HealthBarItem
+  m_Name: HealthBarItem2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3273,12 +3293,12 @@ Transform:
   m_LocalPosition: {x: 4.48999977, y: 2.29999995, z: -9.72747803e-05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 695495508}
   - {fileID: 1152813120}
   - {fileID: 1756580324}
   - {fileID: 1309884786}
-  - {fileID: 533453248}
   - {fileID: 383663044}
+  - {fileID: 533453248}
+  - {fileID: 695495508}
   m_Father: {fileID: 189922540}
 --- !u!1 &1874614653
 GameObject:
@@ -3545,6 +3565,10 @@ Prefab:
     - target: {fileID: 400000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
+      propertyPath: m_Name
+      value: HealthBarItem4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a727e0ebd95780842b622af487cd65ea, type: 2}
