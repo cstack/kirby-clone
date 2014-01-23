@@ -219,20 +219,15 @@ public class Kirby : CharacterBase {
 
 
 	public void InhalingUpdate() {
-		RaycastHit2D[] hits = new RaycastHit2D[1];
-		int numHits = forwardRaycast (hits, 1f);
-		if (numHits > 0) {
-			RaycastHit2D hit = hits[0];
-			if (hit.collider.gameObject.tag == "ground") {
-				Flip();
-			}
+		if (!Input.GetKey(KeyCode.Z)) {
+			CurrentState = State.IdleOrWalking;
 		}
 	}
 
 	void InhalingOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "enemy") {
 			enemyOther = other.gameObject;
-			enemyOther.SetActive(false);
+			Destroy(enemyOther);
 			CurrentState = State.Flying;
 		}
 	}
