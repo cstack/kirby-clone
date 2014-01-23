@@ -674,6 +674,7 @@ MonoBehaviour:
   knockbackSpeed: 8
   knockbackTime: .200000003
   isExhaling: 0
+  health: 6
 --- !u!1001 &407961352
 Prefab:
   m_ObjectHideFlags: 0

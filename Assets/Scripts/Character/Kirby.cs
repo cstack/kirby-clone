@@ -26,6 +26,8 @@ public class Kirby : CharacterBase {
 	public float knockbackTime = 0.2f;
 	public bool isExhaling = false;
 
+	public int health = 6;
+
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
 
@@ -37,7 +39,7 @@ public class Kirby : CharacterBase {
 	private GameObject enemyOther;
 
 	public enum State {
-		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled
+		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die
 	}
 	
 	void Start() {
@@ -198,6 +200,11 @@ public class Kirby : CharacterBase {
 	#region KNOCKBACK
 
 	IEnumerator KnockbackEnterState() {
+		health -= 1;
+		if (health == 0) {
+			CurrentState = State.Die;
+			yield break;
+		}
 		float xVel = knockbackSpeed;
 		if (enemyOther.transform.position.x > transform.position.x) {
 			xVel *= -1;
@@ -256,6 +263,15 @@ public class Kirby : CharacterBase {
 			CurrentState = State.Flying;
 		}
 	}
+	#endregion
+
+	#region DIE
+
+	IEnumerator DieEnterState() {
+		Application.LoadLevel("Main");
+		yield break;
+	}
+
 	#endregion
 
 	public void TakeHit(EnergyWhipParticle particle) {
