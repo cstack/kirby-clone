@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaddleDee : CharacterBase {
+public class WaddleDee : EnemyBase {
 	public float speed = 2f;
 
 	private enum State {
 		Walk
 	}
 
-	void Start () {
+	new void Start () {
 		CurrentState = State.Walk;
 		dir = Direction.Left;
 	}
@@ -35,21 +35,5 @@ public class WaddleDee : CharacterBase {
 				Flip();
 			}
 		}
-	}
-
-	void WalkOnCollisionEnter2D(Collision2D collision) {
-		/*Debug.Log ("OnCollisionEnter");
-		if (collision.gameObject.tag == "ground") {
-			Debug.Log("with ground");
-			if (collision.contacts.Length > 0) {
-				Vector2 point = collision.contacts[0].point;
-				Vector3 direction = transform.position. + new Vector3(0.5f, 0.5f, 0f) - Vector3 point;
-				Debug.Log("Direction " + direction);
-				if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
-					Flip();
-				}
-			}
-
-		}*/
 	}
 }

@@ -17,7 +17,7 @@ namespace AnimationEnums {
 	}
 }
 
-public class Kirby : StateMachineBase {
+public class Kirby : CharacterBase {
 	public float speed = 6f;
 	public float jumpSpeed = 12.5f;
 	public float flySpeed = 7f;
@@ -27,15 +27,11 @@ public class Kirby : StateMachineBase {
 	public bool isExhaling = false;
 
 	private bool isSpinning = false;
+	private GameObject inhaleArea;
 
 	bool invulnurable;
 
 	private Animator animator;
-
-	private Direction dir;
-	private enum Direction {
-		Left, Right
-	}
 
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private GameObject enemyOther;
@@ -43,11 +39,13 @@ public class Kirby : StateMachineBase {
 	public enum State {
 		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled
 	}
-
+	
 	void Start() {
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
+		inhaleArea = transform.Find("Sprite/InhaleArea").gameObject;
+		inhaleArea.SetActive(false);
 	}
 
 	void CommonOnCollisionEnter2D(Collision2D other) {
@@ -91,10 +89,12 @@ public class Kirby : StateMachineBase {
 	void IdleOrWalkingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
-		if (Input.GetKey(KeyCode.X)) {
+		if (Input.GetKey (KeyCode.X)) {
 			vel.y = jumpSpeed;
 			CurrentState = State.Jumping;
-		} else if (Input.GetKey(KeyCode.UpArrow)) {
+		} else if (Input.GetKey(KeyCode.Z)) {
+			CurrentState = State.Inhaling;
+		}else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			CurrentState = State.Flying;
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
@@ -224,6 +224,38 @@ public class Kirby : StateMachineBase {
 	#endregion
 
 	#region SLIDING
+	#endregion
+
+	#region INHALING
+	IEnumerator InhalingEnterState() {
+		inhaleArea.SetActive(true);
+		yield return null;
+	}
+
+	IEnumerator InhalingExitState() {
+		inhaleArea.SetActive(false);
+		yield return null;
+	}
+
+
+	public void InhalingUpdate() {
+		RaycastHit2D[] hits = new RaycastHit2D[1];
+		int numHits = forwardRaycast (hits, 1f);
+		if (numHits > 0) {
+			RaycastHit2D hit = hits[0];
+			if (hit.collider.gameObject.tag == "ground") {
+				Flip();
+			}
+		}
+	}
+
+	void InhalingOnCollisionEnter2D(Collision2D other) {
+		if (other.gameObject.tag == "enemy") {
+			enemyOther = other.gameObject;
+			enemyOther.SetActive(false);
+			CurrentState = State.Flying;
+		}
+	}
 	#endregion
 
 	public void TakeHit(EnergyWhipParticle particle) {

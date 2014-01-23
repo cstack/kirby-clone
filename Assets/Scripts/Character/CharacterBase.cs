@@ -37,4 +37,14 @@ public abstract class CharacterBase : StateMachineBase {
 		rigidbody2D.velocity = vel;
 	}
 
+	protected int forwardRaycast(RaycastHit2D[] hits, float range) {
+		float delta = 0.1f;
+		Vector3 origin = transform.position + new Vector3 (0, 0.5f, 0);
+		if (dir == Direction.Right) {
+			origin += new Vector3(1, 0, 0);
+		}
+		origin += delta * Vector3.right * (dir == Direction.Right ? 1 : -1);
+		return Physics2D.RaycastNonAlloc (origin, rigidbody2D.velocity, hits, range);
+	}
+
 }

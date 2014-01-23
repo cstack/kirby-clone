@@ -155,6 +155,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110210039
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BeingInhaled
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: fa34ba1f7a0ca4dd28e0847c4dd69cad, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 276, y: 48, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110210194
 State:
   m_ObjectHideFlags: 3
@@ -187,6 +202,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110250049
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: WaddleDooBeingInhaled
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 6da705b7b3e864b7fa00e4aa9dbcc414, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 311, y: 113, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110290732
 State:
   m_ObjectHideFlags: 3
@@ -213,19 +243,13 @@ StateMachine:
   m_States:
   - {fileID: 110200000}
   - {fileID: 110290732}
+  - {fileID: 110210039}
+  - {fileID: 110250049}
   m_ChildStateMachine:
   - {fileID: 110789697}
   m_ChildStateMachinePosition:
   - {x: 84, y: 180, z: 0}
   m_OrderedTransitions:
-    data:
-      first: {fileID: 110243223}
-      second:
-      - {fileID: 110154355}
-    data:
-      first: {fileID: 110210194}
-      second:
-      - {fileID: 110147715}
     data:
       first: {fileID: 0}
       second: []
@@ -237,6 +261,14 @@ StateMachine:
       first: {fileID: 110290732}
       second:
       - {fileID: 110196002}
+    data:
+      first: {fileID: 110243223}
+      second:
+      - {fileID: 110154355}
+    data:
+      first: {fileID: 110210194}
+      second:
+      - {fileID: 110147715}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
