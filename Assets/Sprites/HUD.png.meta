@@ -1,0 +1,2835 @@
+fileFormatVersion: 2
+guid: c5b03f65b738aaf4b92ed1c5e5a160d1
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 6
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: NES - Kirbys Adventure - HUD_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 514
+        width: 20
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 516
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 516
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_3
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 516
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_4
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 516
+        width: 12
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_5
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 516
+        width: 21
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_6
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 516
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_7
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 516
+        width: 19
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_8
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 516
+        width: 14
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_9
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 516
+        width: 6
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_10
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_11
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_12
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_13
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_14
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_15
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_16
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_17
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_18
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_19
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_20
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_21
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_22
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_23
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_24
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_25
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_26
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_27
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_28
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_29
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_30
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_31
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_32
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_33
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_34
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_35
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_36
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 470
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_37
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_38
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_39
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_40
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_41
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_42
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_43
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_44
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_45
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_46
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_47
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_48
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_49
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_50
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_51
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_52
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_53
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_54
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_55
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_56
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_57
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_58
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_59
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_60
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_61
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_62
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_63
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 426
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_64
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_65
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_66
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_67
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_68
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_69
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_70
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_71
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_72
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_73
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_74
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_75
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_76
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_77
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_78
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_79
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_80
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_81
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_82
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_83
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_84
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_85
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_86
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_87
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_88
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_89
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_90
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 382
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_91
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_92
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_93
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_94
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_95
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_96
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_97
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_98
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_99
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_100
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_101
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_102
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_103
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_104
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_105
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_106
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_107
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_108
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_109
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_110
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_111
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_112
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_113
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_114
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_115
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_116
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_117
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 338
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_118
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 322
+        width: 23
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_119
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 322
+        width: 12
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_120
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 322
+        width: 11
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_121
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 322
+        width: 19
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_122
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 322
+        width: 24
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_123
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 322
+        width: 24
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_124
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 322
+        width: 9
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_125
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 322
+        width: 25
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_126
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 322
+        width: 7
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_127
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 320
+        width: 8
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_128
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 320
+        width: 27
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_129
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 320
+        width: 5
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_130
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 323
+        width: 8
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_131
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 323
+        width: 25
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_132
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 323
+        width: 7
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_133
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 321
+        width: 5
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_134
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 323
+        width: 12
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_135
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 323
+        width: 5
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_136
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 323
+        width: 29
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_137
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 323
+        width: 7
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_138
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 321
+        width: 5
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_139
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 307
+        width: 24
+        height: 22
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_140
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 322
+        width: 24
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_141
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 322
+        width: 13
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_142
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 322
+        width: 23
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_143
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 322
+        width: 13
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_144
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 320
+        width: 5
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_145
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 320
+        width: 19
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_146
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 320
+        width: 5
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_147
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 304
+        width: 12
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_148
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 304
+        width: 13
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_149
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 304
+        width: 8
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_150
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 304
+        width: 8
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_151
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 305
+        width: 17
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_152
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 305
+        width: 18
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_153
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 305
+        width: 12
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_154
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 305
+        width: 13
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_155
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 305
+        width: 17
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_156
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 305
+        width: 18
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_157
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 305
+        width: 13
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_158
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 307
+        width: 12
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_159
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 307
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_160
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_161
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_162
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_163
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_164
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_165
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_166
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_167
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_168
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_169
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 307
+        width: 12
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_170
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 307
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_171
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_172
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_173
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_174
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_175
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_176
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_177
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_178
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_179
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_180
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 307
+        width: 57
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_181
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 307
+        width: 57
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_182
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 307
+        width: 57
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_183
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 307
+        width: 12
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_184
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 307
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_185
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 307
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_186
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 288
+        width: 16
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_187
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 288
+        width: 18
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_188
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 287
+        width: 12
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_189
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 286
+        width: 25
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_190
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 288
+        width: 18
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_191
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 288
+        width: 5
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_192
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 288
+        width: 5
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_193
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 286
+        width: 17
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_194
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 288
+        width: 16
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_195
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 288
+        width: 25
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_196
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 288
+        width: 16
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_197
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 288
+        width: 25
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_198
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 287
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_199
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 286
+        width: 25
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_200
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 288
+        width: 18
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_201
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 288
+        width: 5
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_202
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 288
+        width: 5
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_203
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 286
+        width: 17
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_204
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 220
+        width: 248
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_205
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 220
+        width: 248
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_206
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 220
+        width: 247
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_207
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 220
+        width: 247
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_208
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 202
+        width: 14
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_209
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 200
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_210
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 202
+        width: 28
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_211
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 200
+        width: 20
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_212
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 202
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_213
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 202
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_214
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 202
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_215
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 202
+        width: 12
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_216
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 202
+        width: 21
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_217
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 202
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_218
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 202
+        width: 20
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_219
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 202
+        width: 14
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_220
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 202
+        width: 6
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_221
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 202
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_222
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 200
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_223
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 202
+        width: 6
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_224
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 202
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_225
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 202
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_226
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_227
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_228
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_229
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_230
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_231
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_232
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_233
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_234
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_235
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_236
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_237
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_238
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_239
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_240
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 187
+        width: 50
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_241
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 183
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_242
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 183
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_243
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 183
+        width: 22
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_244
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 174
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_245
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 174
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_246
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 174
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_247
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 174
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_248
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 174
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_249
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 152
+        width: 96
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_250
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 161
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_251
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 161
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_252
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 161
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_253
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 161
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_254
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 161
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_255
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 148
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_256
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 148
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_257
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 148
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_258
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 148
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_259
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 148
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_260
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 135
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_261
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 135
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_262
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 135
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_263
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 135
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_264
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 135
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_265
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 120
+        width: 96
+        height: 27
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_266
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 122
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_267
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 122
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_268
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 122
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_269
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 122
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_270
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 122
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_271
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 109
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_272
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 109
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_273
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 109
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_274
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 109
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_275
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 109
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_276
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 96
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_277
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 96
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_278
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 96
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_279
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 96
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_280
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 96
+        width: 169
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_281
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 78
+        width: 18
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_282
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 80
+        width: 18
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_283
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 78
+        width: 7
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_284
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 8
+        width: 390
+        height: 80
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_285
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 10
+        width: 248
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_286
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 66
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_287
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 64
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_288
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 66
+        width: 28
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_289
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 64
+        width: 9
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_290
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 66
+        width: 24
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_291
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 64
+        width: 20
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_292
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 66
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_293
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 66
+        width: 13
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_294
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 66
+        width: 6
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_295
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 66
+        width: 21
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_296
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 66
+        width: 22
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_297
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 66
+        width: 6
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_298
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 66
+        width: 9
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_299
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64
+        width: 5
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_300
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_301
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_302
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_303
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_304
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_305
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_306
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_307
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_308
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+    - name: NES - Kirbys Adventure - HUD_309
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 21
+        width: 32
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
