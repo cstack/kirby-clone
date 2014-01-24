@@ -15,6 +15,14 @@ namespace AnimationEnums {
 	public enum Flying {
 		Flying, Exhaling
 	}
+
+	public enum Inhaling {
+		Inhaling, FinishInhaling
+	}
+
+	public enum Inhaled {
+		Idle, Walking
+	}
 }
 
 public class Kirby : CharacterBase {
@@ -25,6 +33,7 @@ public class Kirby : CharacterBase {
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
 	public bool isExhaling = false;
+	public bool hasInhaledEnemy = false;
 
 	public int health = 6;
 	public static int livesRemaining = 4;
@@ -40,7 +49,7 @@ public class Kirby : CharacterBase {
 	private GameObject enemyOther;
 
 	public enum State {
-		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die
+		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die, InhaledJumping
 	}
 	
 	void Start() {
@@ -101,6 +110,36 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
+	#region INHALED
+	
+	private void InhaledUpdate() {
+		Vector2 vel = rigidbody2D.velocity;
+		HandleHorizontalMovement(ref vel);
+		if (Input.GetKey (KeyCode.X)) {
+			vel.y = jumpSpeed;
+			CurrentState = State.InhaledJumping;
+		} else if (Input.GetKey(KeyCode.Z)) {
+			ShootStar();
+		} else if (Input.GetKey(KeyCode.DownArrow)) {
+			Swallow();
+		} else {
+			if (vel.x == 0) {
+				am.animate((int) Inhaled.Idle);
+			} else {
+				am.animate((int) Inhaled.Walking);
+			}
+		}
+		rigidbody2D.velocity = vel;
+	}
+
+	private void ShootStar() {
+	}
+
+	private void Swallow() {
+	}
+	
+	#endregion
+
 	#region JUMPING
 
 	private void JumpingUpdate() {
@@ -143,6 +182,29 @@ public class Kirby : CharacterBase {
 		}
 	}
 
+	#endregion
+
+	#region InhaledJumping
+	
+	private void InhaledJumpingUpdate() {
+		Vector2 vel = rigidbody2D.velocity;
+		HandleHorizontalMovement(ref vel);
+		if (Input.GetKey(KeyCode.Z)) {
+			ShootStar();
+		}
+		rigidbody2D.velocity = vel;
+	}
+	
+	private void InhaledJumpingOnCollisionStay2D(Collision2D other) {
+		if (other.gameObject.tag == "ground") {
+			if (other.contacts.Length > 0 &&
+			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
+				// Collision was on bottom
+				CurrentState = State.Inhaled;
+			}
+		}
+	}
+	
 	#endregion
 
 	#region FLYING
@@ -245,7 +307,7 @@ public class Kirby : CharacterBase {
 	}
 		
 	public void InhalingUpdate() {
-		if (!Input.GetKey(KeyCode.Z)) {
+		if (!Input.GetKey(KeyCode.Z) && am.SubState != (int) Inhaling.FinishInhaling) {
 			CurrentState = State.IdleOrWalking;
 		}
 	}
@@ -254,7 +316,8 @@ public class Kirby : CharacterBase {
 		if (other.gameObject.tag == "enemy") {
 			enemyOther = other.gameObject;
 			Destroy(enemyOther);
-			CurrentState = State.Flying;
+			hasInhaledEnemy = true;
+			am.animate((int) Inhaling.FinishInhaling);
 		}
 	}
 	#endregion

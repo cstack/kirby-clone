@@ -23,6 +23,12 @@ public class AnimationManager {
 		}
 	}
 
+	public int SubState {
+		get {
+			return animator.GetInteger("SubState");
+		}
+	}
+
 	public void animate(int subState) {
 		animator.SetInteger("SubState", subState);
 	}

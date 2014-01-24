@@ -729,6 +729,7 @@ GameObject:
   - 50: {fileID: 369935286}
   - 61: {fileID: 369935287}
   - 114: {fileID: 369935288}
+  - 212: {fileID: 369935289}
   m_Layer: 0
   m_Name: Kirby
   m_TagString: kirby
@@ -804,7 +805,31 @@ MonoBehaviour:
   knockbackSpeed: 8
   knockbackTime: .200000003
   isExhaling: 0
+  hasInhaledEnemy: 0
   health: 6
+--- !u!212 &369935289
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369935283}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &383663043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,6 +3400,7 @@ GameObject:
   - 4: {fileID: 1874614654}
   - 212: {fileID: 1874614656}
   - 95: {fileID: 1874614655}
+  - 114: {fileID: 1874614657}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -3433,6 +3459,17 @@ SpriteRenderer:
   m_SortingLayerID: 2116633999
   m_Sprite: {fileID: 21300014, guid: 37ba0ed3415de8b4f92cd4f4aa334e66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1874614657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874614653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be17b7b181fb14d4c9015af4712edd11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1922172643
 GameObject:
   m_ObjectHideFlags: 0
