@@ -7,26 +7,9 @@ using UnityEngine;
 
 public abstract class StateMachineBase : MonoBehaviour {
 
-	[HideInInspector]
-	public new Transform transform;
+	public String CurrentStateName;
 
-	[HideInInspector]
-	public new Rigidbody rigidbody;
-
-	[HideInInspector]
-	public new Animation animation;
-
-	[HideInInspector]
-	public CharacterController controller;
-
-	[HideInInspector]
-	public new NetworkView networkView;
-
-	[HideInInspector]
-	public new Collider collider;
-
-	[HideInInspector]
-	public new GameObject gameObject;
+	protected AnimationManager am;
 
 	private Dictionary<string, Delegate> delegateCache = new Dictionary<string, Delegate>();
 	private Action DoUpdate = DoNothing;
@@ -52,11 +35,11 @@ public abstract class StateMachineBase : MonoBehaviour {
 	private Action DoOnMouseDrag = DoNothing;
 	private Action DoOnGUI = DoNothing;
 	private Func<IEnumerator> ExitState = DoNothingCoroutine;
+
 	private Enum currentState;
 
-	protected AnimationManager am;
-
-	public String CurrentStateName;
+	private SpriteRenderer spriteRenderer;
+	private BoxCollider2D boxCollider2D;
 
 	static IEnumerator DoNothingCoroutine() {
 		yield break;
@@ -78,14 +61,9 @@ public abstract class StateMachineBase : MonoBehaviour {
 	}
 
 	void Awake() {
-		gameObject  = base.gameObject;
-		collider    = base.collider;
-		transform   = base.transform;
-		animation   = base.animation;
-		am          = new AnimationManager(GetComponentInChildren<Animator>());
-		rigidbody   = base.rigidbody;
-		networkView = base.networkView;
-		controller  = GetComponent<CharacterController>();
+		boxCollider2D  = GetComponent<BoxCollider2D>();
+		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+		am             = new AnimationManager(GetComponentInChildren<Animator>());
 	}
 	
 	public Enum CurrentState {
@@ -168,6 +146,11 @@ public abstract class StateMachineBase : MonoBehaviour {
 	}
 	
 	public void Update() {
+		// Update box collider size based on sprite
+		Vector3 size = spriteRenderer.bounds.size;
+		Vector2 newSize = new Vector2(size.x, size.y);
+		boxCollider2D.size = newSize;
+
 		DoUpdate();
 	}
 	
@@ -249,36 +232,5 @@ public abstract class StateMachineBase : MonoBehaviour {
 
 	void OnGUI() {
 		DoOnGUI();
-	}
-	
-	public IEnumerator WaitForAnimation(string name, float ratio) {
-		var state = animation[name];
-		return WaitForAnimation(state, ratio);
-	}
-	
-	public static IEnumerator WaitForAnimation(AnimationState state, float ratio) {
-		state.wrapMode = WrapMode.ClampForever;
-		state.enabled = true;
-		state.speed = state.speed == 0 ? 1 : state.speed;
-		while (state.normalizedTime < ratio-float.Epsilon) {
-			yield return null;
-		}
-	}
-	
-	public IEnumerator PlayAnimation(string name) {
-		var state = animation[name];
-		return PlayAnimation(state);
-	}
-	
-	public static IEnumerator PlayAnimation(AnimationState state) {
-		state.time = 0;
-		state.weight = 1;
-		state.speed = 1;
-		state.enabled = true;
-		var wait = WaitForAnimation(state, 1f);
-		while (wait.MoveNext()) {
-			yield return null;
-		}
-		state.weight = 0;
 	}
 }
