@@ -80,7 +80,7 @@ public class Kirby : CharacterBase {
 			CurrentState = State.Jumping;
 		} else if (Input.GetKey(KeyCode.Z)) {
 			CurrentState = State.Inhaling;
-		}else if (Input.GetKey(KeyCode.UpArrow)) {
+		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			CurrentState = State.Flying;
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
@@ -111,6 +111,8 @@ public class Kirby : CharacterBase {
 		} else {
 			if (Input.GetKeyUp(KeyCode.X)) {
 				vel.y = Mathf.Min(vel.y, 0);
+			} else if (Input.GetKey(KeyCode.Z)) {
+				CurrentState = State.Inhaling;
 			}
 			if (!isSpinning && Mathf.Abs(vel.y) < 0.4) {
 				isSpinning = true;
@@ -234,7 +236,6 @@ public class Kirby : CharacterBase {
 	}
 		
 	public void InhalingUpdate() {
-		updateXVelocity(0);
 		if (!Input.GetKey(KeyCode.Z)) {
 			CurrentState = State.IdleOrWalking;
 		}
