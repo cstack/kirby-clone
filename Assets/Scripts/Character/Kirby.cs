@@ -224,9 +224,18 @@ public class Kirby : CharacterBase {
 	#region SLIDING
 	#endregion
 
+	public IEnumerator ComeToHalt() {
+		for (int i = 0; i < 10; i++) {
+			updateXVelocity(rigidbody2D.velocity.x * 0.9f);
+			yield return new WaitForSeconds(0.1f);
+		}
+		updateXVelocity(0);
+	}
+
 	#region INHALING
 	private IEnumerator InhalingEnterState() {
 		inhaleArea.SetActive(true);
+		StartCoroutine("ComeToHalt");
 		yield return null;
 	}
 
