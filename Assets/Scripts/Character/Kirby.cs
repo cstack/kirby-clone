@@ -27,6 +27,7 @@ public class Kirby : CharacterBase {
 	public bool isExhaling = false;
 
 	public int health = 6;
+	public static int livesRemaining = 4;
 
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
@@ -43,6 +44,7 @@ public class Kirby : CharacterBase {
 	}
 	
 	void Start() {
+		GameObject.Find("LivesRemaining").GetComponent<LivesRemaining>().setLivesRemaining(livesRemaining);
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
@@ -50,7 +52,7 @@ public class Kirby : CharacterBase {
 		inhaleArea.SetActive(false);
 	}
 
-	void CommonOnCollisionEnter2D(Collision2D other) {
+	private void CommonOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "enemy") {
 			enemyOther = other.gameObject;
 			Destroy(other.gameObject);
@@ -58,7 +60,7 @@ public class Kirby : CharacterBase {
 		}
 	}
 
-	void HandleHorizontalMovement(ref Vector2 vel) {
+	private void HandleHorizontalMovement(ref Vector2 vel) {
 		float h = Input.GetAxis("Horizontal");
 		if (h > 0 && dir != Direction.Right) {
 			Flip();
@@ -68,7 +70,7 @@ public class Kirby : CharacterBase {
 		vel.x = h * speed;
 	}
 
-	void Flip() {
+	private void Flip() {
 		dir = (dir == Direction.Right) ? Direction.Left : Direction.Right;
 
 		// Flip the sprite over the anchor point
@@ -88,7 +90,7 @@ public class Kirby : CharacterBase {
 
 	#region IDLE_OR_WALKING
 
-	void IdleOrWalkingUpdate() {
+	private void IdleOrWalkingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey (KeyCode.X)) {
@@ -111,7 +113,7 @@ public class Kirby : CharacterBase {
 		rigidbody2D.velocity = vel;
 	}
 
-	void IdleOrWalkingOnCollisionEnter2D(Collision2D other) {
+	private void IdleOrWalkingOnCollisionEnter2D(Collision2D other) {
 		CommonOnCollisionEnter2D(other);
 	}
 
@@ -119,7 +121,7 @@ public class Kirby : CharacterBase {
 
 	#region JUMPING
 
-	void JumpingUpdate() {
+	private void JumpingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.UpArrow)) {
@@ -136,18 +138,18 @@ public class Kirby : CharacterBase {
 		rigidbody2D.velocity = vel;
 	}
 
-	IEnumerator SpinAnimation() {
+	private IEnumerator SpinAnimation() {
 		am.animate((int) Jumping.Spinning);
 		yield return new WaitForSeconds(0.2f);
 		am.animate((int) Jumping.Jumping);
 		isSpinning = false;
 	}
 
-	void JumpingOnCollisionEnter2D(Collision2D other) {
+	private void JumpingOnCollisionEnter2D(Collision2D other) {
 		CommonOnCollisionEnter2D(other);
 	}
 
-	void JumpingOnCollisionStay2D(Collision2D other) {
+	private void JumpingOnCollisionStay2D(Collision2D other) {
 		if (other.gameObject.tag == "ground") {
 			if (other.contacts.Length > 0 &&
 			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
@@ -161,7 +163,7 @@ public class Kirby : CharacterBase {
 
 	#region FLYING
 	
-	void FlyingUpdate() {
+	private void FlyingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.UpArrow)) {
@@ -184,14 +186,14 @@ public class Kirby : CharacterBase {
 		rigidbody2D.velocity = vel;
 	}
 
-	IEnumerator Exhale() {
+	private IEnumerator Exhale() {
 		am.animate((int) Flying.Exhaling);
 		yield return new WaitForSeconds(0.4f);
 		CurrentState = State.Jumping;
 		isExhaling = false;
 	}
 	
-	void FlyingOnCollisionEnter2D(Collision2D other) {
+	private void FlyingOnCollisionEnter2D(Collision2D other) {
 		CommonOnCollisionEnter2D(other);
 	}
 
@@ -199,15 +201,17 @@ public class Kirby : CharacterBase {
 
 	#region KNOCKBACK
 
-	IEnumerator KnockbackEnterState() {
+	private IEnumerator KnockbackEnterState() {
 		GameObject go = GameObject.Find("HealthBarItem" + health);
 		Animator animator = go.GetComponent<Animator>();
 		animator.SetBool("Remove", true);
+
 		health -= 1;
 		if (health == 0) {
 			CurrentState = State.Die;
 			yield break;
 		}
+
 		float xVel = knockbackSpeed;
 		if (enemyOther.transform.position.x > transform.position.x) {
 			xVel *= -1;
@@ -237,18 +241,18 @@ public class Kirby : CharacterBase {
 	#endregion
 
 	#region INHALING
-	IEnumerator InhalingEnterState() {
+	private IEnumerator InhalingEnterState() {
 		inhaleArea.SetActive(true);
 		yield return null;
 	}
 
-	IEnumerator InhalingExitState() {
+	private IEnumerator InhalingExitState() {
 		inhaleArea.SetActive(false);
 		yield return null;
 	}
 
 
-	public void InhalingUpdate() {
+	private void InhalingUpdate() {
 		RaycastHit2D[] hits = new RaycastHit2D[1];
 		int numHits = forwardRaycast (hits, 1f);
 		if (numHits > 0) {
@@ -259,7 +263,7 @@ public class Kirby : CharacterBase {
 		}
 	}
 
-	void InhalingOnCollisionEnter2D(Collision2D other) {
+	private void InhalingOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "enemy") {
 			enemyOther = other.gameObject;
 			enemyOther.SetActive(false);
@@ -270,8 +274,13 @@ public class Kirby : CharacterBase {
 
 	#region DIE
 
-	IEnumerator DieEnterState() {
-		Application.LoadLevel("Main");
+	private IEnumerator DieEnterState() {
+		livesRemaining -= 1;
+		if (livesRemaining < 0) {
+			Application.Quit(); // TODO
+		} else {
+			Application.LoadLevel("Main");
+		}
 		yield break;
 	}
 

@@ -1418,7 +1418,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_159
+    - name: HUD0_Japan
       rect:
         serializedVersion: 2
         x: 234
@@ -1427,7 +1427,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_160
+    - name: HUD1_Japan
       rect:
         serializedVersion: 2
         x: 245
@@ -1436,7 +1436,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_161
+    - name: HUD2_Japan
       rect:
         serializedVersion: 2
         x: 256
@@ -1445,7 +1445,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_162
+    - name: HUD3_Japan
       rect:
         serializedVersion: 2
         x: 267
@@ -1454,7 +1454,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_163
+    - name: HUD4_Japan
       rect:
         serializedVersion: 2
         x: 278
@@ -1463,7 +1463,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_164
+    - name: HUD5_Japan
       rect:
         serializedVersion: 2
         x: 289
@@ -1472,7 +1472,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_165
+    - name: HUD6_Japan
       rect:
         serializedVersion: 2
         x: 300
@@ -1481,7 +1481,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_166
+    - name: HUD7_Japan
       rect:
         serializedVersion: 2
         x: 311
@@ -1490,7 +1490,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_167
+    - name: HUD8_Japan
       rect:
         serializedVersion: 2
         x: 322
@@ -1499,7 +1499,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_168
+    - name: HUD9_Japan
       rect:
         serializedVersion: 2
         x: 333
@@ -1517,7 +1517,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_170
+    - name: HUD0
       rect:
         serializedVersion: 2
         x: 373
@@ -1526,7 +1526,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_171
+    - name: HUD1
       rect:
         serializedVersion: 2
         x: 384
@@ -1535,7 +1535,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_172
+    - name: HUD2
       rect:
         serializedVersion: 2
         x: 395
@@ -1544,7 +1544,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_173
+    - name: HUD3
       rect:
         serializedVersion: 2
         x: 406
@@ -1553,7 +1553,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_174
+    - name: HUD4
       rect:
         serializedVersion: 2
         x: 417
@@ -1562,7 +1562,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_175
+    - name: HUD5
       rect:
         serializedVersion: 2
         x: 428
@@ -1571,7 +1571,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_176
+    - name: HUD6
       rect:
         serializedVersion: 2
         x: 439
@@ -1580,7 +1580,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_177
+    - name: HUD7
       rect:
         serializedVersion: 2
         x: 450
@@ -1589,7 +1589,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_178
+    - name: HUD8
       rect:
         serializedVersion: 2
         x: 461
@@ -1598,7 +1598,7 @@ TextureImporter:
         height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
-    - name: NES - Kirbys Adventure - HUD_179
+    - name: HUD9
       rect:
         serializedVersion: 2
         x: 472
