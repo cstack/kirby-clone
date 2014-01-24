@@ -234,6 +234,7 @@ public class Kirby : CharacterBase {
 	}
 		
 	public void InhalingUpdate() {
+		updateXVelocity(0);
 		if (!Input.GetKey(KeyCode.Z)) {
 			CurrentState = State.IdleOrWalking;
 		}

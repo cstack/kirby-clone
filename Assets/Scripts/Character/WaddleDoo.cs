@@ -91,4 +91,8 @@ public class WaddleDoo : EnemyBase {
 	}
 
 	#endregion
+
+	protected override void goToDefaultState() {
+		CurrentState = State.WalkLeft;
+	}
 }

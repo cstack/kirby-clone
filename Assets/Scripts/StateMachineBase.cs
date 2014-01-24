@@ -204,11 +204,11 @@ public abstract class StateMachineBase : MonoBehaviour {
 		DoOnTriggerEnter(other);
 	}
 
-	void OnTriggerExit(Collider other) {
+	public void OnTriggerExit(Collider other) {
 		DoOnTriggerExit(other);
 	}
 
-	void OnTriggerStay(Collider other) {
+	public void OnTriggerStay(Collider other) {
 		DoOnTriggerStay(other);
 	}
 
@@ -216,7 +216,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		DoOnTriggerEnter2D(other);
 	}
 	
-	void OnTriggerExit2D(Collider2D other) {
+	public void OnTriggerExit2D(Collider2D other) {
 		DoOnTriggerExit2D(other);
 	}
 	

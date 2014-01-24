@@ -20,8 +20,15 @@ public abstract class EnemyBase : CharacterBase {
 		}
 	}
 
-	IEnumerator BeingInhaledEnterState() {
-		yield return null;
+	protected abstract void goToDefaultState();
+
+	protected void BeingInhaledUpdate() {
+		if (kirby.CurrentState.ToString() != Kirby.State.Inhaling.ToString()) {
+			goToDefaultState();
+			return;
+		}
+		Vector2 force = kirby.transform.position - transform.position;
+		rigidbody2D.AddForce(force);
 	}
 
 }

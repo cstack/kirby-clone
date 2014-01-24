@@ -9,6 +9,7 @@ public class WaddleDee : EnemyBase {
 	}
 
 	new void Start () {
+		base.Start();
 		CurrentState = State.Walk;
 		dir = Direction.Left;
 	}
@@ -35,5 +36,9 @@ public class WaddleDee : EnemyBase {
 				Flip();
 			}
 		}
+	}
+
+	protected override void goToDefaultState() {
+		CurrentState = State.Walk;
 	}
 }
