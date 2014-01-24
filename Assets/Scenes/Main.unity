@@ -803,7 +803,7 @@ MonoBehaviour:
   knockbackSpeed: 8
   knockbackTime: .200000003
   isExhaling: 0
-  health: 1
+  health: 6
 --- !u!1 &383663043
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,10 +2586,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cb9e30b0798e3ed468c42905535d6492, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: cb9e30b0798e3ed468c42905535d6492, type: 2}
-      propertyPath: health
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
