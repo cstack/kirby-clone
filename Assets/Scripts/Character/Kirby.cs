@@ -21,7 +21,7 @@ namespace AnimationEnums {
 	}
 
 	public enum Inhaled {
-		Idle, Walking
+		Idle, Walking, Shooting
 	}
 }
 
@@ -133,6 +133,7 @@ public class Kirby : CharacterBase {
 	}
 
 	private void ShootStar() {
+		am.animate((int) Inhaled.Shooting);
 	}
 
 	private void Swallow() {
