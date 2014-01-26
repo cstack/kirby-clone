@@ -13,6 +13,25 @@ public abstract class EnemyBase : CharacterBase {
 		kirby = (Kirby) go.GetComponent(typeof(Kirby));
 	}
 
+	private float DistanceFromScreen() {
+		Vector3 leftEdge = Camera.main.WorldToScreenPoint(transform.position);
+		Vector3 rightEdge = Camera.main.WorldToScreenPoint(transform.position + new Vector3(1f, 0,  0));
+		if (rightEdge.x < 0) {
+			return Mathf.Abs(rightEdge.x);
+		}
+		if (leftEdge.x > Camera.main.pixelWidth) {
+			return leftEdge.x - Camera.main.pixelWidth;
+		}
+		return 0f;
+	}
+
+	new public void Update() {
+		base.Update();
+		if (DistanceFromScreen() >= 100f) {
+			Destroy(gameObject);
+		}
+	}
+
 	new void OnTriggerEnter2D(Collider2D other) {
 		base.OnTriggerEnter2D(other);
 		if (other.gameObject.tag == "inhale") {
