@@ -23,6 +23,10 @@ namespace AnimationEnums {
 	public enum Inhaled {
 		Idle, Walking, Shooting
 	}
+
+	public enum InhaledJumping {
+		Jumping, Shooting
+	}
 }
 
 public class Kirby : CharacterBase {
@@ -39,11 +43,13 @@ public class Kirby : CharacterBase {
 	public static int livesRemaining = 4;
 
 	private bool isSpinning = false;
+	private bool isShooting = false;
 	private GameObject inhaleArea;
 
 	bool invulnurable;
 
 	private Animator animator;
+	private StarProjectile starProjectilePrefab;
 
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private GameObject enemyOther;
@@ -59,6 +65,7 @@ public class Kirby : CharacterBase {
 		dir = Direction.Right;
 		inhaleArea = transform.Find("Sprite/InhaleArea").gameObject;
 		inhaleArea.SetActive(false);
+		starProjectilePrefab = (StarProjectile) Resources.LoadAssetAtPath ("Assets/Prefabs/Abilities/StarProjectile.prefab", typeof(StarProjectile));
 	}
 
 	private void CommonOnCollisionEnter2D(Collision2D other) {
@@ -120,6 +127,7 @@ public class Kirby : CharacterBase {
 			CurrentState = State.InhaledJumping;
 		} else if (Input.GetKey(KeyCode.Z)) {
 			ShootStar();
+			am.animate((int) Inhaled.Shooting);
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
 			Swallow();
 		} else {
@@ -133,7 +141,13 @@ public class Kirby : CharacterBase {
 	}
 
 	private void ShootStar() {
-		am.animate((int) Inhaled.Shooting);
+		if (isShooting) {
+			return;
+		}
+		isShooting = true;
+		StarProjectile star = Instantiate (starProjectilePrefab) as StarProjectile;
+		star.gameObject.transform.position = transform.position + new Vector3(0f, 0.1f, 0);
+		star.direction = (dir == Direction.Right ? 1 : -1);
 	}
 
 	private void Swallow() {
@@ -192,6 +206,7 @@ public class Kirby : CharacterBase {
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.Z)) {
 			ShootStar();
+			am.animate((int) InhaledJumping.Shooting);
 		}
 		rigidbody2D.velocity = vel;
 	}
@@ -322,6 +337,11 @@ public class Kirby : CharacterBase {
 		}
 	}
 	#endregion
+
+	public void OnFinishedShooting() {
+		isShooting = false;
+		CurrentState = State.Jumping;
+	}
 
 	#region DIE
 
