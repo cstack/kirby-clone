@@ -125,7 +125,7 @@ public class Kirby : CharacterBase {
 		if (Input.GetKey (KeyCode.X)) {
 			vel.y = jumpSpeed;
 			CurrentState = State.InhaledJumping;
-		} else if (Input.GetKey(KeyCode.Z)) {
+		} else if (Input.GetKeyDown(KeyCode.Z)) {
 			ShootStar();
 			am.animate((int) Inhaled.Shooting);
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
@@ -204,7 +204,7 @@ public class Kirby : CharacterBase {
 	private void InhaledJumpingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
-		if (Input.GetKey(KeyCode.Z)) {
+		if (Input.GetKeyDown(KeyCode.Z)) {
 			ShootStar();
 			am.animate((int) InhaledJumping.Shooting);
 		}
