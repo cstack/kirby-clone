@@ -14,7 +14,7 @@ public class WaddleDoo : EnemyBase {
 	public float timeBetweenAttacks = 3f;
 	public float jumpSpeed = 8f;
 
-	private EnergyWhip energyWhipPrefab;
+	public EnergyWhip energyWhipPrefab;
 
 	private enum State {
 		WalkLeft, Charge, Attack, Jump
@@ -27,7 +27,6 @@ public class WaddleDoo : EnemyBase {
 	new void Start() {
 		base.Start ();
 		target = kirby.transform;
-		energyWhipPrefab = (EnergyWhip) Resources.LoadAssetAtPath ("Assets/Prefabs/Abilities/EnergyWhip.prefab", typeof(EnergyWhip));
 		CurrentState = State.WalkLeft;
 	}
 

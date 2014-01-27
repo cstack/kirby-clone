@@ -49,7 +49,7 @@ public class Kirby : CharacterBase {
 	bool invulnurable;
 
 	private Animator animator;
-	private StarProjectile starProjectilePrefab;
+	public StarProjectile starProjectilePrefab;
 
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private GameObject enemyOther;
@@ -65,7 +65,7 @@ public class Kirby : CharacterBase {
 		dir = Direction.Right;
 		inhaleArea = transform.Find("Sprite/InhaleArea").gameObject;
 		inhaleArea.SetActive(false);
-		starProjectilePrefab = (StarProjectile) Resources.LoadAssetAtPath ("Assets/Prefabs/Abilities/StarProjectile.prefab", typeof(StarProjectile));
+		//starProjectilePrefab = (StarProjectile) Resources.LoadAssetAtPath ("Assets/Prefabs/Abilities/StarProjectile.prefab", typeof(StarProjectile));
 	}
 
 	private void CommonOnCollisionEnter2D(Collision2D other) {

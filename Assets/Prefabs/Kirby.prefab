@@ -168,8 +168,10 @@ MonoBehaviour:
   knockbackSpeed: 8
   knockbackTime: .200000003
   isExhaling: 0
+  hasInhaledEnemy: 0
   health: 6
-  lives: 4
+  starProjectilePrefab: {fileID: 11400000, guid: 8b18e837de9a94f98bb66fc1141a061f,
+    type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

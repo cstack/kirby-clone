@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using UnityEditor;
 
 public abstract class StateMachineBase : MonoBehaviour {
 
