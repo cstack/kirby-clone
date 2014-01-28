@@ -55,7 +55,8 @@ public class Kirby : CharacterBase {
 	private GameObject enemyOther;
 
 	public enum State {
-		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die, InhaledJumping
+		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die,
+		InhaledJumping, InhaledKnockback
 	}
 	
 	void Start() {
@@ -65,14 +66,18 @@ public class Kirby : CharacterBase {
 		dir = Direction.Right;
 		inhaleArea = transform.Find("Sprite/InhaleArea").gameObject;
 		inhaleArea.SetActive(false);
-		//starProjectilePrefab = (StarProjectile) Resources.LoadAssetAtPath ("Assets/Prefabs/Abilities/StarProjectile.prefab", typeof(StarProjectile));
+	}
+
+	private void OnCollideWithEnemy(GameObject enemy) {
+		enemyOther = enemy;
+		Destroy(enemy);
+		TakeDamage();
+		CurrentState = hasInhaledEnemy ? State.InhaledKnockback : State.Knockback;
 	}
 
 	private void CommonOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "enemy") {
-			enemyOther = other.gameObject;
-			Destroy(other.gameObject);
-			CurrentState = State.Knockback;
+			OnCollideWithEnemy(other.gameObject);
 		}
 	}
 
@@ -117,7 +122,7 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
-	#region INHALED
+	#region Inhaled
 	
 	private void InhaledUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
@@ -138,6 +143,10 @@ public class Kirby : CharacterBase {
 			}
 		}
 		rigidbody2D.velocity = vel;
+	}
+
+	private void InhaledOnCollisionEnter2D(Collision2D other) {
+		CommonOnCollisionEnter2D(other);
 	}
 
 	private void ShootStar() {
@@ -210,6 +219,10 @@ public class Kirby : CharacterBase {
 		}
 		rigidbody2D.velocity = vel;
 	}
+
+	private void InhaledJumpingOnCollisionEnter2D(Collision2D other) {
+		CommonOnCollisionEnter2D(other);
+	}
 	
 	private void InhaledJumpingOnCollisionStay2D(Collision2D other) {
 		if (other.gameObject.tag == "ground") {
@@ -261,29 +274,40 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
-	#region KNOCKBACK
-
-	private IEnumerator KnockbackEnterState() {
+	private void TakeDamage() {
 		GameObject go = GameObject.Find("HealthBarItem" + health);
 		Animator animator = go.GetComponent<Animator>();
 		animator.SetBool("Remove", true);
-
+		
 		health -= 1;
 		if (health == 0) {
 			CurrentState = State.Die;
-			yield break;
+			return;
 		}
+	}
 
-		float xVel = knockbackSpeed;
-		if (enemyOther.transform.position.x > transform.position.x) {
-			xVel *= -1;
-		}
-		rigidbody2D.velocity = new Vector2(xVel, 0);
+	#region KNOCKBACK
+
+	private IEnumerator KnockbackEnterState() {
+		float xVel = knockbackSpeed * (enemyOther.transform.position.x > transform.position.x ? -1 : 1);
+		updateXVelocity(xVel);
 		yield return new WaitForSeconds(knockbackTime);
 		CurrentState = State.IdleOrWalking;
 		rigidbody2D.velocity = Vector2.zero;
 	}
 
+	#endregion
+
+	#region KNOCKBACK
+	
+	private IEnumerator InhaledKnockbackEnterState() {
+		float xVel = knockbackSpeed * (enemyOther.transform.position.x > transform.position.x ? -1 : 1);
+		updateXVelocity(xVel);
+		yield return new WaitForSeconds(knockbackTime);
+		CurrentState = State.Inhaled;
+		rigidbody2D.velocity = Vector2.zero;
+	}
+	
 	#endregion
 
 	#region DUCKING
@@ -338,6 +362,10 @@ public class Kirby : CharacterBase {
 	}
 	#endregion
 
+	public void OnFinishedInhaling() {
+		CurrentState = Kirby.State.Inhaled;
+	}
+
 	public void OnFinishedShooting() {
 		isShooting = false;
 		CurrentState = State.Jumping;
@@ -361,8 +389,9 @@ public class Kirby : CharacterBase {
 		if (invulnurable) {
 			return;
 		}
+		TakeDamage();
 		enemyOther = particle.gameObject;
-		CurrentState = State.Knockback;
+		CurrentState = hasInhaledEnemy ? State.InhaledKnockback : State.Knockback;
 		StartCoroutine("Invulnerability");
 	}
 

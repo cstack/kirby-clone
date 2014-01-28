@@ -10,7 +10,7 @@ public class KirbySprite : MonoBehaviour {
 	}
 
 	public void OnFinishedInhaling() {
-		kirby.CurrentState = Kirby.State.Inhaled;
+		kirby.OnFinishedInhaling();
 	}
 
 	public void OnFinishedShooting() {
