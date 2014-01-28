@@ -132,7 +132,6 @@ public class Kirby : CharacterBase {
 			CurrentState = State.InhaledJumping;
 		} else if (Input.GetKeyDown(KeyCode.Z)) {
 			ShootStar();
-			am.animate((int) Inhaled.Shooting);
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
 			Swallow();
 		} else {
@@ -153,6 +152,7 @@ public class Kirby : CharacterBase {
 		if (isShooting) {
 			return;
 		}
+		am.animate((int) Inhaled.Shooting);
 		isShooting = true;
 		StarProjectile star = Instantiate (starProjectilePrefab) as StarProjectile;
 		star.gameObject.transform.position = transform.position + new Vector3(0f, 0.1f, 0);
@@ -367,7 +367,9 @@ public class Kirby : CharacterBase {
 	}
 
 	public void OnFinishedShooting() {
+		Debug.Log("OnFinishedShooting");
 		isShooting = false;
+		hasInhaledEnemy = false;
 		CurrentState = State.Jumping;
 	}
 
