@@ -12,8 +12,4 @@ public class KirbySprite : MonoBehaviour {
 	public void OnFinishedInhaling() {
 		kirby.OnFinishedInhaling();
 	}
-
-	public void OnFinishedShooting() {
-		kirby.OnFinishedShooting();
-	}
 }

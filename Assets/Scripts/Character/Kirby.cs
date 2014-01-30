@@ -21,11 +21,11 @@ namespace AnimationEnums {
 	}
 
 	public enum Inhaled {
-		Idle, Walking, Shooting
+		Idle, Walking
 	}
 
 	public enum InhaledJumping {
-		Jumping, Shooting
+		Jumping
 	}
 }
 
@@ -43,7 +43,6 @@ public class Kirby : CharacterBase {
 	public static int livesRemaining = 4;
 
 	private bool isSpinning = false;
-	private bool isShooting = false;
 	private GameObject inhaleArea;
 
 	bool invulnurable;
@@ -56,7 +55,7 @@ public class Kirby : CharacterBase {
 
 	public enum State {
 		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die,
-		InhaledJumping, InhaledKnockback
+		InhaledJumping, InhaledKnockback, Shooting
 	}
 	
 	void Start() {
@@ -131,7 +130,7 @@ public class Kirby : CharacterBase {
 			vel.y = jumpSpeed;
 			CurrentState = State.InhaledJumping;
 		} else if (Input.GetKeyDown(KeyCode.Z)) {
-			ShootStar();
+			CurrentState = State.Shooting;
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
 			Swallow();
 		} else {
@@ -146,17 +145,6 @@ public class Kirby : CharacterBase {
 
 	private void InhaledOnCollisionEnter2D(Collision2D other) {
 		CommonOnCollisionEnter2D(other);
-	}
-
-	private void ShootStar() {
-		if (isShooting) {
-			return;
-		}
-		am.animate((int) Inhaled.Shooting);
-		isShooting = true;
-		StarProjectile star = Instantiate (starProjectilePrefab) as StarProjectile;
-		star.gameObject.transform.position = transform.position + new Vector3(0f, 0.1f, 0);
-		star.direction = (dir == Direction.Right ? 1 : -1);
 	}
 
 	private void Swallow() {
@@ -208,14 +196,26 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
+	#region Shooting
+
+	private IEnumerator ShootingEnterState() {
+		StarProjectile star = Instantiate (starProjectilePrefab) as StarProjectile;
+		star.gameObject.transform.position = transform.position + new Vector3(0f, 0.1f, 0);
+		star.direction = (dir == Direction.Right ? 1 : -1);
+		yield return new WaitForSeconds (0.5f);
+		hasInhaledEnemy = false;
+		CurrentState = State.Jumping;
+	}
+
+	#endregion
+
 	#region InhaledJumping
 	
 	private void InhaledJumpingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKeyDown(KeyCode.Z)) {
-			ShootStar();
-			am.animate((int) InhaledJumping.Shooting);
+			CurrentState = State.Shooting;
 		}
 		rigidbody2D.velocity = vel;
 	}
@@ -364,13 +364,6 @@ public class Kirby : CharacterBase {
 
 	public void OnFinishedInhaling() {
 		CurrentState = Kirby.State.Inhaled;
-	}
-
-	public void OnFinishedShooting() {
-		Debug.Log("OnFinishedShooting");
-		isShooting = false;
-		hasInhaledEnemy = false;
-		CurrentState = State.Jumping;
 	}
 
 	#region DIE
