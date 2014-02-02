@@ -19,29 +19,17 @@ public class WaddleDoo : EnemyBase {
 	private enum State {
 		WalkLeft, Charge, Attack, Jump
 	}
-
-	private Transform target;
-
+	
 	bool canAttack = true;
-
-	new void Start() {
-		base.Start ();
-		target = kirby.transform;
-		CurrentState = State.WalkLeft;
-	}
 
 	IEnumerator WalkLeftEnterState() {
 		updateXVelocity (-1 * speed);
 		yield return null;
 	}
 
-	float distanceToTarget() {
-		return Vector2.Distance (transform.position, target.position);
-	}
-
 	void WalkLeftUpdate() {
 		updateXVelocity (-1 * speed);
-		if (canAttack && distanceToTarget () <= range) {
+		if (canAttack && distanceToKirby() <= range) {
 			if (Random.value < 0.5) {
 				CurrentState = State.Charge;
 			} else {

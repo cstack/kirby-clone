@@ -380,12 +380,12 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
-	public void TakeHit(EnergyWhipParticle particle) {
+	public void TakeHit(GameObject particle) {
 		if (invulnurable) {
 			return;
 		}
 		TakeDamage();
-		enemyOther = particle.gameObject;
+		enemyOther = particle;
 		CurrentState = hasInhaledEnemy ? State.InhaledKnockback : State.Knockback;
 		StartCoroutine("Invulnerability");
 	}

@@ -11,6 +11,8 @@ public abstract class EnemyBase : CharacterBase {
 	public void Start() {
 		GameObject go = GameObject.Find ("Kirby");
 		kirby = (Kirby) go.GetComponent(typeof(Kirby));
+		goToDefaultState();
+		dir = Direction.Left;
 	}
 
 	private float DistanceFromScreen() {
@@ -48,6 +50,10 @@ public abstract class EnemyBase : CharacterBase {
 		}
 		Vector2 force = kirby.transform.position - transform.position;
 		rigidbody2D.AddForce(force);
+	}
+
+	protected float distanceToKirby() {
+		return Vector2.Distance (transform.position, kirby.transform.position);
 	}
 
 }

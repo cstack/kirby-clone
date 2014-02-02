@@ -10,7 +10,6 @@ public class WaddleDee : EnemyBase {
 
 	new void Start () {
 		base.Start();
-		CurrentState = State.Walk;
 		dir = Direction.Left;
 	}
 	
