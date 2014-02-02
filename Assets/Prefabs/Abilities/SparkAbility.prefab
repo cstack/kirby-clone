@@ -38,7 +38,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37003b72e4e8a4f5bad322f0af3a8865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sparkProjectilePrefab: {fileID: 100000, guid: 3dc463985f2c64daaaa5ffa0ae3ab08d,
+  faceRight: 0
+  friendly: 0
+  sparkProjectilePrefab: {fileID: 11400000, guid: 3dc463985f2c64daaaa5ffa0ae3ab08d,
     type: 2}
   duration: 2
   shocksPerSecond: 20

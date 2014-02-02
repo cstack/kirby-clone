@@ -38,10 +38,11 @@ public class Sparky : EnemyBase {
 	#region Slide
 	
 	private IEnumerator AttackEnterState() {
-		sparkAbility = Instantiate (sparkAbilityPrefab) as SparkAbility;
-		sparkAbility.gameObject.transform.position = transform.position;
-		sparkAbility.duration = attackDuration;
-		yield return new WaitForSeconds (attackDuration);
+		StartCoroutine(UseAbility());
+		yield return null;
+	}
+
+	protected override void OnAbilityFinished() {
 		lastAttackTime = Time.time;
 		TakeAction();
 	}
@@ -97,9 +98,15 @@ public class Sparky : EnemyBase {
 	}
 	
 	#endregion
-	
+
+
+	#region implemented abstract members of EnemyBase
+
 	protected override void goToDefaultState()
 	{
 		CurrentState = State.Jump;
 	}
+
+	#endregion
+
 }

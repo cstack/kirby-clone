@@ -37,7 +37,12 @@ public class WaddleDee : EnemyBase {
 		}
 	}
 
+	#region implemented abstract members of EnemyBase
+
 	protected override void goToDefaultState() {
 		CurrentState = State.Walk;
 	}
+
+	#endregion
+
 }

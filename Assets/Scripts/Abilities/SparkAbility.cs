@@ -1,10 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SparkAbility : MonoBehaviour {
-	public GameObject sparkProjectilePrefab;
+public class SparkAbility : Ability {
+	public SparkProjectile sparkProjectilePrefab;
 	public float duration = 2f;
 	public float shocksPerSecond = 20f;
+
+	#region implemented abstract members of Ability
+
+	public override float getDuration()
+	{
+		return duration;
+	}
+
+	#endregion
 
 	// Use this for initialization
 	public void Start () {
@@ -23,8 +32,9 @@ public class SparkAbility : MonoBehaviour {
 
 	private void ShootShock(float angle) {
 		// Shoot a shock at `angle` degrees
-		GameObject shock = Instantiate (sparkProjectilePrefab) as GameObject;
+		SparkProjectile shock = Instantiate (sparkProjectilePrefab) as SparkProjectile;
 		shock.transform.position = transform.position;
+		shock.friendly = friendly;
 		
 		Vector2 direction = Quaternion.AngleAxis (angle, Vector3.forward) * Vector2.up;
 		shock.rigidbody2D.velocity = direction * 10f;

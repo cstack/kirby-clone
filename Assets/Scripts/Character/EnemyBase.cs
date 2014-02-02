@@ -8,7 +8,8 @@ public abstract class EnemyBase : CharacterBase {
 		BeingInhaled
 	}
 
-	public void Start() {
+	new public void Start() {
+		base.Start();
 		GameObject go = GameObject.Find ("Kirby");
 		kirby = (Kirby) go.GetComponent(typeof(Kirby));
 		goToDefaultState();
@@ -42,7 +43,7 @@ public abstract class EnemyBase : CharacterBase {
 	}
 
 	protected abstract void goToDefaultState();
-
+	
 	protected void BeingInhaledUpdate() {
 		if (kirby.CurrentState.ToString() != Kirby.State.Inhaling.ToString()) {
 			goToDefaultState();
@@ -54,6 +55,10 @@ public abstract class EnemyBase : CharacterBase {
 
 	protected float distanceToKirby() {
 		return Vector2.Distance (transform.position, kirby.transform.position);
+	}
+
+	public void TakeHit(GameObject particle) {
+		Destroy(gameObject);
 	}
 
 }

@@ -408,6 +408,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110204429
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: UsingAbility
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 2bd2dc1e47bf84e6abf0e4ddd5be6ec4, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 287, y: -115, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110206417
 State:
   m_ObjectHideFlags: 3
@@ -440,6 +455,37 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110216261
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: New State
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 0}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 539, y: -157, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110218453
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Swallowing
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_ParentStateMachine: {fileID: 110763685}
+  m_Position: {x: 432, y: -24, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110226620
 State:
   m_ObjectHideFlags: 3
@@ -452,6 +498,21 @@ State:
   - {fileID: 7400000, guid: b2ebe1125847bb247a4633fcd8e3b4bb, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 252, y: -180, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110242569
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Swallowing
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: ca924ade0cad54622a0379e6260b0211, type: 2}
+  m_ParentStateMachine: {fileID: 110727003}
+  m_Position: {x: 287, y: -115, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -483,6 +544,22 @@ State:
   - {fileID: 7400000, guid: 51d15bfbe8f9a4ede9ae270c241eabc0, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 276, y: 120, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110255082
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: UsingAbility
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_ParentStateMachine: {fileID: 110757215}
+  m_Position: {x: 408, y: -72, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -733,6 +810,7 @@ StateMachine:
   m_DefaultState: {fileID: 110226620}
   m_States:
   - {fileID: 110226620}
+  - {fileID: 110204429}
   m_ChildStateMachine:
   - {fileID: 110798719}
   - {fileID: 110716230}
@@ -741,6 +819,8 @@ StateMachine:
   - {fileID: 110727003}
   - {fileID: 110738453}
   - {fileID: 110784236}
+  - {fileID: 110763685}
+  - {fileID: 110757215}
   m_ChildStateMachinePosition:
   - {x: -108, y: -84, z: 0}
   - {x: 132, y: -84, z: 0}
@@ -749,10 +829,9 @@ StateMachine:
   - {x: 362, y: -107, z: 0}
   - {x: 425, y: -45, z: 0}
   - {x: 344, y: 38, z: 0}
+  - {x: 509, y: -152, z: 0}
+  - {x: 84, y: 36, z: 0}
   m_OrderedTransitions:
-    data:
-      first: {fileID: 0}
-      second: []
     data:
       first: {fileID: 0}
       second: []
@@ -847,6 +926,7 @@ StateMachine:
   - {fileID: 110206417}
   - {fileID: 110243092}
   - {fileID: 110266031}
+  - {fileID: 110242569}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions: {}
@@ -897,6 +977,38 @@ StateMachine:
   m_States:
   - {fileID: 110270816}
   - {fileID: 110265678}
+  m_ChildStateMachine: []
+  m_ChildStateMachinePosition: []
+  m_OrderedTransitions: {}
+  m_MotionSetCount: 2
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+--- !u!1107 &110757215
+StateMachine:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: UsingAbility
+  m_DefaultState: {fileID: 110255082}
+  m_States:
+  - {fileID: 110255082}
+  m_ChildStateMachine: []
+  m_ChildStateMachinePosition: []
+  m_OrderedTransitions: {}
+  m_MotionSetCount: 2
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+--- !u!1107 &110763685
+StateMachine:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Swallowing
+  m_DefaultState: {fileID: 110218453}
+  m_States:
+  - {fileID: 110218453}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions: {}

@@ -6,12 +6,34 @@ public abstract class CharacterBase : StateMachineBase {
 	public enum Direction {
 		Left, Right
 	}
+	public Ability ability;
+
+	private Transform sprite;
+
+	public void Start() {
+		sprite = transform.Find ("Sprite");
+	}
+
+	protected IEnumerator UseAbility(bool friendly = false) {
+		Ability attack = Instantiate (ability) as Ability;
+		attack.friendly = friendly;
+		if (dir == Direction.Right) {
+			attack.faceRight = true;
+		}
+		attack.transform.parent = sprite;
+		attack.transform.localPosition = new Vector3 (0, 0, 0);
+		attack.transform.localScale = new Vector3 (0, 0, 0);
+		yield return new WaitForSeconds(attack.getDuration());
+		Destroy (attack.gameObject);
+		OnAbilityFinished();
+	}
+
+	protected virtual void OnAbilityFinished() {}
 
 	protected void Flip() {
 		dir = (dir == Direction.Right) ? Direction.Left : Direction.Right;
 		
 		// Flip the sprite over the anchor point
-		Transform sprite = transform.Find ("Sprite");
 		Vector3 scale = sprite.localScale;
 		scale.x *= -1;
 		sprite.localScale = scale;
@@ -46,5 +68,6 @@ public abstract class CharacterBase : StateMachineBase {
 		origin += delta * Vector3.right * (dir == Direction.Right ? 1 : -1);
 		return Physics2D.RaycastNonAlloc (origin, rigidbody2D.velocity, hits, range);
 	}
+
 
 }

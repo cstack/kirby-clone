@@ -13,9 +13,7 @@ public class WaddleDoo : EnemyBase {
 	public float range = 3f;
 	public float timeBetweenAttacks = 3f;
 	public float jumpSpeed = 8f;
-
-	public EnergyWhip energyWhipPrefab;
-
+	
 	private enum State {
 		WalkLeft, Charge, Attack, Jump
 	}
@@ -45,11 +43,12 @@ public class WaddleDoo : EnemyBase {
 	}
 
 	IEnumerator AttackEnterState() {
-		EnergyWhip energyWhip = Instantiate (energyWhipPrefab) as EnergyWhip;
-		energyWhip.gameObject.transform.position = transform.position;
-		yield return new WaitForSeconds(energyWhip.duration);
-		Destroy (energyWhip.gameObject);
+		StartCoroutine(UseAbility());
 		StartCoroutine (CoolDown ());
+		yield return null;
+	}
+
+	protected override void OnAbilityFinished() {
 		CurrentState = State.WalkLeft;
 	}
 
@@ -79,7 +78,13 @@ public class WaddleDoo : EnemyBase {
 
 	#endregion
 
+	#region implemented abstract members of EnemyBase
+
 	protected override void goToDefaultState() {
 		CurrentState = State.WalkLeft;
 	}
+
+	#endregion
+
+
 }

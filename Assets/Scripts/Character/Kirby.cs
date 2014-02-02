@@ -37,13 +37,13 @@ public class Kirby : CharacterBase {
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
 	public bool isExhaling = false;
-	public bool hasInhaledEnemy = false;
 
 	public int health = 6;
 	public static int livesRemaining = 4;
-
+	
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
+	private EnemyBase inhaledEnemy;
 
 	bool invulnurable;
 
@@ -55,10 +55,11 @@ public class Kirby : CharacterBase {
 
 	public enum State {
 		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die,
-		InhaledJumping, InhaledKnockback, Shooting
+		InhaledJumping, InhaledKnockback, Shooting, Swallowing, UsingAbility
 	}
 	
-	void Start() {
+	new public void Start() {
+		base.Start();
 		GameObject.Find("LivesRemaining").GetComponent<LivesRemaining>().setLivesRemaining(livesRemaining);
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
@@ -71,7 +72,7 @@ public class Kirby : CharacterBase {
 		enemyOther = enemy;
 		Destroy(enemy);
 		TakeDamage();
-		CurrentState = hasInhaledEnemy ? State.InhaledKnockback : State.Knockback;
+		CurrentState = (inhaledEnemy == null) ? State.Knockback : State.InhaledKnockback;
 	}
 
 	private void CommonOnCollisionEnter2D(Collision2D other) {
@@ -99,7 +100,11 @@ public class Kirby : CharacterBase {
 			vel.y = jumpSpeed;
 			CurrentState = State.Jumping;
 		} else if (Input.GetKey(KeyCode.Z)) {
-			CurrentState = State.Inhaling;
+			if (ability == null) {
+				CurrentState = State.Inhaling;
+			} else {
+				CurrentState = State.UsingAbility;
+			}
 		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			CurrentState = State.Flying;
@@ -132,7 +137,7 @@ public class Kirby : CharacterBase {
 		} else if (Input.GetKeyDown(KeyCode.Z)) {
 			CurrentState = State.Shooting;
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
-			Swallow();
+			CurrentState = State.Swallowing;
 		} else {
 			if (vel.x == 0) {
 				am.animate((int) Inhaled.Idle);
@@ -147,7 +152,14 @@ public class Kirby : CharacterBase {
 		CommonOnCollisionEnter2D(other);
 	}
 
-	private void Swallow() {
+	#endregion
+
+	#region Swallowing
+	
+	private IEnumerator SwallowingEnterState() {
+		ability = inhaledEnemy.ability;
+		yield return new WaitForSeconds (0.5f);
+		CurrentState = State.IdleOrWalking;
 	}
 	
 	#endregion
@@ -163,7 +175,11 @@ public class Kirby : CharacterBase {
 			if (Input.GetKeyUp(KeyCode.X)) {
 				vel.y = Mathf.Min(vel.y, 0);
 			} else if (Input.GetKey(KeyCode.Z)) {
-				CurrentState = State.Inhaling;
+				if (ability == null) {
+					CurrentState = State.Inhaling;
+				} else {
+					CurrentState = State.UsingAbility;
+				}
 			}
 			if (!isSpinning && Mathf.Abs(vel.y) < 0.4) {
 				isSpinning = true;
@@ -203,10 +219,23 @@ public class Kirby : CharacterBase {
 		star.gameObject.transform.position = transform.position + new Vector3(0f, 0.1f, 0);
 		star.direction = (dir == Direction.Right ? 1 : -1);
 		yield return new WaitForSeconds (0.5f);
-		hasInhaledEnemy = false;
+		inhaledEnemy = null;
 		CurrentState = State.Jumping;
 	}
 
+	#endregion
+
+	#region Shooting
+	
+	private IEnumerator UsingAbilityEnterState() {
+		StartCoroutine(UseAbility(true));
+		yield return null;
+	}
+
+	protected override void OnAbilityFinished() {
+		CurrentState = State.IdleOrWalking;
+	}
+	
 	#endregion
 
 	#region InhaledJumping
@@ -354,9 +383,9 @@ public class Kirby : CharacterBase {
 
 	private void InhalingOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "enemy") {
+			inhaledEnemy = other.gameObject.GetComponent<EnemyBase>();
 			enemyOther = other.gameObject;
 			Destroy(enemyOther);
-			hasInhaledEnemy = true;
 			am.animate((int) Inhaling.FinishInhaling);
 		}
 	}
@@ -386,7 +415,7 @@ public class Kirby : CharacterBase {
 		}
 		TakeDamage();
 		enemyOther = particle;
-		CurrentState = hasInhaledEnemy ? State.InhaledKnockback : State.Knockback;
+		CurrentState = (inhaledEnemy == null) ? State.Knockback : State.InhaledKnockback;
 		StartCoroutine("Invulnerability");
 	}
 

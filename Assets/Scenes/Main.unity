@@ -777,7 +777,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 1007ffdaf6aac4b4bbbca992e8e6e084, type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 100000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
+      objectReference: {fileID: 100002, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1007ffdaf6aac4b4bbbca992e8e6e084, type: 2}
   m_RootGameObject: {fileID: 595802481}
@@ -1081,13 +1081,13 @@ MonoBehaviour:
   gameObject: {fileID: 0}
   CurrentStateName: 
   dir: 0
+  ability: {fileID: 0}
   speed: 6
   jumpSpeed: 12.5
   flySpeed: 7
   knockbackSpeed: 8
   knockbackTime: .200000003
   isExhaling: 0
-  hasInhaledEnemy: 0
   health: 6
   starProjectilePrefab: {fileID: 11400000, guid: 8b18e837de9a94f98bb66fc1141a061f,
     type: 2}
@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77ce5b91795748628bf6409df50fa25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 100000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
+  enemyPrefab: {fileID: 100002, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
   enemy: {fileID: 0}
 --- !u!1 &615786613
 GameObject:
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77ce5b91795748628bf6409df50fa25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 100000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
+  enemyPrefab: {fileID: 100002, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
   enemy: {fileID: 0}
 --- !u!1 &695495507
 GameObject:
@@ -1879,7 +1879,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 1007ffdaf6aac4b4bbbca992e8e6e084, type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 100000, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
+      objectReference: {fileID: 100002, guid: dbcba72d4cf094a358c59daa0a6c566b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1007ffdaf6aac4b4bbbca992e8e6e084, type: 2}
   m_RootGameObject: {fileID: 615786613}

@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnergyWhip : MonoBehaviour {
+public class EnergyWhip : Ability {
 
-	public GameObject particlePrefab;
+	public EnergyWhipParticle particlePrefab;
 	public float particleSpeed = 10f;
 	public float startAngle = 45.0f;
 	public float rotation = 90.0f;
 	public int numParticles = 10;
-	public float offset = 1f;
+	public float offset = 2f;
 	public float duration = 1f;
+
+	#region implemented abstract members of Ability
+
+	public override float getDuration()
+	{
+		return duration;
+	}
+
+	#endregion
 
 	// Use this for initialization
 	void Start () {
@@ -26,10 +35,15 @@ public class EnergyWhip : MonoBehaviour {
 
 	void ShootParticle(float angle) {
 		// Shoot a particle at `angle` degrees from horizontal
-		GameObject particle = Instantiate (particlePrefab) as GameObject;
+		EnergyWhipParticle particle = Instantiate (particlePrefab) as EnergyWhipParticle;
 		particle.transform.position = transform.position;
+		particle.friendly = friendly;
 
-		Vector2 direction = Quaternion.AngleAxis (angle, Vector3.forward) * Vector2.up;
+		Vector3 axis = Vector3.forward;
+		if (faceRight) {
+			axis = Vector3.back;
+		}
+		Vector2 direction = Quaternion.AngleAxis (angle, axis) * Vector2.up;
 		particle.rigidbody2D.velocity = direction * particleSpeed;
 		particle.transform.position = (Vector2) transform.position + direction * offset;
 	}

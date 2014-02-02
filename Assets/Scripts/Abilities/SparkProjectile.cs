@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SparkProjectile : MonoBehaviour {
+public class SparkProjectile : Projectile {
 	public float lifeSpan = 0.2f;
 
 	public void Start() {
@@ -14,7 +14,8 @@ public class SparkProjectile : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other) {
-		if (other.gameObject.tag == "kirby") {
+		if ((friendly && other.gameObject.tag == "enemy") ||
+		    	(!friendly && other.gameObject.tag == "kirby")) {
 			other.SendMessage("TakeHit", gameObject);
 		}
 	}
