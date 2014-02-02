@@ -266,7 +266,19 @@ public class Kirby : CharacterBase {
 	#endregion
 
 	#region FLYING
-	
+
+	private IEnumerator FlyingEnterState() {
+		speed -= 2;
+		yield break;
+	}
+
+	private IEnumerator FlyingExitState() {
+		speed += 2;
+		AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+		animator.speed = 1f;
+		yield break;
+	}
+
 	private void FlyingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);

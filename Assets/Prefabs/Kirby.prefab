@@ -199,7 +199,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   speed: 6
   jumpSpeed: 12.5
-  flySpeed: 7
+  flySpeed: 5
   knockbackSpeed: 8
   knockbackTime: .200000003
   isExhaling: 0
