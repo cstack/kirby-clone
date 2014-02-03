@@ -202,7 +202,7 @@ public class Kirby : CharacterBase {
 
 	private void JumpingOnCollisionStay2D(Collision2D other) {
 		if (other.gameObject.tag == "ground") {
-			if (other.contacts.Length > 0 &&
+			if (other.contacts.Length > 0 && rigidbody2D.velocity.y <= 0 &&
 			    Vector2.Dot(other.contacts[0].normal, Vector2.up) > 0.5) {
 				// Collision was on bottom
 				CurrentState = State.IdleOrWalking;
