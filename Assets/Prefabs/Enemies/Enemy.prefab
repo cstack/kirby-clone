@@ -54,7 +54,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: .899999976}
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -67,16 +67,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8a72cf99924a96b412063347f5780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  rigidbody: {fileID: 0}
-  animation: {fileID: 0}
-  controller: {fileID: 0}
-  networkView: {fileID: 0}
-  collider: {fileID: 0}
-  gameObject: {fileID: 0}
+  CurrentStateName: 
+  dir: 0
+  ability: {fileID: 0}
   speed: 2
   range: 2
-  EnergyWhipPrefab: {fileID: 0}
+  timeBetweenAttacks: 3
+  jumpSpeed: 8
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
