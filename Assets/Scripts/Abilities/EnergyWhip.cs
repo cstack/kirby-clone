@@ -4,12 +4,9 @@ using System.Collections;
 public class EnergyWhip : Ability {
 
 	public EnergyWhipParticle particlePrefab;
-	public float particleSpeed = 10f;
-	public float startAngle = 45.0f;
-	public float rotation = 90.0f;
-	public int numParticles = 10;
-	public float offset = 2f;
 	public float duration = 1f;
+
+	private float startTime;
 
 	#region implemented abstract members of Ability
 
@@ -22,29 +19,28 @@ public class EnergyWhip : Ability {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(ShootParticles ());
-	}
-
-	IEnumerator ShootParticles() {
-		float timePerParticle = duration / numParticles;
-		for (int i = 0; i < numParticles; i++) {
-			ShootParticle(startAngle + rotation * (float) i / (numParticles-1));
-			yield return new WaitForSeconds(timePerParticle);
+		startTime = Time.time;
+		foreach (Transform child in transform) {
+			child.GetComponent<EnergyWhipParticle>().friendly = friendly;
 		}
+
 	}
 
-	void ShootParticle(float angle) {
-		// Shoot a particle at `angle` degrees from horizontal
-		EnergyWhipParticle particle = Instantiate (particlePrefab) as EnergyWhipParticle;
-		particle.transform.position = transform.position;
-		particle.friendly = friendly;
-
-		Vector3 axis = Vector3.forward;
+	public override void init()
+	{
+		base.init();
 		if (faceRight) {
-			axis = Vector3.back;
+			transform.localScale = new Vector3(-1, 1, 1);
 		}
-		Vector2 direction = Quaternion.AngleAxis (angle, axis) * Vector2.up;
-		particle.rigidbody2D.velocity = direction * particleSpeed;
-		particle.transform.position = (Vector2) transform.position + direction * offset;
 	}
+
+	void Update() {
+		float portionCompleted = (Time.time - startTime) / duration;
+		float angle = portionCompleted * 90;
+		if (faceRight) {
+			angle *= -1;
+		}
+		transform.localEulerAngles = new Vector3 (0,0,angle);
+	}
+
 }

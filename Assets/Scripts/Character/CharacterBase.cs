@@ -20,9 +20,9 @@ public abstract class CharacterBase : StateMachineBase {
 		if (dir == Direction.Right) {
 			attack.faceRight = true;
 		}
-		attack.transform.parent = sprite;
-		attack.transform.localPosition = new Vector3 (0, 0, 0);
-		attack.transform.localScale = new Vector3 (0, 0, 0);
+		attack.transform.parent = transform;
+		attack.transform.localPosition = new Vector3 (0.5f, 0.5f, 0f);
+		attack.init();
 		yield return new WaitForSeconds(attack.getDuration());
 		Destroy (attack.gameObject);
 		OnAbilityFinished();
