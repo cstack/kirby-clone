@@ -26,13 +26,6 @@ public class Sparky : EnemyBase {
 		TakeAction();
 	}
 
-	private IEnumerator SlowDown() {
-		for (int i = 0; i < 5; i++) {
-			updateXVelocity(rigidbody2D.velocity.x * 0.5f);
-			yield return new WaitForSeconds (0.1f);
-		}
-	}
-	
 	#endregion
 
 	#region Slide

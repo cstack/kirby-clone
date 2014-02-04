@@ -229,6 +229,7 @@ public class Kirby : CharacterBase {
 	
 	private IEnumerator UsingAbilityEnterState() {
 		StartCoroutine(UseAbility(true));
+		StartCoroutine(SlowDown());
 		yield return null;
 	}
 

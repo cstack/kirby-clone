@@ -69,5 +69,13 @@ public abstract class CharacterBase : StateMachineBase {
 		return Physics2D.RaycastNonAlloc (origin, rigidbody2D.velocity, hits, range);
 	}
 
+	protected IEnumerator SlowDown() {
+		for (int i = 0; i < 5; i++) {
+			updateXVelocity(rigidbody2D.velocity.x * 0.5f);
+			yield return new WaitForSeconds (0.1f);
+		}
+		updateXVelocity(0f);
+	}
+
 
 }
