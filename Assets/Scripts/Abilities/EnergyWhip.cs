@@ -4,7 +4,7 @@ using System.Collections;
 public class EnergyWhip : Ability {
 
 	public EnergyWhipParticle particlePrefab;
-	public float duration = 1f;
+	public float duration = 0.75f;
 
 	private float startTime;
 

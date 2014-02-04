@@ -99,12 +99,10 @@ public class Kirby : CharacterBase {
 		if (Input.GetKey (KeyCode.X)) {
 			vel.y = jumpSpeed;
 			CurrentState = State.Jumping;
-		} else if (Input.GetKey(KeyCode.Z)) {
-			if (ability == null) {
-				CurrentState = State.Inhaling;
-			} else {
-				CurrentState = State.UsingAbility;
-			}
+		} else if (Input.GetKey(KeyCode.Z) && ability == null) {
+			CurrentState = State.Inhaling;
+		} else if (Input.GetKeyDown(KeyCode.Z) && ability != null) {
+			CurrentState = State.UsingAbility;
 		} else if (Input.GetKey(KeyCode.UpArrow)) {
 			vel.y = flySpeed;
 			CurrentState = State.Flying;
@@ -275,7 +273,6 @@ public class Kirby : CharacterBase {
 
 	private IEnumerator FlyingExitState() {
 		speed += 2;
-		AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
 		animator.speed = 1f;
 		yield break;
 	}

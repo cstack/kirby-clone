@@ -462,7 +462,7 @@ MonoBehaviour:
   faceRight: 0
   friendly: 0
   particlePrefab: {fileID: 11400000, guid: 0aff1f3e398404fd68773d7c07556289, type: 2}
-  duration: 1
+  duration: .75
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
