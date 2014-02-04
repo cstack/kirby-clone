@@ -5,7 +5,7 @@ public class EnergyWhipParticle : Projectile {
 	public float lifeSpan = 0.3f;
 
 	public void Start() {
-		StartCoroutine ("DieAfterTime");
+		//StartCoroutine ("DieAfterTime");
 	}
 
 	public IEnumerator DieAfterTime() {
@@ -15,7 +15,7 @@ public class EnergyWhipParticle : Projectile {
 
 	public void OnTriggerEnter2D(Collider2D other) {
 		if ((friendly && other.gameObject.tag == "enemy") ||
-		     	(!friendly && other.gameObject.tag == "kirby")) {
+		    (!friendly && other.gameObject.tag == "kirby")) {
 			other.SendMessage("TakeHit", gameObject);
 		}
 	}

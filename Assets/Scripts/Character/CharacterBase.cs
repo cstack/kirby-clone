@@ -24,9 +24,9 @@ public abstract class CharacterBase : StateMachineBase {
 		if (dir == Direction.Right) {
 			attack.faceRight = true;
 		}
-		attack.transform.parent = sprite;
-		attack.transform.localPosition = new Vector3 (0, 0, 0);
-		attack.transform.localScale = new Vector3 (0, 0, 0);
+		attack.transform.parent = transform;
+		attack.transform.localPosition = new Vector3 (0.5f, 0.5f, 0f);
+		attack.init();
 		yield return new WaitForSeconds(attack.getDuration());
 		Destroy (attack.gameObject);
 		OnAbilityFinished();
@@ -71,6 +71,14 @@ public abstract class CharacterBase : StateMachineBase {
 		}
 		origin += delta * Vector3.right * (dir == Direction.Right ? 1 : -1);
 		return Physics2D.RaycastNonAlloc (origin, rigidbody2D.velocity, hits, range);
+	}
+
+	protected IEnumerator SlowDown() {
+		for (int i = 0; i < 5; i++) {
+			updateXVelocity(rigidbody2D.velocity.x * 0.5f);
+			yield return new WaitForSeconds (0.1f);
+		}
+		updateXVelocity(0f);
 	}
 
 

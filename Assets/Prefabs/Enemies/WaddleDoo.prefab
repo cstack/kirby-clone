@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentStateName: 
   dir: 0
-  ability: {fileID: 11400000, guid: 772cd70abe5be4d2fbbb9bca520023f4, type: 2}
+  ability: {fileID: 11400010, guid: 9c3c1bec211fc40f98516e4ea27f407b, type: 2}
   speed: 2
   range: 3
   timeBetweenAttacks: 3
