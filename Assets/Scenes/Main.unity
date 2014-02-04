@@ -580,6 +580,22 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: cb9e30b0798e3ed468c42905535d6492, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[1].y
+      value: 1.20815086
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: cb9e30b0798e3ed468c42905535d6492, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[1].x
+      value: 2.08296442
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: cb9e30b0798e3ed468c42905535d6492, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[2].y
+      value: -.814908981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: cb9e30b0798e3ed468c42905535d6492, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[2].x
+      value: 2.03222895
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb9e30b0798e3ed468c42905535d6492, type: 2}
   m_RootGameObject: {fileID: 369935283}
@@ -2800,8 +2816,8 @@ PolygonCollider2D:
   m_Poly:
     m_Paths:
     - - {x: -1.00848961, y: .585918427}
-      - {x: 6.52929163, y: 3.2885437}
-      - {x: 6.43776369, y: -2.20183754}
+      - {x: 2.08296442, y: 1.20815086}
+      - {x: 2.03222895, y: -.814908981}
       - {x: -1.1421206, y: -.147821426}
       - {x: -1.27831483, y: .215515137}
 --- !u!1001 &1412503854
@@ -3819,7 +3835,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1

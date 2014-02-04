@@ -12,4 +12,10 @@ public class KirbySprite : MonoBehaviour {
 	public void OnFinishedInhaling() {
 		kirby.OnFinishedInhaling();
 	}
+
+	public void OnTriggerEnter2D(Collider2D other) {
+		if (other.gameObject.tag == "enemy") {
+			kirby.enemyCollisionCallback(other.gameObject);
+		}
+	}
 }

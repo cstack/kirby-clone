@@ -68,6 +68,12 @@ public class Kirby : CharacterBase {
 		inhaleArea.SetActive(false);
 	}
 
+	public void enemyCollisionCallback(GameObject other) {
+		inhaledEnemy = other.GetComponent<EnemyBase>();
+		Destroy(other);
+		am.animate((int) Inhaling.FinishInhaling);
+	}
+
 	private void OnCollideWithEnemy(GameObject enemy) {
 		enemyOther = enemy;
 		Destroy(enemy);
@@ -215,12 +221,12 @@ public class Kirby : CharacterBase {
 	#region Shooting
 
 	private IEnumerator ShootingEnterState() {
-		StarProjectile star = Instantiate (starProjectilePrefab) as StarProjectile;
-		star.gameObject.transform.position = transform.position + new Vector3(0f, 0.1f, 0);
+		StarProjectile star = Instantiate(starProjectilePrefab) as StarProjectile;
+		star.gameObject.transform.position = transform.position + Vector3.up * 0.1f; // Don't touch the ground
 		star.direction = (dir == Direction.Right ? 1 : -1);
-		yield return new WaitForSeconds (0.5f);
 		inhaledEnemy = null;
 		CurrentState = State.Jumping;
+		yield break;
 	}
 
 	#endregion
@@ -375,14 +381,17 @@ public class Kirby : CharacterBase {
 		updateXVelocity(0);
 	}
 
-	#region INHALING
+	#region Inhaling
+
 	private IEnumerator InhalingEnterState() {
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"));
 		inhaleArea.SetActive(true);
 		StartCoroutine("ComeToHalt");
 		yield return null;
 	}
 
 	private IEnumerator InhalingExitState() {
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"), false);
 		inhaleArea.SetActive(false);
 		yield return null;
 	}
@@ -393,19 +402,11 @@ public class Kirby : CharacterBase {
 		}
 	}
 
-	private void InhalingOnCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.tag == "enemy") {
-			inhaledEnemy = other.gameObject.GetComponent<EnemyBase>();
-			enemyOther = other.gameObject;
-			Destroy(enemyOther);
-			am.animate((int) Inhaling.FinishInhaling);
-		}
-	}
-	#endregion
-
 	public void OnFinishedInhaling() {
 		CurrentState = Kirby.State.Inhaled;
 	}
+
+	#endregion
 
 	#region DIE
 

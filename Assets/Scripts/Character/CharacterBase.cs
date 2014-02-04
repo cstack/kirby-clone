@@ -11,10 +11,14 @@ public abstract class CharacterBase : StateMachineBase {
 	private Transform sprite;
 
 	public void Start() {
-		sprite = transform.Find ("Sprite");
+		sprite = transform.Find("Sprite");
 	}
 
-	protected IEnumerator UseAbility(bool friendly = false) {
+	protected IEnumerator UseAbility() {
+		yield return StartCoroutine(UseAbility(false));
+	}
+
+	protected IEnumerator UseAbility(bool friendly) {
 		Ability attack = Instantiate (ability) as Ability;
 		attack.friendly = friendly;
 		if (dir == Direction.Right) {

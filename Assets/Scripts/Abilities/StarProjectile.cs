@@ -3,11 +3,11 @@ using System.Collections;
 
 public class StarProjectile : MonoBehaviour {
 
-	public float speed = 10f;
+	public float speed = 30f;
 	public int direction = 1;
 
-	void Start () {
-		rigidbody2D.velocity = new Vector2 (speed * direction, 0);
+	void Start() {
+		rigidbody2D.velocity = new Vector2(speed * direction, 0);
 	}
 
 	public void OnTriggerEnter2D(Collider2D other) {

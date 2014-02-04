@@ -2,6 +2,8 @@
 using System.Collections;
 
 public abstract class EnemyBase : CharacterBase {
+	private float inhaleStrength = 20;
+
 	protected Kirby kirby;
 
 	private enum State {
@@ -44,13 +46,18 @@ public abstract class EnemyBase : CharacterBase {
 
 	protected abstract void goToDefaultState();
 	
+	protected IEnumerator BeingInhaledEnterState() {
+		rigidbody2D.velocity = Vector3.zero;
+		yield break;
+	}
+
 	protected void BeingInhaledUpdate() {
 		if (kirby.CurrentState.ToString() != Kirby.State.Inhaling.ToString()) {
 			goToDefaultState();
-			return;
+		} else {
+			int forceDir = kirby.transform.position.x > transform.position.x ? 1 : -1;
+			rigidbody2D.AddForce(Vector2.right * forceDir * inhaleStrength);
 		}
-		Vector2 force = kirby.transform.position - transform.position;
-		rigidbody2D.AddForce(force);
 	}
 
 	protected float distanceToKirby() {

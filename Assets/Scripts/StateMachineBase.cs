@@ -9,7 +9,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 
 	public String CurrentStateName;
 
-	protected AnimationManager am;
+	public AnimationManager am;
 
 	private Dictionary<string, Delegate> delegateCache = new Dictionary<string, Delegate>();
 	private Action DoUpdate = DoNothing;
@@ -97,7 +97,7 @@ public abstract class StateMachineBase : MonoBehaviour {
 		DoOnMouseDrag        = ConfigureDelegate<Action>("OnMouseDrag", DoNothing);
 		DoOnMouseOver        = ConfigureDelegate<Action>("OnMouseOver", DoNothing);
 		DoOnTriggerEnter     = ConfigureDelegate<Action<Collider>>("OnTriggerEnter", DoNothingCollider);
-		DoOnTriggerExit      = ConfigureDelegate<Action<Collider>>("OnTriggerExir", DoNothingCollider);
+		DoOnTriggerExit      = ConfigureDelegate<Action<Collider>>("OnTriggerExit", DoNothingCollider);
 		DoOnTriggerStay      = ConfigureDelegate<Action<Collider>>("OnTriggerEnter", DoNothingCollider);
 		DoOnTriggerEnter2D   = ConfigureDelegate<Action<Collider2D>>("OnTriggerEnter2D", DoNothingCollider2D);
 		DoOnTriggerExit2D    = ConfigureDelegate<Action<Collider2D>>("OnTriggerExit2D", DoNothingCollider2D);
