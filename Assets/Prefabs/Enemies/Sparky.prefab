@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparky
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -109,13 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8a5224d07194e95aec586de232f2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  rigidbody: {fileID: 0}
-  animation: {fileID: 0}
-  controller: {fileID: 0}
-  networkView: {fileID: 0}
-  collider: {fileID: 0}
-  gameObject: {fileID: 0}
   CurrentStateName: 
   dir: 0
   ability: {fileID: 11400002, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
