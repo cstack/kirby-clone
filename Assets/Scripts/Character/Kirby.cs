@@ -233,7 +233,7 @@ public class Kirby : CharacterBase {
 	
 	private IEnumerator UsingAbilityEnterState() {
 		StartCoroutine(UseAbility(true));
-		StartCoroutine(SlowDown());
+		StartCoroutine(SlowDown(0.5f));
 		yield return null;
 	}
 
@@ -358,8 +358,14 @@ public class Kirby : CharacterBase {
 	#region DUCKING
 
 	public void DuckingUpdate() {
-		if (Input.GetKeyUp(KeyCode.DownArrow)) {
+		if (!Input.GetKey(KeyCode.DownArrow)) {
 			CurrentState = State.IdleOrWalking;
+		}
+		if (Input.GetKey(KeyCode.UpArrow)) {
+			CurrentState = State.Flying;
+		}
+		if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.X)) {
+			CurrentState = State.Sliding;
 		}
 		Vector2 vel = rigidbody2D.velocity;
 		vel.x *= 0.9f;
@@ -369,6 +375,16 @@ public class Kirby : CharacterBase {
 	#endregion
 
 	#region SLIDING
+
+	public IEnumerator SlidingEnterState() {
+		int slideDir = dir == Direction.Right ? 1 : -1;
+		updateXVelocity(11 * slideDir);
+		yield return new WaitForSeconds(0.4f);
+		StartCoroutine(SlowDown(0.2f));
+		yield return new WaitForSeconds(0.2f);
+		CurrentState = State.Ducking;
+	}
+
 	#endregion
 	
 	#region Inhaling
@@ -376,7 +392,7 @@ public class Kirby : CharacterBase {
 	private IEnumerator InhalingEnterState() {
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"));
 		inhaleArea.SetActive(true);
-		StartCoroutine(SlowDown());
+		StartCoroutine(SlowDown(0.5f));
 		yield return null;
 	}
 

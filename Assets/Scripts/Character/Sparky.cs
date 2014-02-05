@@ -21,7 +21,7 @@ public class Sparky : EnemyBase {
 	#region Slide
 	
 	private IEnumerator SlideEnterState() {
-		StartCoroutine(SlowDown());
+		StartCoroutine(SlowDown(0.5f));
 		yield return new WaitForSeconds (0.5f);
 		TakeAction();
 	}
