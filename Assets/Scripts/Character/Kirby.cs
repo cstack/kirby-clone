@@ -39,6 +39,8 @@ public class Kirby : CharacterBase {
 	public bool isExhaling = false;
 	public bool inhaleStarted = false;
 
+	public GameObject airPrefab;
+
 	public int health = 6;
 	public static int livesRemaining = 4;
 
@@ -330,10 +332,19 @@ public class Kirby : CharacterBase {
 	}
 
 	private IEnumerator Exhale() {
+		GameObject air = Instantiate(airPrefab) as GameObject;
+		air.transform.parent = transform;
+		air.transform.position = transform.position;
+
+		int airDir = Direction.Right == dir ? 1 : -1;
+		air.rigidbody2D.velocity = Vector2.right * airDir * 35;
+		StartCoroutine(SlowDown(air.rigidbody2D, 0.4f));
 		am.animate((int) Flying.Exhaling);
 		yield return new WaitForSeconds(0.4f);
+
 		CurrentState = State.Jumping;
 		isExhaling = false;
+		Destroy(air);
 	}
 	
 	private void FlyingOnCollisionEnter2D(Collision2D other) {

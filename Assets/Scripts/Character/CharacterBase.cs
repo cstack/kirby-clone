@@ -52,9 +52,13 @@ public abstract class CharacterBase : StateMachineBase {
 	}
 
 	protected void updateXVelocity(float x) {
-		Vector2 vel = rigidbody2D.velocity;
+		updateXVelocity(rigidbody2D, x);
+	}
+
+	protected void updateXVelocity(Rigidbody2D obj, float x) {
+		Vector2 vel = obj.velocity;
 		vel.x = x;
-		rigidbody2D.velocity = vel;
+		obj.velocity = vel;
 	}
 	
 	protected void updateYVelocity(float y) {
@@ -74,14 +78,21 @@ public abstract class CharacterBase : StateMachineBase {
 	}
 
 	protected IEnumerator SlowDown(float seconds) {
+		yield return StartCoroutine(SlowDown(this.rigidbody2D, seconds));
+	}
+
+	protected IEnumerator SlowDown(Rigidbody2D obj, float seconds) {
 		int iterations = 5;
 		float delay = seconds/iterations;
 		for (int i = 0; i < iterations; i++) {
-			updateXVelocity(rigidbody2D.velocity.x * 0.5f);
+			if (obj == null) continue;
+
+			updateXVelocity(obj, obj.velocity.x * 0.5f);
 			yield return new WaitForSeconds(delay);
 		}
-		updateXVelocity(0f);
+
+		if (obj != null) {
+			updateXVelocity(obj, 0f);
+		}
 	}
-
-
 }
