@@ -47,7 +47,8 @@ public class Kirby : CharacterBase {
 
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
-	private EnemyBase inhaledEnemy;
+	public EnemyBase inhaledEnemyScript;
+	public bool inhaledEnemy;
 
 	bool invulnurable;
 
@@ -72,7 +73,10 @@ public class Kirby : CharacterBase {
 	}
 
 	private void killEnemy(GameObject other) {
-		inhaledEnemy = other.GetComponent<EnemyBase>();
+		inhaledEnemyScript = other.GetComponent<EnemyBase>();
+		if (inhaledEnemyScript.ability != null) {
+			inhaledEnemy = true;
+		}
 		Destroy(other);
 		am.animate((int) Inhaling.FinishInhaling);
 	}
@@ -177,7 +181,7 @@ public class Kirby : CharacterBase {
 	#region Swallowing
 	
 	private IEnumerator SwallowingEnterState() {
-		ability = inhaledEnemy.ability;
+		ability = inhaledEnemyScript.ability;
 		yield return new WaitForSeconds (0.5f);
 		CurrentState = State.IdleOrWalking;
 	}
@@ -238,7 +242,8 @@ public class Kirby : CharacterBase {
 		StarProjectile star = Instantiate(starProjectilePrefab) as StarProjectile;
 		star.gameObject.transform.position = transform.position + Vector3.up * 0.1f; // Don't touch the ground
 		star.direction = (dir == Direction.Right ? 1 : -1);
-		inhaledEnemy = null;
+		inhaledEnemyScript = null;
+		inhaledEnemy = false;
 		CurrentState = State.Jumping;
 		yield break;
 	}
@@ -472,7 +477,7 @@ public class Kirby : CharacterBase {
 		}
 		TakeDamage();
 		enemyOther = particle;
-		CurrentState = (inhaledEnemy == null) ? State.Knockback : State.InhaledKnockback;
+		CurrentState = (inhaledEnemy == false) ? State.Knockback : State.InhaledKnockback;
 		StartCoroutine("Invulnerability");
 	}
 
