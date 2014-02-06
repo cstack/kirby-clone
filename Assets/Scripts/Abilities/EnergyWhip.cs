@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnergyWhip : Ability {
 
@@ -7,6 +8,8 @@ public class EnergyWhip : Ability {
 	public float duration = 0.75f;
 
 	private float startTime;
+	private List<EnergyWhipParticle> particles = new List<EnergyWhipParticle>();
+	private bool flickerOn;
 
 	#region implemented abstract members of Ability
 
@@ -18,10 +21,27 @@ public class EnergyWhip : Ability {
 	#endregion
 
 	// Use this for initialization
-	void Start () {
+	IEnumerator Start () {
 		startTime = Time.time;
 		foreach (Transform child in transform) {
-			child.GetComponent<EnergyWhipParticle>().friendly = friendly;
+			EnergyWhipParticle particle = child.GetComponent<EnergyWhipParticle>();
+			if (particle) {
+				particle.friendly = friendly;
+				particles.Add(particle);
+			}
+		}
+
+		// Flicker
+		while (true) {
+			int alpha = flickerOn ? 255 : 0;
+			foreach (EnergyWhipParticle particle in particles) {
+				SpriteRenderer renderer = particle.gameObject.GetComponent<SpriteRenderer>();
+				Color color = renderer.color;
+				color.a = alpha;
+				renderer.color = color;
+			}
+			flickerOn = !flickerOn;
+			yield return new WaitForSeconds(0.02f);
 		}
 
 	}
