@@ -40,7 +40,10 @@ public class Kirby : CharacterBase {
 
 	public int health = 6;
 	public static int livesRemaining = 4;
-	
+
+	public StarProjectile starProjectilePrefab;
+	public GameObject slideSmokePrefab;
+
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
 	private EnemyBase inhaledEnemy;
@@ -48,7 +51,6 @@ public class Kirby : CharacterBase {
 	bool invulnurable;
 
 	private Animator animator;
-	public StarProjectile starProjectilePrefab;
 
 	// TODO: This is a bad way of doing this. See KnockbackEnterState
 	private GameObject enemyOther;
@@ -355,7 +357,7 @@ public class Kirby : CharacterBase {
 	
 	#endregion
 
-	#region DUCKING
+	#region Ducking
 
 	public void DuckingUpdate() {
 		if (!Input.GetKey(KeyCode.DownArrow)) {
@@ -374,15 +376,27 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
-	#region SLIDING
+	#region Sliding
 
 	public IEnumerator SlidingEnterState() {
+		GameObject smoke = Instantiate(slideSmokePrefab) as GameObject;
+		smoke.transform.parent = transform;
+
 		int slideDir = dir == Direction.Right ? 1 : -1;
+		Vector3 offset = 0.5f * Vector3.left * slideDir;
+
+		if (Direction.Left == dir) {
+			offset += Vector3.right * 0.5f;
+		}
+
+		smoke.transform.position = transform.position + offset;
+
 		updateXVelocity(11 * slideDir);
 		yield return new WaitForSeconds(0.4f);
 		StartCoroutine(SlowDown(0.2f));
 		yield return new WaitForSeconds(0.2f);
 		CurrentState = State.Ducking;
+		Destroy(smoke);
 	}
 
 	#endregion
