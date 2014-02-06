@@ -344,7 +344,10 @@ public class Kirby : CharacterBase {
 
 		CurrentState = State.Jumping;
 		isExhaling = false;
-		Destroy(air);
+
+		if (air != null) {
+			Destroy(air);
+		}
 	}
 	
 	private void FlyingOnCollisionEnter2D(Collision2D other) {
