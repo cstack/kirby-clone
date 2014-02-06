@@ -37,6 +37,7 @@ public class Kirby : CharacterBase {
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
 	public bool isExhaling = false;
+	public bool inhaleStarted = false;
 
 	public int health = 6;
 	public static int livesRemaining = 4;
@@ -428,17 +429,19 @@ public class Kirby : CharacterBase {
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"));
 		inhaleArea.SetActive(true);
 		StartCoroutine(SlowDown(0.5f));
-		yield return null;
+		yield return new WaitForSeconds(0.5f);
+		inhaleStarted = true;
 	}
 
 	private IEnumerator InhalingExitState() {
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"), false);
 		inhaleArea.SetActive(false);
-		yield return null;
+		inhaleStarted = false;
+		yield break;
 	}
 		
 	public void InhalingUpdate() {
-		if (!Input.GetKey(KeyCode.Z) && am.SubState != (int) Inhaling.FinishInhaling) {
+		if (inhaleStarted && !Input.GetKey(KeyCode.Z) && am.SubState != (int) Inhaling.FinishInhaling) {
 			CurrentState = State.IdleOrWalking;
 		}
 	}
