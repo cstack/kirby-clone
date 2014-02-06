@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 400000}
   - 95: {fileID: 9500000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400002}
   - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: Sprite
@@ -126,21 +125,12 @@ MonoBehaviour:
   CurrentStateName: 
   dir: 0
   ability: {fileID: 11400010, guid: 9c3c1bec211fc40f98516e4ea27f407b, type: 2}
+  distanceFromScreen: 5
   speed: 2
   range: 3
   timeBetweenAttacks: 3
   jumpSpeed: 8
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d713bf6926bef84586c06e51dc3c776, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  chanceOfCharge: .800000012
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

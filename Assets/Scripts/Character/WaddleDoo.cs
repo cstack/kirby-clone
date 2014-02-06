@@ -13,6 +13,8 @@ public class WaddleDoo : EnemyBase {
 	public float range = 3f;
 	public float timeBetweenAttacks = 3f;
 	public float jumpSpeed = 8f;
+
+	public float chanceOfCharge = 0.8f;
 	
 	private enum State {
 		WalkLeft, Charge, Attack, Jump
@@ -28,7 +30,7 @@ public class WaddleDoo : EnemyBase {
 	void WalkLeftUpdate() {
 		updateXVelocity (-1 * speed);
 		if (canAttack && distanceToKirby() <= range) {
-			if (Random.value < 0.5) {
+			if (Random.value < chanceOfCharge) {
 				CurrentState = State.Charge;
 			} else {
 				CurrentState = State.Jump;

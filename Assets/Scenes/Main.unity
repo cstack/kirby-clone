@@ -2472,6 +2472,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: .500000417
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
   m_RootGameObject: {fileID: 1666888470}
@@ -3262,7 +3266,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1666888471}
   - 61: {fileID: 1666888472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CollisionBox
   m_TagString: ground
   m_Icon: {fileID: 0}

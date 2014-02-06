@@ -3,6 +3,7 @@ using System.Collections;
 
 public abstract class EnemyBase : CharacterBase {
 	private float inhaleStrength = 20;
+	public float distanceFromScreen = 0f;
 
 	protected Kirby kirby;
 
@@ -32,7 +33,9 @@ public abstract class EnemyBase : CharacterBase {
 
 	new public void Update() {
 		base.Update();
-		if (DistanceFromScreen() >= 100f) {
+		if (DistanceFromScreen() >= distanceFromScreen) {
+			Destroy(gameObject);
+		} else if (transform.position.x <= 0) {
 			Destroy(gameObject);
 		}
 	}
