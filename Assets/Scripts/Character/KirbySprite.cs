@@ -14,7 +14,7 @@ public class KirbySprite : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other) {
-		if (other.gameObject.tag == "enemy") {
+		if (kirby.CurrentState.ToString() == Kirby.State.Inhaling.ToString() && other.gameObject.tag == "enemy") {
 			kirby.enemyCollisionCallback(other.gameObject);
 		}
 	}
