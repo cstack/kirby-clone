@@ -37,6 +37,7 @@ public class Kirby : CharacterBase {
 	public float knockbackSpeed = 8f;
 	public float knockbackTime = 0.2f;
 	public bool isExhaling = false;
+	public bool inhaleStarted = false;
 
 	public int health = 6;
 	public static int livesRemaining = 4;
@@ -46,7 +47,8 @@ public class Kirby : CharacterBase {
 
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
-	private EnemyBase inhaledEnemy;
+	public EnemyBase inhaledEnemyScript;
+	public bool inhaledEnemy;
 
 	bool invulnurable;
 
@@ -70,10 +72,17 @@ public class Kirby : CharacterBase {
 		inhaleArea.SetActive(false);
 	}
 
-	public void enemyCollisionCallback(GameObject other) {
-		inhaledEnemy = other.GetComponent<EnemyBase>();
+	private void killEnemy(GameObject other) {
+		inhaledEnemyScript = other.GetComponent<EnemyBase>();
+		if (inhaledEnemyScript.ability != null) {
+			inhaledEnemy = true;
+		}
 		Destroy(other);
 		am.animate((int) Inhaling.FinishInhaling);
+	}
+
+	public void enemyCollisionCallback(GameObject other) {
+		killEnemy(other);
 	}
 
 	private void OnCollideWithEnemy(GameObject enemy) {
@@ -89,11 +98,20 @@ public class Kirby : CharacterBase {
 		}
 	}
 
+	private IEnumerator ShowSmoke() {
+		int smokeDir = dir == Direction.Right ? -1 : 1;
+		GameObject smoke = CreateSmoke(smokeDir * 2);
+		yield return new WaitForSeconds(0.2f);
+		Destroy(smoke);
+	}
+
 	private void HandleHorizontalMovement(ref Vector2 vel) {
 		float h = Input.GetAxis("Horizontal");
 		if (h > 0 && dir != Direction.Right) {
+			StartCoroutine(ShowSmoke());
 			Flip();
 		} else if (h < 0 && dir != Direction.Left) {
+			StartCoroutine(ShowSmoke());
 			Flip();
 		}
 		vel.x = h * speed;
@@ -104,7 +122,7 @@ public class Kirby : CharacterBase {
 	private void IdleOrWalkingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
-		if (Input.GetKey (KeyCode.X)) {
+		if (Input.GetKeyDown(KeyCode.X)) {
 			vel.y = jumpSpeed;
 			CurrentState = State.Jumping;
 		} else if (Input.GetKey(KeyCode.Z) && ability == null) {
@@ -163,7 +181,7 @@ public class Kirby : CharacterBase {
 	#region Swallowing
 	
 	private IEnumerator SwallowingEnterState() {
-		ability = inhaledEnemy.ability;
+		ability = inhaledEnemyScript.ability;
 		yield return new WaitForSeconds (0.5f);
 		CurrentState = State.IdleOrWalking;
 	}
@@ -224,7 +242,8 @@ public class Kirby : CharacterBase {
 		StarProjectile star = Instantiate(starProjectilePrefab) as StarProjectile;
 		star.gameObject.transform.position = transform.position + Vector3.up * 0.1f; // Don't touch the ground
 		star.direction = (dir == Direction.Right ? 1 : -1);
-		inhaledEnemy = null;
+		inhaledEnemyScript = null;
+		inhaledEnemy = false;
 		CurrentState = State.Jumping;
 		yield break;
 	}
@@ -366,7 +385,7 @@ public class Kirby : CharacterBase {
 		if (Input.GetKey(KeyCode.UpArrow)) {
 			CurrentState = State.Flying;
 		}
-		if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.X)) {
+		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)) {
 			CurrentState = State.Sliding;
 		}
 		Vector2 vel = rigidbody2D.velocity;
@@ -378,18 +397,22 @@ public class Kirby : CharacterBase {
 
 	#region Sliding
 
-	public IEnumerator SlidingEnterState() {
+	GameObject CreateSmoke(int smokeDir) {
 		GameObject smoke = Instantiate(slideSmokePrefab) as GameObject;
 		smoke.transform.parent = transform;
 
-		int slideDir = dir == Direction.Right ? 1 : -1;
-		Vector3 offset = 0.5f * Vector3.left * slideDir;
-
+		Vector3 offset = 0.5f * Vector3.left * smokeDir;
 		if (Direction.Left == dir) {
 			offset += Vector3.right * 0.5f;
 		}
-
+		
 		smoke.transform.position = transform.position + offset;
+
+		return smoke;
+	}
+	public IEnumerator SlidingEnterState() {
+		int slideDir = dir == Direction.Right ? 1 : -1;
+		GameObject smoke = CreateSmoke(slideDir);
 
 		updateXVelocity(11 * slideDir);
 		yield return new WaitForSeconds(0.4f);
@@ -397,6 +420,10 @@ public class Kirby : CharacterBase {
 		yield return new WaitForSeconds(0.2f);
 		CurrentState = State.Ducking;
 		Destroy(smoke);
+	}
+
+	private void SlidingOnCollisionEnter2D(Collision2D other) {
+		killEnemy(other.gameObject);
 	}
 
 	#endregion
@@ -407,17 +434,19 @@ public class Kirby : CharacterBase {
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"));
 		inhaleArea.SetActive(true);
 		StartCoroutine(SlowDown(0.5f));
-		yield return null;
+		yield return new WaitForSeconds(0.5f);
+		inhaleStarted = true;
 	}
 
 	private IEnumerator InhalingExitState() {
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"), false);
 		inhaleArea.SetActive(false);
-		yield return null;
+		inhaleStarted = false;
+		yield break;
 	}
 		
 	public void InhalingUpdate() {
-		if (!Input.GetKey(KeyCode.Z) && am.SubState != (int) Inhaling.FinishInhaling) {
+		if (inhaleStarted && !Input.GetKey(KeyCode.Z) && am.SubState != (int) Inhaling.FinishInhaling) {
 			CurrentState = State.IdleOrWalking;
 		}
 	}
@@ -448,7 +477,7 @@ public class Kirby : CharacterBase {
 		}
 		TakeDamage();
 		enemyOther = particle;
-		CurrentState = (inhaledEnemy == null) ? State.Knockback : State.InhaledKnockback;
+		CurrentState = (inhaledEnemy == false) ? State.Knockback : State.InhaledKnockback;
 		StartCoroutine("Invulnerability");
 	}
 
