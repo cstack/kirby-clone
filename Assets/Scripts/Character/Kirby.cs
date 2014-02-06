@@ -70,10 +70,14 @@ public class Kirby : CharacterBase {
 		inhaleArea.SetActive(false);
 	}
 
-	public void enemyCollisionCallback(GameObject other) {
+	private void killEnemy(GameObject other) {
 		inhaledEnemy = other.GetComponent<EnemyBase>();
 		Destroy(other);
 		am.animate((int) Inhaling.FinishInhaling);
+	}
+
+	public void enemyCollisionCallback(GameObject other) {
+		killEnemy(other);
 	}
 
 	private void OnCollideWithEnemy(GameObject enemy) {
@@ -410,6 +414,10 @@ public class Kirby : CharacterBase {
 		yield return new WaitForSeconds(0.2f);
 		CurrentState = State.Ducking;
 		Destroy(smoke);
+	}
+
+	private void SlidingOnCollisionEnter2D(Collision2D other) {
+		killEnemy(other.gameObject);
 	}
 
 	#endregion
