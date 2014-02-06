@@ -89,11 +89,20 @@ public class Kirby : CharacterBase {
 		}
 	}
 
+	private IEnumerator ShowSmoke() {
+		int smokeDir = dir == Direction.Right ? -1 : 1;
+		GameObject smoke = CreateSmoke(smokeDir * 2);
+		yield return new WaitForSeconds(0.2f);
+		Destroy(smoke);
+	}
+
 	private void HandleHorizontalMovement(ref Vector2 vel) {
 		float h = Input.GetAxis("Horizontal");
 		if (h > 0 && dir != Direction.Right) {
+			StartCoroutine(ShowSmoke());
 			Flip();
 		} else if (h < 0 && dir != Direction.Left) {
+			StartCoroutine(ShowSmoke());
 			Flip();
 		}
 		vel.x = h * speed;
@@ -378,18 +387,22 @@ public class Kirby : CharacterBase {
 
 	#region Sliding
 
-	public IEnumerator SlidingEnterState() {
+	GameObject CreateSmoke(int smokeDir) {
 		GameObject smoke = Instantiate(slideSmokePrefab) as GameObject;
 		smoke.transform.parent = transform;
 
-		int slideDir = dir == Direction.Right ? 1 : -1;
-		Vector3 offset = 0.5f * Vector3.left * slideDir;
-
+		Vector3 offset = 0.5f * Vector3.left * smokeDir;
 		if (Direction.Left == dir) {
 			offset += Vector3.right * 0.5f;
 		}
-
+		
 		smoke.transform.position = transform.position + offset;
+
+		return smoke;
+	}
+	public IEnumerator SlidingEnterState() {
+		int slideDir = dir == Direction.Right ? 1 : -1;
+		GameObject smoke = CreateSmoke(slideDir);
 
 		updateXVelocity(11 * slideDir);
 		yield return new WaitForSeconds(0.4f);
