@@ -113,7 +113,7 @@ public class Kirby : CharacterBase {
 	private void IdleOrWalkingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
-		if (Input.GetKey (KeyCode.X)) {
+		if (Input.GetKeyDown(KeyCode.X)) {
 			vel.y = jumpSpeed;
 			CurrentState = State.Jumping;
 		} else if (Input.GetKey(KeyCode.Z) && ability == null) {
@@ -375,7 +375,7 @@ public class Kirby : CharacterBase {
 		if (Input.GetKey(KeyCode.UpArrow)) {
 			CurrentState = State.Flying;
 		}
-		if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.X)) {
+		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)) {
 			CurrentState = State.Sliding;
 		}
 		Vector2 vel = rigidbody2D.velocity;
