@@ -6,8 +6,10 @@ public class AbilityStar : StateMachineBase {
 	public float verticalSpeed = 8f;
 	public bool goRight;
 	public float lifespan = 5f;
+	public Ability ability;
 	
 	private float startTime;
+	private Kirby kirby;
 	
 	private enum State {
 		Bouncing, BeingInhaled
@@ -17,6 +19,8 @@ public class AbilityStar : StateMachineBase {
 	void Start () {
 		rigidbody2D.velocity = new Vector2 (horizontalSpeed * (goRight ? 1 : -1), verticalSpeed);
 		startTime = Time.time;
+		GameObject go = GameObject.Find ("Kirby");
+		kirby = (Kirby) go.GetComponent(typeof(Kirby));
 		CurrentState = State.Bouncing;
 	}
 	
@@ -46,9 +50,24 @@ public class AbilityStar : StateMachineBase {
 	}
 	
 	public void BouncingOnTriggerEnter2D(Collider2D other) {
-		base.OnTriggerEnter2D(other);
 		if (other.gameObject.tag == "inhale") {
 			CurrentState = State.BeingInhaled;
+		}
+	}
+
+	public IEnumerator BeingInhaledOnEnterState() {
+		rigidbody2D.velocity = new Vector2(0, 0);
+		yield return null;
+	}
+
+	public void BeingInhaledUpdate() {
+		rigidbody2D.velocity = (kirby.transform.position - transform.position) *
+			(8 - Vector3.Distance(kirby.transform.position, transform.position));
+	}
+
+	public void BeingInhaledOnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.tag == "kirby") {
+			Destroy(gameObject);
 		}
 	}
 }

@@ -44,10 +44,11 @@ public class Kirby : CharacterBase {
 
 	public StarProjectile starProjectilePrefab;
 	public GameObject slideSmokePrefab;
+	public AbilityStar abilityStarPrefab;
 
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
-	public EnemyBase inhaledEnemyScript;
+	public Ability inhaledAbility;
 	public bool inhaledEnemy;
 
 	bool invulnurable;
@@ -72,24 +73,23 @@ public class Kirby : CharacterBase {
 		inhaleArea.SetActive(false);
 	}
 
-	private void killEnemy(GameObject other) {
-		inhaledEnemyScript = other.GetComponent<EnemyBase>();
-		if (inhaledEnemyScript.ability != null) {
-			inhaledEnemy = true;
-		}
-		Destroy(other);
-		am.animate((int) Inhaling.FinishInhaling);
+	public void enemyCollisionCallback(GameObject enemy) {
+		InhaleAbility(enemy.GetComponent<EnemyBase>().ability);
+		Destroy(enemy);
 	}
 
-	public void enemyCollisionCallback(GameObject other) {
-		killEnemy(other);
+	public void InhaleAbility(Ability ability) {
+		inhaledAbility = ability;
+		inhaledEnemy = true;
+		am.animate((int) Inhaling.FinishInhaling);
 	}
 
 	private void OnCollideWithEnemy(GameObject enemy) {
 		enemyOther = enemy;
 		Destroy(enemy);
 		TakeDamage();
-		CurrentState = (inhaledEnemy == null) ? State.Knockback : State.InhaledKnockback;
+		LoseAbility();
+		CurrentState = (inhaledEnemy == false) ? State.Knockback : State.InhaledKnockback;
 	}
 
 	private void CommonOnCollisionEnter2D(Collision2D other) {
@@ -181,7 +181,9 @@ public class Kirby : CharacterBase {
 	#region Swallowing
 	
 	private IEnumerator SwallowingEnterState() {
-		ability = inhaledEnemyScript.ability;
+		ability = inhaledAbility;
+		inhaledAbility = null;
+		inhaledEnemy = false;
 		yield return new WaitForSeconds (0.5f);
 		CurrentState = State.IdleOrWalking;
 	}
@@ -242,7 +244,7 @@ public class Kirby : CharacterBase {
 		StarProjectile star = Instantiate(starProjectilePrefab) as StarProjectile;
 		star.gameObject.transform.position = transform.position + Vector3.up * 0.1f; // Don't touch the ground
 		star.direction = (dir == Direction.Right ? 1 : -1);
-		inhaledEnemyScript = null;
+		inhaledAbility = null;
 		inhaledEnemy = false;
 		CurrentState = State.Jumping;
 		yield break;
@@ -352,6 +354,18 @@ public class Kirby : CharacterBase {
 		}
 	}
 
+	private void LoseAbility() {
+		if (ability != null) {
+			AbilityStar star = Instantiate(abilityStarPrefab) as AbilityStar;
+			star.ability = ability;
+			ability = null;
+			star.transform.position = transform.position;
+			if (enemyOther.transform.position.x < transform.position.x) {
+				star.goRight = true;
+			}
+		}
+	}
+
 	#region KNOCKBACK
 
 	private IEnumerator KnockbackEnterState() {
@@ -423,7 +437,9 @@ public class Kirby : CharacterBase {
 	}
 
 	private void SlidingOnCollisionEnter2D(Collision2D other) {
-		killEnemy(other.gameObject);
+		if (other.gameObject.tag == "enemy") {
+			Destroy(other.gameObject);
+		}
 	}
 
 	#endregion
@@ -475,9 +491,10 @@ public class Kirby : CharacterBase {
 		if (invulnurable) {
 			return;
 		}
-		TakeDamage();
 		enemyOther = particle;
 		CurrentState = (inhaledEnemy == false) ? State.Knockback : State.InhaledKnockback;
+		TakeDamage();
+		LoseAbility();
 		StartCoroutine("Invulnerability");
 	}
 
