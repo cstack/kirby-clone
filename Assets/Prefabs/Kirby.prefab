@@ -143,10 +143,10 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_Poly:
     m_Paths:
-    - - {x: -1.00848961, y: .585918427}
-      - {x: 2.08296442, y: 1.20815086}
-      - {x: 2.03222895, y: -.814908981}
-      - {x: -1.1421206, y: -.147821426}
+    - - {x: -1.00848961, y: 1.24312019}
+      - {x: 2.05667639, y: 1.78648758}
+      - {x: 2.01908541, y: -1.23551559}
+      - {x: -1.03696847, y: -.765590668}
       - {x: -1.27831483, y: .215515137}
 --- !u!61 &6100000
 BoxCollider2D:
@@ -222,6 +222,7 @@ MonoBehaviour:
     type: 2}
   slideSmokePrefab: {fileID: 100000, guid: f39009be0b941dd499f298aa97cc2c69, type: 2}
   abilityStarPrefab: {fileID: 11400000, guid: 4e8ffb512ed2e418ea72ee370b68d1be, type: 2}
+  inhaledAbility: {fileID: 0}
   inhaledEnemy: 0
 --- !u!114 &11400002
 MonoBehaviour:
