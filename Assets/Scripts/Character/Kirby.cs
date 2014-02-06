@@ -109,11 +109,10 @@ public class Kirby : CharacterBase {
 
 	private void HandleHorizontalMovement(ref Vector2 vel) {
 		float h = Input.GetAxis("Horizontal");
-		if (h > 0 && dir != Direction.Right) {
-			StartCoroutine(ShowSmoke());
-			Flip();
-		} else if (h < 0 && dir != Direction.Left) {
-			StartCoroutine(ShowSmoke());
+		if ((h > 0 && dir != Direction.Right) || (h < 0 && dir != Direction.Left)) {
+			if (CurrentState.ToString() == State.IdleOrWalking.ToString()) {
+				StartCoroutine(ShowSmoke());
+			}
 			Flip();
 		}
 		vel.x = h * speed;
