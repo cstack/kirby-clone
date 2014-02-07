@@ -18,6 +18,10 @@ public class Sparky : EnemyBase {
 		Slide, Jump, Attack
 	}
 
+	protected override void setPoints() {
+		points = 300;
+	}
+
 	#region Slide
 	
 	private IEnumerator SlideEnterState() {

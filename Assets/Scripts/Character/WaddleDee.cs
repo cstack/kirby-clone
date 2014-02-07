@@ -12,7 +12,11 @@ public class WaddleDee : EnemyBase {
 		base.Start();
 		dir = Direction.Left;
 	}
-	
+
+	protected override void setPoints() {
+		points = 200;
+	}
+
 	void WalkUpdate () {
 		float vel = speed * (dir == Direction.Left ? -1 : 1);
 		updateXVelocity (vel);

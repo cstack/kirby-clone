@@ -19,7 +19,11 @@ public class WaddleDoo : EnemyBase {
 	private enum State {
 		WalkLeft, Charge, Attack, Jump
 	}
-	
+
+	protected override void setPoints() {
+		points = 300;
+	}
+
 	bool canAttack = true;
 
 	IEnumerator WalkLeftEnterState() {

@@ -7,17 +7,22 @@ public abstract class EnemyBase : CharacterBase {
 
 	protected Kirby kirby;
 
+	public int points;
+
 	private enum State {
 		BeingInhaled
 	}
 
 	new public void Start() {
 		base.Start();
+		setPoints();
 		GameObject go = GameObject.Find ("Kirby");
 		kirby = (Kirby) go.GetComponent(typeof(Kirby));
 		goToDefaultState();
 		dir = Direction.Left;
 	}
+
+	protected abstract void setPoints();
 
 	private float DistanceFromScreen() {
 		Vector3 leftEdge = Camera.main.WorldToScreenPoint(transform.position);

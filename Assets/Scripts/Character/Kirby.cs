@@ -41,6 +41,8 @@ public class Kirby : CharacterBase {
 
 	public GameObject airPrefab;
 
+	public static int score = 0;
+
 	public int health = 6;
 	public static int livesRemaining = 4;
 
@@ -75,9 +77,10 @@ public class Kirby : CharacterBase {
 		inhaleArea.SetActive(false);
 	}
 
+	// Called on collide from inhaling
 	public void enemyCollisionCallback(GameObject enemy) {
 		InhaleAbility(enemy.GetComponent<EnemyBase>().ability);
-		Destroy(enemy);
+		killEnemy(enemy, false);
 	}
 
 	public void InhaleAbility(Ability ability) {
@@ -87,8 +90,7 @@ public class Kirby : CharacterBase {
 	}
 
 	private void OnCollideWithEnemy(GameObject enemy) {
-		enemyOther = enemy;
-		Destroy(enemy);
+		killEnemy(enemy, true);
 		TakeDamage();
 		LoseAbility();
 		CurrentState = (inhaledEnemy == false) ? State.Knockback : State.InhaledKnockback;
@@ -449,9 +451,20 @@ public class Kirby : CharacterBase {
 		Destroy(smoke);
 	}
 
+	private void killEnemy(GameObject other, bool doublePoints) {
+		EnemyBase enemy = other.gameObject.GetComponent<EnemyBase>();
+		int mult;
+		if (doublePoints) {
+			mult = 2;
+		} else {
+			mult = 1;
+		}
+		score += enemy.points * mult;
+		Destroy(enemy.gameObject);
+	}
 	private void SlidingOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "enemy") {
-			Destroy(other.gameObject);
+			killEnemy(other.gameObject, true);
 		}
 	}
 

@@ -1051,6 +1051,7 @@ MonoBehaviour:
   isExhaling: 0
   inhaleStarted: 0
   airPrefab: {fileID: 100000, guid: 96c3ee42ab0906543b7300c288d63b70, type: 2}
+  score: 0
   health: 6
   starProjectilePrefab: {fileID: 11400000, guid: 8b18e837de9a94f98bb66fc1141a061f,
     type: 2}
