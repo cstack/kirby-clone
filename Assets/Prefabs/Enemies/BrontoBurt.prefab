@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.99188805, y: 29.4893608, z: -.00999999978}
+  m_LocalPosition: {x: 15.2138987, y: 28.4935856, z: -.00999999978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -113,9 +113,9 @@ MonoBehaviour:
   dir: 0
   ability: {fileID: 0}
   distanceFromScreen: 0
-  period: 1
-  amplitude: 3
-  xVelocity: 2
+  period: .699999988
+  amplitude: 6
+  xVelocity: 3
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

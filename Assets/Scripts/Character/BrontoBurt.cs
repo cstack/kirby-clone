@@ -5,7 +5,7 @@ public class BrontoBurt : EnemyBase {
 
 	public float period = 1f;
 	public float amplitude = 3f;
-	public float xVelocity = 2f;
+	public float speed = 2f;
 
 	private float startTime;
 	private bool flyAway;
@@ -18,10 +18,12 @@ public class BrontoBurt : EnemyBase {
 
 	protected override void goToDefaultState()
 	{
-		if (dir == Direction.Left) {
-			xVelocity *= -1;
+		if (kirby.transform.position.x - transform.position.x > 0) {
+			Flip();
+			updateXVelocity(speed);
+		} else {
+			updateXVelocity(speed * -1);
 		}
-		updateXVelocity(xVelocity);
 		CurrentState = State.Begin;
 	}
 
