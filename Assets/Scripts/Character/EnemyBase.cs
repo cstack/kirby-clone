@@ -33,7 +33,7 @@ public abstract class EnemyBase : CharacterBase {
 
 	new public void Update() {
 		base.Update();
-		if (DistanceFromScreen() >= distanceFromScreen) {
+		if (DistanceFromScreen() > distanceFromScreen) {
 			Destroy(gameObject);
 		} else if (transform.position.x <= 0) {
 			Destroy(gameObject);
