@@ -47,6 +47,19 @@ public class HotHead : EnemyBase {
 	
 	#endregion
 
+	#region Prepare
+	
+	public IEnumerator FlamethrowerEnterState() {
+		StartCoroutine(UseAbility());
+		yield return null;
+	}
+
+	protected override void OnAbilityFinished() {
+		CurrentState = State.Walk;
+	}
+	
+	#endregion
+
 	#region implemented abstract members of EnemyBase
 
 	protected override void goToDefaultState()
