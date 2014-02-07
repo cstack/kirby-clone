@@ -15,7 +15,7 @@ public abstract class EnemyBase : CharacterBase {
 
 	public static void killEnemy(GameObject obj, bool doublePoints) {
 		EnemyBase enemy = obj.GetComponent<EnemyBase>();
-		enemy.kill(true);
+		enemy.kill(doublePoints);
 	}
 	
 	new public void Start() {
@@ -38,6 +38,7 @@ public abstract class EnemyBase : CharacterBase {
 		}
 		Kirby.score += points * mult;
 		Destroy(gameObject);
+		GameObject.Find("Score").GetComponent<Score>().updateScore(Kirby.score);
 	}
 
 	private float DistanceFromScreen() {
