@@ -7,6 +7,11 @@ public class BrontoBurt : EnemyBase {
 	public float amplitude = 3f;
 	public float speed = 2f;
 
+	public enum Strategy {
+		SineWave, FlyAway
+	}
+	public Strategy strategy = Strategy.SineWave;
+
 	private float startTime;
 	private bool flyAway;
 
@@ -31,7 +36,14 @@ public class BrontoBurt : EnemyBase {
 
 	public IEnumerator BeginEnterState() {
 		startTime = Time.time;
-		StartCoroutine(SineWaveStrategy());
+		switch (strategy) {
+		case (Strategy.SineWave):
+			StartCoroutine(SineWaveStrategy());
+			break;
+		case (Strategy.FlyAway):
+			CurrentState = State.SlowFlap;
+			break;
+		}
 		yield return null;
 	}
 
@@ -69,6 +81,15 @@ public class BrontoBurt : EnemyBase {
 		float t = Time.time - startTime;
 		updateYVelocity(amplitude * Mathf.Sin(t * Mathf.PI / period) * -1);
 	}
+
+	#endregion
+
+	#region SlowFlap
+	
+	public void SlowFlapUpdate () {
+		updateYVelocity(rigidbody2D.velocity.y + Time.deltaTime * 2);
+	}
+
 	#endregion
 	
 }
