@@ -4,9 +4,9 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour {
 	public Transform poi;
 	public float u = 0.4f;
-	public float distanceFromEdge = 6.6f;
+	public float distanceFromEdge = 7.95f;
 	public float levelWidth = 63.7f;
-	public float y = 27.6f;
+	public float y = 25.6f;
 	public float z = -9f;
 
 	// Use this for initialization

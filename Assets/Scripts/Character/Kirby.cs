@@ -54,6 +54,7 @@ public class Kirby : CharacterBase {
 	private GameObject inhaleArea;
 	public Ability inhaledAbility;
 	public bool inhaledEnemy;
+	public bool onDoor;
 
 	bool invulnurable;
 
@@ -133,7 +134,7 @@ public class Kirby : CharacterBase {
 			CurrentState = State.Inhaling;
 		} else if (Input.GetKeyDown(KeyCode.Z) && ability != null) {
 			CurrentState = State.UsingAbility;
-		} else if (Input.GetKey(KeyCode.UpArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.UpArrow) && !onDoor) {
 			vel.y = flySpeed;
 			CurrentState = State.Flying;
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
@@ -199,7 +200,7 @@ public class Kirby : CharacterBase {
 	private void JumpingUpdate() {
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
-		if (Input.GetKey(KeyCode.UpArrow)) {
+		if (Input.GetKeyDown(KeyCode.UpArrow) && !onDoor) {
 			CurrentState = State.Flying;
 		} else {
 			if (Input.GetKeyUp(KeyCode.X)) {
@@ -496,7 +497,7 @@ public class Kirby : CharacterBase {
 		if (livesRemaining < 0) {
 			Application.Quit(); // TODO
 		} else {
-			Application.LoadLevel("Main");
+			Application.LoadLevel(Application.loadedLevelName);
 		}
 		yield break;
 	}

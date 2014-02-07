@@ -22,12 +22,10 @@ public class SparkAbility : Ability {
 
 	private IEnumerator ShootSparks() {
 		float timestep = duration / shocksPerSecond;
-		float start = Time.time;
-		while (Time.time - start < duration) {
+		while (true) {
 			ShootShock(Random.value * 360);
 			yield return new WaitForSeconds(timestep);
 		}
-		Destroy(gameObject);
 	}
 
 	private void ShootShock(float angle) {
