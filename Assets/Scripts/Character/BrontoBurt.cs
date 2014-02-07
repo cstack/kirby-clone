@@ -20,7 +20,12 @@ public class BrontoBurt : EnemyBase {
 	}
 
 	#region implemented abstract members of EnemyBase
-
+	
+	protected override void setPoints()
+	{
+		points = 300;
+	}
+	
 	protected override void goToDefaultState()
 	{
 		if (kirby.transform.position.x - transform.position.x > 0) {
