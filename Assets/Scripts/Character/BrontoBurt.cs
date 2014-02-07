@@ -30,14 +30,17 @@ public class BrontoBurt : EnemyBase {
 	{
 		if (kirby.transform.position.x - transform.position.x > 0) {
 			Flip();
-			updateXVelocity(speed);
 		} else {
-			updateXVelocity(speed * -1);
+			speed *= -1;
 		}
 		CurrentState = State.Begin;
 	}
 
 	#endregion
+
+	public void CommonUpdate() {
+		updateXVelocity(speed);
+	}
 
 	public IEnumerator BeginEnterState() {
 		startTime = Time.time;
@@ -70,6 +73,7 @@ public class BrontoBurt : EnemyBase {
 	#region FastFlap
 	
 	public void FastFlapUpdate () {
+		CommonUpdate();
 		if (flyAway) {
 			updateYVelocity(rigidbody2D.velocity.y + Time.deltaTime * 2);
 		} else {
@@ -83,6 +87,7 @@ public class BrontoBurt : EnemyBase {
 	#region FastFlap
 	
 	public void FallUpdate () {
+		CommonUpdate();
 		float t = Time.time - startTime;
 		updateYVelocity(amplitude * Mathf.Sin(t * Mathf.PI / period) * -1);
 	}
@@ -92,6 +97,7 @@ public class BrontoBurt : EnemyBase {
 	#region SlowFlap
 	
 	public void SlowFlapUpdate () {
+		CommonUpdate();
 		updateYVelocity(rigidbody2D.velocity.y + Time.deltaTime * 2);
 	}
 
