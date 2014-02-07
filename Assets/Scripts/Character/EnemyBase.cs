@@ -13,6 +13,11 @@ public abstract class EnemyBase : CharacterBase {
 		BeingInhaled
 	}
 
+	public static void killEnemy(GameObject obj, bool doublePoints) {
+		EnemyBase enemy = obj.GetComponent<EnemyBase>();
+		enemy.kill(true);
+	}
+	
 	new public void Start() {
 		base.Start();
 		setPoints();
@@ -23,6 +28,17 @@ public abstract class EnemyBase : CharacterBase {
 	}
 
 	protected abstract void setPoints();
+
+	private void kill(bool doublePoints) {
+		int mult;
+		if (doublePoints) {
+			mult = 2;
+		} else {
+			mult = 1;
+		}
+		Kirby.score += points * mult;
+		Destroy(gameObject);
+	}
 
 	private float DistanceFromScreen() {
 		Vector3 leftEdge = Camera.main.WorldToScreenPoint(transform.position);

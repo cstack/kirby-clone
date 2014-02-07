@@ -14,7 +14,7 @@ public class StarProjectile : MonoBehaviour {
 		if (other.tag == "enemy" || other.tag == "ground") {
 			Destroy(gameObject);
 			if (other.tag == "enemy") {
-				Destroy(other.gameObject);
+				EnemyBase.killEnemy(other.gameObject, true);
 			}
 		}
 	}
