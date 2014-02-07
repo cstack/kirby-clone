@@ -2,7 +2,7 @@
 using System.Collections;
 
 public abstract class EnemyBase : CharacterBase {
-	private float inhaleStrength = 20;
+	private float inhaleStrength = 15;
 	public float distanceFromScreen = 0f;
 
 	protected Kirby kirby;
@@ -63,8 +63,8 @@ public abstract class EnemyBase : CharacterBase {
 		if (kirby.CurrentState.ToString() != Kirby.State.Inhaling.ToString()) {
 			goToDefaultState();
 		} else {
-			int forceDir = kirby.transform.position.x > transform.position.x ? 1 : -1;
-			rigidbody2D.AddForce(Vector2.right * forceDir * inhaleStrength);
+			Vector2 vector = kirby.transform.position - transform.position;
+			rigidbody2D.velocity = vector / vector.sqrMagnitude * inhaleStrength;
 		}
 	}
 
