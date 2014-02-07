@@ -90,6 +90,7 @@ public class Kirby : CharacterBase {
 	}
 
 	private void OnCollideWithEnemy(GameObject enemy) {
+		enemyOther = enemy;
 		killEnemy(enemy, true);
 		TakeDamage();
 		LoseAbility();
