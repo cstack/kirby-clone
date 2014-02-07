@@ -116,7 +116,7 @@ MonoBehaviour:
   points: 0
   speed: 3
   range: 3
-  timeBetweenAttacks: 3
+  timeBetweenAttacks: 2.5
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
