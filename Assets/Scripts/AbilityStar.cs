@@ -7,7 +7,8 @@ public class AbilityStar : StateMachineBase {
 	public bool goRight;
 	public float lifespan = 5f;
 	public Ability ability;
-	
+	public Sprite abilityCard;
+
 	private float startTime;
 	private Kirby kirby;
 	

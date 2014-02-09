@@ -18,7 +18,8 @@ public class KirbySprite : MonoBehaviour {
 			if (other.gameObject.tag == "enemy") {
 				kirby.enemyCollisionCallback(other.gameObject);
 			} else if (other.gameObject.tag == "abilitystar") {
-				kirby.InhaleAbility(other.gameObject.GetComponent<AbilityStar>().ability);
+				AbilityStar star = other.gameObject.GetComponent<AbilityStar>();
+				kirby.InhaleAbility(star.ability, star.abilityCard);
 			}
 		}
 	}

@@ -1041,6 +1041,7 @@ MonoBehaviour:
   knockbackTime: .200000003
   isExhaling: 0
   inhaleStarted: 0
+  defaultAbilityCard: {fileID: 21300020, guid: c5b03f65b738aaf4b92ed1c5e5a160d1, type: 3}
   airPrefab: {fileID: 100000, guid: 96c3ee42ab0906543b7300c288d63b70, type: 2}
   health: 6
   starProjectilePrefab: {fileID: 11400000, guid: 8b18e837de9a94f98bb66fc1141a061f,
@@ -1048,6 +1049,7 @@ MonoBehaviour:
   slideSmokePrefab: {fileID: 100000, guid: f39009be0b941dd499f298aa97cc2c69, type: 2}
   abilityStarPrefab: {fileID: 11400000, guid: 4e8ffb512ed2e418ea72ee370b68d1be, type: 2}
   inhaledAbility: {fileID: 0}
+  abilityCard: {fileID: 0}
   inhaledEnemy: 0
   onDoor: 0
 --- !u!61 &325179730

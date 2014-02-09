@@ -39,6 +39,8 @@ public class Kirby : CharacterBase {
 	public bool isExhaling = false;
 	public bool inhaleStarted = false;
 
+	public Sprite defaultAbilityCard;
+
 	public GameObject airPrefab;
 
 	public static int score = 0;
@@ -53,6 +55,7 @@ public class Kirby : CharacterBase {
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
 	public Ability inhaledAbility;
+	public Sprite abilityCard;
 	public bool inhaledEnemy;
 	public bool onDoor;
 
@@ -80,11 +83,13 @@ public class Kirby : CharacterBase {
 
 	// Called on collide from inhaling
 	public void enemyCollisionCallback(GameObject enemy) {
-		InhaleAbility(enemy.GetComponent<EnemyBase>().ability);
+		EnemyBase enemyBase = enemy.GetComponent<EnemyBase>();
+		InhaleAbility(enemyBase.ability, enemyBase.abilityCard);
 		EnemyBase.killEnemy(enemy, false);
 	}
 
-	public void InhaleAbility(Ability ability) {
+	public void InhaleAbility(Ability ability, Sprite abilityCard) {
+		this.abilityCard = abilityCard;
 		inhaledAbility = ability;
 		inhaledEnemy = true;
 		am.animate((int) Inhaling.FinishInhaling);
@@ -189,6 +194,9 @@ public class Kirby : CharacterBase {
 		ability = inhaledAbility;
 		inhaledAbility = null;
 		inhaledEnemy = false;
+		if (abilityCard != null) {
+			GameObject.Find("Ability").GetComponent<SpriteRenderer>().sprite = abilityCard;
+		}
 		yield return new WaitForSeconds (0.5f);
 		CurrentState = State.IdleOrWalking;
 	}
@@ -375,11 +383,15 @@ public class Kirby : CharacterBase {
 		if (ability != null) {
 			AbilityStar star = Instantiate(abilityStarPrefab) as AbilityStar;
 			star.ability = ability;
+			star.abilityCard = abilityCard;
 			ability = null;
 			star.transform.position = transform.position;
 			if (enemyOther.transform.position.x < transform.position.x) {
 				star.goRight = true;
 			}
+
+			abilityCard = null;
+			GameObject.Find("Ability").GetComponent<SpriteRenderer>().sprite = defaultAbilityCard;
 		}
 	}
 

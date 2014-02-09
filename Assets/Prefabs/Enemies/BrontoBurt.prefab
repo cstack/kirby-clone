@@ -113,9 +113,12 @@ MonoBehaviour:
   dir: 0
   ability: {fileID: 0}
   distanceFromScreen: 0
+  AbilityCard: {fileID: 21300020, guid: c5b03f65b738aaf4b92ed1c5e5a160d1, type: 3}
+  points: 0
   period: .699999988
   amplitude: 6
-  xVelocity: 3
+  speed: 2
+  strategy: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

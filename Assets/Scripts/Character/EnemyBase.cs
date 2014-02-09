@@ -7,6 +7,8 @@ public abstract class EnemyBase : CharacterBase {
 
 	protected Kirby kirby;
 
+	public Sprite abilityCard;
+
 	public int points;
 
 	private enum State {
@@ -21,7 +23,7 @@ public abstract class EnemyBase : CharacterBase {
 	new public void Start() {
 		base.Start();
 		setPoints();
-		GameObject go = GameObject.Find ("Kirby");
+		GameObject go = GameObject.Find("Kirby");
 		kirby = (Kirby) go.GetComponent(typeof(Kirby));
 		goToDefaultState();
 		dir = Direction.Left;
