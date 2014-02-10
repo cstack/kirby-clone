@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 58: {fileID: 5800000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
   m_Layer: 0
@@ -45,17 +44,6 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Radius: .25
-  m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,7 +55,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc37f0c74eeb42c1aef71f617886dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeSpan: .200000003
+  friendly: 0
+  origin: {x: 0, y: 0, z: 0}
+  radius: 3
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

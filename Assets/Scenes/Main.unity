@@ -188,11 +188,11 @@ Transform:
   m_PrefabInternal: {fileID: 1398815042}
   m_GameObject: {fileID: 49792003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.6814804, y: 26.003252, z: -.313964844}
+  m_LocalPosition: {x: 42.370575, y: -2.12521172, z: -.313964844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2023893176}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1729248773}
 --- !u!114 &49792005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3323,15 +3323,15 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1729248773}
     m_Modifications:
     - target: {fileID: 400000, guid: 1007ffdaf6aac4b4bbbca992e8e6e084, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 58.6814804
+      value: 42.370575
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1007ffdaf6aac4b4bbbca992e8e6e084, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 26.003252
+      value: -2.12521172
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1007ffdaf6aac4b4bbbca992e8e6e084, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4244,6 +4244,7 @@ Transform:
   - {fileID: 851740245}
   - {fileID: 1222828784}
   - {fileID: 2041143301}
+  - {fileID: 49792004}
   m_Father: {fileID: 0}
 --- !u!1 &1745171610
 GameObject:
