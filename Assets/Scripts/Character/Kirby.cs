@@ -126,10 +126,18 @@ public class Kirby : CharacterBase {
 		}
 		vel.x = h * speed;
 	}
+
+	private void CommonUpdate() {
+		if (Input.GetKeyDown(KeyCode.LeftControl) ||
+		    Input.GetKeyDown(KeyCode.RightControl)) {
+			LoseAbility();
+		}
+	}
 	
 	#region IDLE_OR_WALKING
 
 	private void IdleOrWalkingUpdate() {
+		CommonUpdate();
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKeyDown(KeyCode.X)) {
@@ -163,6 +171,7 @@ public class Kirby : CharacterBase {
 	#region Inhaled
 	
 	private void InhaledUpdate() {
+		CommonUpdate();
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey (KeyCode.X)) {
@@ -206,6 +215,7 @@ public class Kirby : CharacterBase {
 	#region JUMPING
 
 	private void JumpingUpdate() {
+		CommonUpdate();
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKeyDown(KeyCode.UpArrow) && !onDoor) {
@@ -282,6 +292,7 @@ public class Kirby : CharacterBase {
 	#region InhaledJumping
 	
 	private void InhaledJumpingUpdate() {
+		CommonUpdate();
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKeyDown(KeyCode.Z)) {
@@ -320,6 +331,7 @@ public class Kirby : CharacterBase {
 	}
 
 	private void FlyingUpdate() {
+		CommonUpdate();
 		Vector2 vel = rigidbody2D.velocity;
 		HandleHorizontalMovement(ref vel);
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.UpArrow)) {
@@ -396,7 +408,7 @@ public class Kirby : CharacterBase {
 			star.abilityCard = abilityCard;
 			ability = null;
 			star.transform.position = transform.position;
-			if (enemyOther.transform.position.x < transform.position.x) {
+			if (enemyOther != null && enemyOther.transform.position.x < transform.position.x) {
 				star.goRight = true;
 			}
 
@@ -432,6 +444,7 @@ public class Kirby : CharacterBase {
 	#region Ducking
 
 	public void DuckingUpdate() {
+		CommonUpdate();
 		if (!Input.GetKey(KeyCode.DownArrow)) {
 			CurrentState = State.IdleOrWalking;
 		}
@@ -501,6 +514,7 @@ public class Kirby : CharacterBase {
 	}
 		
 	public void InhalingUpdate() {
+		CommonUpdate();
 		if (inhaleStarted && !Input.GetKey(KeyCode.Z) && am.SubState != (int) Inhaling.FinishInhaling) {
 			CurrentState = State.IdleOrWalking;
 		}
