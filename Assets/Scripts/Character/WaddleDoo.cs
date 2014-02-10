@@ -17,7 +17,7 @@ public class WaddleDoo : EnemyBase {
 	public float chanceOfCharge = 0.8f;
 	
 	private enum State {
-		WalkLeft, Charge, Attack, Jump
+		Walk, Charge, Attack, Jump
 	}
 
 	protected override void setPoints() {
@@ -31,8 +31,8 @@ public class WaddleDoo : EnemyBase {
 		yield return null;
 	}
 
-	void WalkLeftUpdate() {
-		updateXVelocity (-1 * speed);
+	void WalkUpdate() {
+		updateXVelocity ((dir == Direction.Left ? -1 : 1) * speed);
 		if (canAttack && distanceToKirby() <= range) {
 			if (Random.value < chanceOfCharge) {
 				CurrentState = State.Charge;
@@ -40,6 +40,7 @@ public class WaddleDoo : EnemyBase {
 				CurrentState = State.Jump;
 			}
 		}
+		BounceOffWalls ();
 	}
 
 	IEnumerator ChargeEnterState() {
@@ -55,7 +56,7 @@ public class WaddleDoo : EnemyBase {
 	}
 
 	protected override void OnAbilityFinished() {
-		CurrentState = State.WalkLeft;
+		CurrentState = State.Walk;
 	}
 
 	IEnumerator CoolDown() {
@@ -74,7 +75,7 @@ public class WaddleDoo : EnemyBase {
 	void JumpOnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "ground") {
 			StartCoroutine(CoolDown());
-			CurrentState = State.WalkLeft;
+			CurrentState = State.Walk;
 		}
 	}
 
@@ -87,7 +88,7 @@ public class WaddleDoo : EnemyBase {
 	#region implemented abstract members of EnemyBase
 
 	protected override void goToDefaultState() {
-		CurrentState = State.WalkLeft;
+		CurrentState = State.Walk;
 	}
 
 	#endregion
