@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400002}
+  - 58: {fileID: 5800000}
   m_Layer: 0
   m_Name: SparkAbility
   m_TagString: Untagged
@@ -23,10 +24,21 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.6709127, y: 26.0695286, z: 0}
+  m_LocalPosition: {x: 6.09260035, y: 24.991478, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!58 &5800000
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -43,7 +55,8 @@ MonoBehaviour:
   sparkProjectilePrefab: {fileID: 11400000, guid: 3dc463985f2c64daaaa5ffa0ae3ab08d,
     type: 2}
   duration: 2
-  shocksPerSecond: 20
+  shocksPerSecond: 50
+  particleSpeed: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

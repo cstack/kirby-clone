@@ -4,7 +4,8 @@ using System.Collections;
 public class SparkAbility : Ability {
 	public SparkProjectile sparkProjectilePrefab;
 	public float duration = 2f;
-	public float shocksPerSecond = 20f;
+	public float shocksPerSecond = 50f;
+	public float particleSpeed = 7f;
 
 	#region implemented abstract members of Ability
 
@@ -31,10 +32,19 @@ public class SparkAbility : Ability {
 	private void ShootShock(float angle) {
 		// Shoot a shock at `angle` degrees
 		SparkProjectile shock = Instantiate (sparkProjectilePrefab) as SparkProjectile;
-		shock.transform.position = transform.position;
+		shock.origin = transform.position;
+		shock.radius = GetComponent<CircleCollider2D>().radius;
 		shock.friendly = friendly;
 		
 		Vector2 direction = Quaternion.AngleAxis (angle, Vector3.forward) * Vector2.up;
-		shock.rigidbody2D.velocity = direction * 10f;
+		shock.transform.position = transform.position + new Vector3(direction.x, direction.y, 0);
+		shock.rigidbody2D.velocity = direction * particleSpeed;
+	}
+
+	public void OnTriggerEnter2D(Collider2D other) {
+		if ((friendly && other.gameObject.tag == "enemy") ||
+		    (!friendly && other.gameObject.tag == "kirby")) {
+			other.SendMessage("TakeHit", gameObject);
+		}
 	}
 }
