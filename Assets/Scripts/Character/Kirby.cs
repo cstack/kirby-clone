@@ -347,6 +347,16 @@ public class Kirby : CharacterBase {
 		air.transform.parent = transform;
 		air.transform.position = transform.position;
 
+		if (dir == Direction.Left) {
+			Vector2 scale = air.transform.localScale;
+			scale.x *= -1;
+			air.transform.localScale = scale;
+
+		}
+		Vector2 pos = air.transform.position;
+		pos += Vector2.up * 0.4f;
+		air.transform.position = pos;
+
 		int airDir = Direction.Right == dir ? 1 : -1;
 		air.rigidbody2D.velocity = Vector2.right * airDir * 35;
 		StartCoroutine(SlowDown(air.rigidbody2D, 0.4f));
