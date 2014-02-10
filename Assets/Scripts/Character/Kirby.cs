@@ -45,7 +45,7 @@ public class Kirby : CharacterBase {
 
 	public static int score = 0;
 
-	public int health = 6;
+	public static int health = 6;
 	public static int livesRemaining = 4;
 
 	public StarProjectile starProjectilePrefab;
@@ -74,6 +74,10 @@ public class Kirby : CharacterBase {
 	new public void Start() {
 		base.Start();
 		GameObject.Find("LivesRemaining").GetComponent<LivesRemaining>().setLivesRemaining(livesRemaining);
+		GameObject.Find("Score").GetComponent<Score>().updateScore(Kirby.score);
+		for (int i = 6; i > health; i--) {
+			RemoveHealthBarItem(i);
+		}
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
@@ -377,14 +381,18 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
-	private void TakeDamage() {
-		GameObject go = GameObject.Find("HealthBarItem" + health);
+	private void RemoveHealthBarItem(int healthItem) {
+		GameObject go = GameObject.Find("HealthBarItem" + healthItem);
 		Animator animator = go.GetComponent<Animator>();
 		animator.SetBool("Remove", true);
-		
+	}
+
+	private void TakeDamage() {
+		RemoveHealthBarItem(health);
 		health -= 1;
 		if (health == 0) {
 			CurrentState = State.Die;
+			health = 6;
 			return;
 		}
 	}
