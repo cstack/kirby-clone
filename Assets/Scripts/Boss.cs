@@ -28,9 +28,10 @@ public class Boss : CharacterBase {
 
 	public void TakeDamage() {
 		health -= 1;
-		Color c = GetComponent<SpriteRenderer>().color;
-		c.r += 0.05f;
-		GetComponent<SpriteRenderer>().color = c;
+		Color c = GetComponentInChildren<SpriteRenderer>().color;
+		c.g -= 0.1f;
+		c.b -= 0.1f;
+		GetComponentInChildren<SpriteRenderer>().color = c;
 	}
 
 	public IEnumerator IdleOrWalkingEnterState() {
