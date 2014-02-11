@@ -702,6 +702,44 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &590925059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 590925061}
+  - 114: {fileID: 590925060}
+  m_Layer: 0
+  m_Name: AbilitySpawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &590925060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 590925059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a0519ba6ef74d9aa5fcc7cab4fcf88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &590925061
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 590925059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.71035814, y: 31.540144, z: -.100097656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1001 &597145851
 Prefab:
   m_ObjectHideFlags: 0
@@ -2243,7 +2281,7 @@ GameObject:
   - 4: {fileID: 1666429419}
   - 82: {fileID: 1666429418}
   m_Layer: 0
-  m_Name: VegetableValleyMusic
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2258,7 +2296,7 @@ AudioSource:
   m_GameObject: {fileID: 1666429417}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 469bc05cd658d2e4d970c663b33447f4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 885b1e0638bc4497aaead97b3543993e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2945,6 +2983,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a9340ad421dc648098055a7df9056301, type: 2}
+      propertyPath: m_Name
+      value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: a9340ad421dc648098055a7df9056301, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 885b1e0638bc4497aaead97b3543993e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9340ad421dc648098055a7df9056301, type: 2}
   m_RootGameObject: {fileID: 1666429417}
