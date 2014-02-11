@@ -45,7 +45,7 @@ public class Kirby : CharacterBase {
 
 	public static int score = 0;
 
-	public int health = 6;
+	public static int health = 6;
 	public static int livesRemaining = 4;
 
 	public StarProjectile starProjectilePrefab;
@@ -54,8 +54,11 @@ public class Kirby : CharacterBase {
 
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
+
 	public Ability inhaledAbility;
-	public Sprite abilityCard;
+	public static Ability persistantAbility; 
+	public static Sprite abilityCard;
+
 	public bool inhaledEnemy;
 	public bool onDoor;
 
@@ -74,6 +77,15 @@ public class Kirby : CharacterBase {
 	new public void Start() {
 		base.Start();
 		GameObject.Find("LivesRemaining").GetComponent<LivesRemaining>().setLivesRemaining(livesRemaining);
+		GameObject.Find("Score").GetComponent<Score>().updateScore(Kirby.score);
+		for (int i = 6; i > health; i--) {
+			RemoveHealthBarItem(i);
+		}
+		ability = persistantAbility;
+		if (abilityCard != null) {
+			GameObject.Find("Ability").GetComponent<SpriteRenderer>().sprite = abilityCard;
+		}
+
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
@@ -89,7 +101,7 @@ public class Kirby : CharacterBase {
 	}
 
 	public void InhaleAbility(Ability ability, Sprite abilityCard) {
-		this.abilityCard = abilityCard;
+		Kirby.abilityCard = abilityCard;
 		inhaledAbility = ability;
 		inhaledEnemy = true;
 		am.animate((int) Inhaling.FinishInhaling);
@@ -201,6 +213,7 @@ public class Kirby : CharacterBase {
 	
 	private IEnumerator SwallowingEnterState() {
 		ability = inhaledAbility;
+		persistantAbility = ability;
 		inhaledAbility = null;
 		inhaledEnemy = false;
 		if (abilityCard != null) {
@@ -389,14 +402,18 @@ public class Kirby : CharacterBase {
 
 	#endregion
 
-	private void TakeDamage() {
-		GameObject go = GameObject.Find("HealthBarItem" + health);
+	private void RemoveHealthBarItem(int healthItem) {
+		GameObject go = GameObject.Find("HealthBarItem" + healthItem);
 		Animator animator = go.GetComponent<Animator>();
 		animator.SetBool("Remove", true);
-		
+	}
+
+	private void TakeDamage() {
+		RemoveHealthBarItem(health);
 		health -= 1;
 		if (health == 0) {
 			CurrentState = State.Die;
+			health = 6;
 			return;
 		}
 	}
@@ -407,6 +424,7 @@ public class Kirby : CharacterBase {
 			star.ability = ability;
 			star.abilityCard = abilityCard;
 			ability = null;
+			persistantAbility = null;
 			star.transform.position = transform.position;
 			if (enemyOther != null && enemyOther.transform.position.x < transform.position.x) {
 				star.goRight = true;
