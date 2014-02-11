@@ -35,20 +35,14 @@ public class Sparky : EnemyBase {
 	#region Slide
 	
 	private IEnumerator AttackEnterState() {
-		StartCoroutine(UseAbility());
-		yield return null;
-	}
-
-	protected override void OnAbilityFinished() {
+		UseAbility();
+		yield return new WaitForSeconds (2f);
 		lastAttackTime = Time.time;
 		TakeAction();
 	}
 
 	private IEnumerator AttackExitState() {
-		if (sparkAbility != null) {
-			Destroy(sparkAbility.gameObject);
-			sparkAbility = null;
-		}
+		StopAbility();
 		yield return null;
 	}
 

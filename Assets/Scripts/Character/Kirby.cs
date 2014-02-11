@@ -291,13 +291,20 @@ public class Kirby : CharacterBase {
 	#region Shooting
 	
 	private IEnumerator UsingAbilityEnterState() {
-		StartCoroutine(UseAbility(true));
+		UseAbility(true);
 		StartCoroutine(SlowDown(0.5f));
 		yield return null;
 	}
 
-	protected override void OnAbilityFinished() {
-		CurrentState = State.IdleOrWalking;
+	private void UsingAbilityUpdate() {
+		if (!Input.GetKey(KeyCode.Z) || attack == null) {
+			CurrentState = State.IdleOrWalking;
+		}
+	}
+
+	private IEnumerator UsingAbilityExitState() {
+		StopAbility();
+		yield return null;
 	}
 	
 	#endregion

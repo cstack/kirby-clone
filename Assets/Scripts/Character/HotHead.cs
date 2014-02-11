@@ -50,12 +50,14 @@ public class HotHead : EnemyBase {
 	#region Prepare
 	
 	public IEnumerator FlamethrowerEnterState() {
-		StartCoroutine(UseAbility());
-		yield return null;
+		UseAbility();
+		yield return new WaitForSeconds(2f);
+		CurrentState = State.Walk;
 	}
 
-	protected override void OnAbilityFinished() {
-		CurrentState = State.Walk;
+	public IEnumerator FlamethrowerExitState() {
+		StopAbility();
+		yield return null;
 	}
 	
 	#endregion

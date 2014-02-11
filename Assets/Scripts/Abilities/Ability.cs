@@ -4,6 +4,6 @@ using System.Collections;
 public abstract class Ability : MonoBehaviour {
 	public bool faceRight = false;
 	public bool friendly = false;
-	public abstract float getDuration();
+	public bool permanent = false;
 	public virtual void init() {}
 }

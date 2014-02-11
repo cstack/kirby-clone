@@ -7,6 +7,7 @@ public abstract class CharacterBase : StateMachineBase {
 		Left, Right
 	}
 	public Ability ability;
+	protected Ability attack;
 
 	private Transform sprite;
 
@@ -14,12 +15,12 @@ public abstract class CharacterBase : StateMachineBase {
 		sprite = transform.Find("Sprite");
 	}
 
-	protected IEnumerator UseAbility() {
-		yield return StartCoroutine(UseAbility(false));
+	protected void UseAbility() {
+		UseAbility(false);
 	}
 
-	protected IEnumerator UseAbility(bool friendly) {
-		Ability attack = Instantiate (ability) as Ability;
+	protected void UseAbility(bool friendly) {
+		attack = Instantiate (ability) as Ability;
 		attack.friendly = friendly;
 		attack.transform.parent = transform;
 		attack.transform.localPosition = new Vector3 (0.5f, 0.5f, 0f);
@@ -27,12 +28,14 @@ public abstract class CharacterBase : StateMachineBase {
 			attack.faceRight = true;
 		}
 		attack.init();
-		yield return new WaitForSeconds(attack.getDuration());
-		Destroy (attack.gameObject);
-		OnAbilityFinished();
 	}
 
-	protected virtual void OnAbilityFinished() {}
+	protected void StopAbility() {
+		if (attack != null) {
+			Destroy (attack.gameObject);
+			attack = null;
+		}
+	}
 
 	protected void Flip() {
 		dir = (dir == Direction.Right) ? Direction.Left : Direction.Right;

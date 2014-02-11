@@ -50,13 +50,15 @@ public class WaddleDoo : EnemyBase {
 	}
 
 	IEnumerator AttackEnterState() {
-		StartCoroutine(UseAbility());
+		UseAbility();
 		StartCoroutine (CoolDown ());
-		yield return null;
+		yield return new WaitForSeconds(0.5f);
+		CurrentState = State.Walk;
 	}
 
-	protected override void OnAbilityFinished() {
-		CurrentState = State.Walk;
+	IEnumerator AttackExitState() {
+		StopAbility();
+		yield return null;
 	}
 
 	IEnumerator CoolDown() {

@@ -3,19 +3,9 @@ using System.Collections;
 
 public class Flamethrower : Ability {
 	public FlameProjectile flameProjectilePrefab;
-	public float duration = 2f;
 	public float flamesPerSecond = 20f;
 	public float angle = 15f;
 
-	#region implemented abstract members of Ability
-	
-	public override float getDuration()
-	{
-		return duration;
-	}
-	
-	#endregion
-	
 	// Use this for initialization
 	public void Start () {
 		StartCoroutine(ShootFlames());

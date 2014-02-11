@@ -3,18 +3,8 @@ using System.Collections;
 
 public class SparkAbility : Ability {
 	public SparkProjectile sparkProjectilePrefab;
-	public float duration = 2f;
 	public float shocksPerSecond = 50f;
 	public float particleSpeed = 7f;
-
-	#region implemented abstract members of Ability
-
-	public override float getDuration()
-	{
-		return duration;
-	}
-
-	#endregion
 
 	// Use this for initialization
 	public void Start () {
@@ -22,7 +12,7 @@ public class SparkAbility : Ability {
 	}
 
 	private IEnumerator ShootSparks() {
-		float timestep = duration / shocksPerSecond;
+		float timestep = 1 / shocksPerSecond;
 		while (true) {
 			ShootShock(Random.value * 360);
 			yield return new WaitForSeconds(timestep);

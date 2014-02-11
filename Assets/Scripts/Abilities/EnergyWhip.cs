@@ -5,20 +5,10 @@ using System.Collections.Generic;
 public class EnergyWhip : Ability {
 
 	public EnergyWhipParticle particlePrefab;
-	public float duration = 0.75f;
 
 	private float startTime;
 	private List<EnergyWhipParticle> particles = new List<EnergyWhipParticle>();
 	private bool flickerOn;
-
-	#region implemented abstract members of Ability
-
-	public override float getDuration()
-	{
-		return duration;
-	}
-
-	#endregion
 
 	// Use this for initialization
 	IEnumerator Start () {
@@ -55,12 +45,16 @@ public class EnergyWhip : Ability {
 	}
 
 	void Update() {
-		float portionCompleted = (Time.time - startTime) / duration;
+		float portionCompleted = (Time.time - startTime) / 0.5f;
 		float angle = portionCompleted * 90;
 		if (faceRight) {
 			angle *= -1;
 		}
 		transform.localEulerAngles = new Vector3 (0,0,angle);
+
+		if (!permanent && portionCompleted > 1) {
+			Destroy(gameObject);
+		}
 	}
 
 }
