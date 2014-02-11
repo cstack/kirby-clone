@@ -1048,7 +1048,6 @@ MonoBehaviour:
   slideSmokePrefab: {fileID: 100000, guid: f39009be0b941dd499f298aa97cc2c69, type: 2}
   abilityStarPrefab: {fileID: 11400000, guid: 4e8ffb512ed2e418ea72ee370b68d1be, type: 2}
   inhaledAbility: {fileID: 0}
-  abilityCard: {fileID: 0}
   inhaledEnemy: 0
   onDoor: 0
 --- !u!61 &325179730

@@ -54,8 +54,11 @@ public class Kirby : CharacterBase {
 
 	private bool isSpinning = false;
 	private GameObject inhaleArea;
+
 	public Ability inhaledAbility;
-	public Sprite abilityCard;
+	public static Ability persistantAbility; 
+	public static Sprite abilityCard;
+
 	public bool inhaledEnemy;
 	public bool onDoor;
 
@@ -78,6 +81,11 @@ public class Kirby : CharacterBase {
 		for (int i = 6; i > health; i--) {
 			RemoveHealthBarItem(i);
 		}
+		ability = persistantAbility;
+		if (abilityCard != null) {
+			GameObject.Find("Ability").GetComponent<SpriteRenderer>().sprite = abilityCard;
+		}
+
 		animator = GetComponentInChildren<Animator>();
 		CurrentState = State.Jumping;
 		dir = Direction.Right;
@@ -93,7 +101,7 @@ public class Kirby : CharacterBase {
 	}
 
 	public void InhaleAbility(Ability ability, Sprite abilityCard) {
-		this.abilityCard = abilityCard;
+		Kirby.abilityCard = abilityCard;
 		inhaledAbility = ability;
 		inhaledEnemy = true;
 		am.animate((int) Inhaling.FinishInhaling);
@@ -205,6 +213,7 @@ public class Kirby : CharacterBase {
 	
 	private IEnumerator SwallowingEnterState() {
 		ability = inhaledAbility;
+		persistantAbility = ability;
 		inhaledAbility = null;
 		inhaledEnemy = false;
 		if (abilityCard != null) {
@@ -415,6 +424,7 @@ public class Kirby : CharacterBase {
 			star.ability = ability;
 			star.abilityCard = abilityCard;
 			ability = null;
+			persistantAbility = null;
 			star.transform.position = transform.position;
 			if (enemyOther != null && enemyOther.transform.position.x < transform.position.x) {
 				star.goRight = true;
