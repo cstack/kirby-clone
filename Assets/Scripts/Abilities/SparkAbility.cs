@@ -3,8 +3,10 @@ using System.Collections;
 
 public class SparkAbility : Ability {
 	public SparkProjectile sparkProjectilePrefab;
-	public float shocksPerSecond = 50f;
-	public float particleSpeed = 7f;
+	public float shocksPerSecond = 1f;
+	public float particleSpeed = 2f;
+	public float distanceFromCenter = 0.7f;
+
 
 	// Use this for initialization
 	public void Start () {
@@ -14,7 +16,7 @@ public class SparkAbility : Ability {
 	private IEnumerator ShootSparks() {
 		float timestep = 1 / shocksPerSecond;
 		while (true) {
-			ShootShock(Random.value * 360);
+			ShootShock(Random.Range(0, 12) * 30);
 			yield return new WaitForSeconds(timestep);
 		}
 	}
@@ -22,12 +24,12 @@ public class SparkAbility : Ability {
 	private void ShootShock(float angle) {
 		// Shoot a shock at `angle` degrees
 		SparkProjectile shock = Instantiate (sparkProjectilePrefab) as SparkProjectile;
-		shock.origin = transform.position;
-		shock.radius = GetComponent<CircleCollider2D>().radius;
 		shock.friendly = friendly;
 		
-		Vector2 direction = Quaternion.AngleAxis (angle, Vector3.forward) * Vector2.up;
-		shock.transform.position = transform.position + new Vector3(direction.x, direction.y, 0);
+		Vector2 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.up;
+
+		shock.transform.position = transform.position + new Vector3(direction.x, direction.y, 0) * distanceFromCenter -
+			- Vector3.left * 0.5f - Vector3.down * 0.5f;
 		shock.rigidbody2D.velocity = direction * particleSpeed;
 	}
 
