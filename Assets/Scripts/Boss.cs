@@ -4,6 +4,7 @@ using System.Collections;
 public class Boss : CharacterBase {
 
 	public float inhaleStrength = 100f;
+	public int health = 10;
 
 	private Kirby kirby;
 	private float startTime;
@@ -18,6 +19,18 @@ public class Boss : CharacterBase {
 		CurrentState = State.IdleOrWalking;
 		GetComponentInChildren<Animator>().speed = 0.5f;
 		Flip();
+	}
+
+	public static void TakeDamage(GameObject boss) {
+		Boss b = boss.GetComponent<Boss>();
+		b.TakeDamage();
+	}
+
+	public void TakeDamage() {
+		health -= 1;
+		Color c = GetComponent<SpriteRenderer>().color;
+		c.r += 0.05f;
+		GetComponent<SpriteRenderer>().color = c;
 	}
 
 	public IEnumerator IdleOrWalkingEnterState() {

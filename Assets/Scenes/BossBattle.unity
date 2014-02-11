@@ -1765,7 +1765,7 @@ GameObject:
   - 61: {fileID: 1237543075}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1786,6 +1786,7 @@ MonoBehaviour:
   slowingDown: 0
   ability: {fileID: 0}
   inhaleStrength: 200
+  health: 10
 --- !u!4 &1237543074
 Transform:
   m_ObjectHideFlags: 0
