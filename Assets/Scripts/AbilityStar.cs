@@ -2,6 +2,14 @@
 using System.Collections;
 
 public class AbilityStar : StateMachineBase {
+	public Ability energyWhip;
+	public Ability spark;
+	public Ability flameThrower;
+
+	public Sprite energyWhipCard;
+	public Sprite sparkCard;
+	public Sprite flameThrowerCard;
+
 	public float horizontalSpeed = 4f;
 	public float verticalSpeed = 8f;
 	public bool goRight;
@@ -16,7 +24,6 @@ public class AbilityStar : StateMachineBase {
 		Bouncing, BeingInhaled
 	}
 	
-	// Use this for initialization
 	void Start () {
 		rigidbody2D.velocity = new Vector2 (horizontalSpeed * (goRight ? 1 : -1), verticalSpeed);
 		startTime = Time.time;
