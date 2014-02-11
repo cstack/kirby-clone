@@ -27,8 +27,10 @@ public class AbilityStar : StateMachineBase {
 	void Start () {
 		rigidbody2D.velocity = new Vector2 (horizontalSpeed * (goRight ? 1 : -1), verticalSpeed);
 		startTime = Time.time;
-		GameObject go = GameObject.Find ("Kirby");
-		kirby = (Kirby) go.GetComponent(typeof(Kirby));
+		GameObject go = GameObject.Find("Kirby");
+		if (go != null) {
+			kirby = (Kirby) go.GetComponent(typeof(Kirby));
+		}
 		CurrentState = State.Bouncing;
 	}
 	
