@@ -455,6 +455,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110211864
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Knockback
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 97d5ba38392e4c440a507eda974d681b, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 84, y: 108, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110216261
 State:
   m_ObjectHideFlags: 3
@@ -827,6 +842,7 @@ StateMachine:
   - {fileID: 110226620}
   - {fileID: 110204429}
   - {fileID: 110241411}
+  - {fileID: 110211864}
   m_ChildStateMachine:
   - {fileID: 110798719}
   - {fileID: 110716230}
