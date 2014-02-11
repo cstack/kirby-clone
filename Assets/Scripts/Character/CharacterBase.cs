@@ -21,11 +21,11 @@ public abstract class CharacterBase : StateMachineBase {
 	protected IEnumerator UseAbility(bool friendly) {
 		Ability attack = Instantiate (ability) as Ability;
 		attack.friendly = friendly;
+		attack.transform.parent = transform;
+		attack.transform.localPosition = new Vector3 (0.5f, 0.5f, 0f);
 		if (dir == Direction.Right) {
 			attack.faceRight = true;
 		}
-		attack.transform.parent = transform;
-		attack.transform.localPosition = new Vector3 (0.5f, 0.5f, 0f);
 		attack.init();
 		yield return new WaitForSeconds(attack.getDuration());
 		Destroy (attack.gameObject);
