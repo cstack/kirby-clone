@@ -56,8 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friendly: 0
-  origin: {x: 0, y: 0, z: 0}
-  radius: 3
+  delta: .100000001
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

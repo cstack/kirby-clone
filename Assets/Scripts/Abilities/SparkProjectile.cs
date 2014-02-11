@@ -2,11 +2,16 @@
 using System.Collections;
 
 public class SparkProjectile : Projectile {
-	public Vector3 origin;
-	public float radius = 3f;
+	public float delta = 0.001f;
+
+	private float startTime;
+
+	void Start() {
+		startTime = Time.time;
+	}
 
 	public void Update() {
-		if (Vector2.Distance(transform.position + new Vector3(0.5f,0.5f,0), origin) > radius) {
+		if (Time.time - delta > startTime) {
 			Destroy(gameObject);
 		}
 	}

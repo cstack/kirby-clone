@@ -37,8 +37,8 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0}
+  m_Radius: 1.79999995
+  m_Center: {x: 0, y: .600000024}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,11 +52,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceRight: 0
   friendly: 0
+  permanent: 0
   sparkProjectilePrefab: {fileID: 11400000, guid: 3dc463985f2c64daaaa5ffa0ae3ab08d,
     type: 2}
-  duration: 2
-  shocksPerSecond: 50
-  particleSpeed: 10
+  shocksPerSecond: 10
+  particleSpeed: 8
+  distanceFromCenter: .699999988
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

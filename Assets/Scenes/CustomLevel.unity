@@ -1512,8 +1512,9 @@ MonoBehaviour:
   permanent: 0
   sparkProjectilePrefab: {fileID: 11400000, guid: 3dc463985f2c64daaaa5ffa0ae3ab08d,
     type: 2}
-  shocksPerSecond: 50
-  particleSpeed: 10
+  shocksPerSecond: 10
+  particleSpeed: 8
+  distanceFromCenter: .300000012
 --- !u!4 &353722666
 Transform:
   m_ObjectHideFlags: 0
@@ -1536,7 +1537,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: 1.5
-  m_Center: {x: 0, y: 0}
+  m_Center: {x: 0, y: 1}
 --- !u!1 &362057220
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,6 +5435,22 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: distanceFromCenter
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
   m_RootGameObject: {fileID: 1975506153}
@@ -5514,6 +5531,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
       propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: distanceFromCenter
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7440,8 +7473,9 @@ MonoBehaviour:
   permanent: 0
   sparkProjectilePrefab: {fileID: 11400000, guid: 3dc463985f2c64daaaa5ffa0ae3ab08d,
     type: 2}
-  shocksPerSecond: 50
-  particleSpeed: 10
+  shocksPerSecond: 10
+  particleSpeed: 8
+  distanceFromCenter: .300000012
 --- !u!4 &1686563983
 Transform:
   m_ObjectHideFlags: 0
@@ -7464,7 +7498,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: 1.5
-  m_Center: {x: 0, y: 0}
+  m_Center: {x: 0, y: 1}
 --- !u!1 &1695397413
 GameObject:
   m_ObjectHideFlags: 0
@@ -8379,6 +8413,18 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: distanceFromCenter
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
   m_RootGameObject: {fileID: 1686563981}
@@ -8628,8 +8674,9 @@ MonoBehaviour:
   permanent: 0
   sparkProjectilePrefab: {fileID: 11400000, guid: 3dc463985f2c64daaaa5ffa0ae3ab08d,
     type: 2}
-  shocksPerSecond: 50
-  particleSpeed: 10
+  shocksPerSecond: 10
+  particleSpeed: 8
+  distanceFromCenter: .300000012
 --- !u!4 &1975506155
 Transform:
   m_ObjectHideFlags: 0
@@ -8652,7 +8699,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: 1.5
-  m_Center: {x: 0, y: 0}
+  m_Center: {x: 0, y: 1}
 --- !u!1 &1988875858
 GameObject:
   m_ObjectHideFlags: 0
