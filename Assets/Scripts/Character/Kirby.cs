@@ -226,6 +226,10 @@ public class Kirby : CharacterBase {
 		yield return new WaitForSeconds (0.5f);
 		CurrentState = State.IdleOrWalking;
 	}
+
+	public void SwallowingUpdate() {
+		updateXVelocity(0f);
+	}
 	
 	#endregion
 
@@ -472,8 +476,16 @@ public class Kirby : CharacterBase {
 
 	#region Ducking
 
+	public IEnumerator DuckingEnterState() {
+		StartCoroutine(SlowDown(0.5f));
+		yield return null;
+	}
+
 	public void DuckingUpdate() {
 		CommonUpdate();
+		if (!slowingDown) {
+			updateXVelocity(0f);
+		}
 		if (!Input.GetKey(KeyCode.DownArrow)) {
 			CurrentState = State.IdleOrWalking;
 		}
@@ -483,9 +495,6 @@ public class Kirby : CharacterBase {
 		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)) {
 			CurrentState = State.Sliding;
 		}
-		Vector2 vel = rigidbody2D.velocity;
-		vel.x *= 0.9f;
-		rigidbody2D.velocity = vel;
 	}
 
 	#endregion
