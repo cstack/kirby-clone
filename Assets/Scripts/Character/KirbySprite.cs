@@ -12,15 +12,4 @@ public class KirbySprite : MonoBehaviour {
 	public void OnFinishedInhaling() {
 		kirby.OnFinishedInhaling();
 	}
-
-	public void OnTriggerEnter2D(Collider2D other) {
-		if (kirby.CurrentState.ToString() == Kirby.State.Inhaling.ToString()) {
-			if (other.gameObject.tag == "enemy") {
-				kirby.enemyCollisionCallback(other.gameObject);
-			} else if (other.gameObject.tag == "abilitystar") {
-				AbilityStar star = other.gameObject.GetComponent<AbilityStar>();
-				kirby.InhaleAbility(star.ability, star.abilityCard);
-			}
-		}
-	}
 }

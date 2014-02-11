@@ -116,11 +116,17 @@ public abstract class StateMachineBase : MonoBehaviour {
 		StartCoroutine(enterState());
 	}
 
+	string dName = "default";
+	string state;
+
 	/**
 	 * Uses reflection to get delegate method for state. Naming convention is StateMethod.
 	 */
 	T ConfigureDelegate<T>(string methodName, T Default) where T : class {
 		string delegateName = currentState.ToString() + methodName;
+		state = currentState.ToString();
+		if (currentState.ToString() == "BeingInhaled")
+			dName = delegateName;
 		Delegate d;
 
 		// Check the cache first
@@ -195,6 +201,9 @@ public abstract class StateMachineBase : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log("In Trigger");
+		Debug.Log(state);
+		Debug.Log(dName);
 		DoOnTriggerEnter2D(other);
 	}
 	

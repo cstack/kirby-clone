@@ -282,8 +282,8 @@ public class Kirby : CharacterBase {
 		star.direction = (dir == Direction.Right ? 1 : -1);
 		inhaledAbility = null;
 		inhaledEnemy = false;
-		CurrentState = State.Jumping;
-		yield break;
+		yield return new WaitForSeconds (0.5f);
+		CurrentState = State.IdleOrWalking;
 	}
 
 	#endregion
@@ -524,7 +524,6 @@ public class Kirby : CharacterBase {
 	#region Inhaling
 
 	private IEnumerator InhalingEnterState() {
-		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"));
 		inhaleArea.SetActive(true);
 		StartCoroutine(SlowDown(0.5f));
 		yield return new WaitForSeconds(0.5f);
@@ -532,7 +531,6 @@ public class Kirby : CharacterBase {
 	}
 
 	private IEnumerator InhalingExitState() {
-		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("kirby"), LayerMask.NameToLayer("enemy"), false);
 		inhaleArea.SetActive(false);
 		inhaleStarted = false;
 		yield break;
@@ -547,6 +545,15 @@ public class Kirby : CharacterBase {
 
 	public void OnFinishedInhaling() {
 		CurrentState = Kirby.State.Inhaled;
+	}
+
+	public void InhalingOnTriggerStay2D(Collider2D other) {
+		if (other.gameObject.tag == "enemy") {
+			enemyCollisionCallback(other.gameObject);
+		} else if (other.gameObject.tag == "abilitystar") {
+			AbilityStar star = other.gameObject.GetComponent<AbilityStar>();
+			InhaleAbility(star.ability, star.abilityCard);
+		}
 	}
 
 	#endregion
@@ -581,4 +588,5 @@ public class Kirby : CharacterBase {
 		yield return new WaitForSeconds (2f);
 		invulnurable = false;
 	}
+
 }

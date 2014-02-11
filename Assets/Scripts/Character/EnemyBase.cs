@@ -2,7 +2,7 @@
 using System.Collections;
 
 public abstract class EnemyBase : CharacterBase {
-	private float inhaleStrength = 15;
+	private float inhaleStrength = 10;
 	public float distanceFromScreen = 0f;
 
 	protected Kirby kirby;
@@ -64,8 +64,20 @@ public abstract class EnemyBase : CharacterBase {
 		}
 	}
 
-	new void OnTriggerEnter2D(Collider2D other) {
+	public void BeingInhaledOnTriggerEnter2D(Collider2D other) {
+		Debug.Log("being inhaled, collide with " + other.gameObject.tag);
+		if (other.gameObject.tag == "kirby") {
+			kirby.enemyCollisionCallback(gameObject);
+		}
+	} 
+
+	public void BeingInhaledOnTriggerStay2D(Collider2D other) {
+		Debug.Log("being inhaled, STAY " + other.gameObject.tag);
+	}
+
+	public new void OnTriggerEnter2D(Collider2D other) {
 		base.OnTriggerEnter2D(other);
+		Debug.Log(Time.time + "Enemy trigger collide with " + other.gameObject.tag + " State " + CurrentState.ToString());
 		if (other.gameObject.tag == "inhale") {
 			CurrentState = State.BeingInhaled;
 		}
@@ -75,6 +87,13 @@ public abstract class EnemyBase : CharacterBase {
 	
 	protected IEnumerator BeingInhaledEnterState() {
 		rigidbody2D.velocity = Vector3.zero;
+		GetComponent<BoxCollider2D>().isTrigger = true;
+		yield break;
+	}
+
+	protected IEnumerator BeingInhaledExitState() {
+		rigidbody2D.velocity = Vector3.zero;
+		GetComponent<BoxCollider2D>().isTrigger = false;
 		yield break;
 	}
 
@@ -83,7 +102,7 @@ public abstract class EnemyBase : CharacterBase {
 			goToDefaultState();
 		} else {
 			Vector2 vector = kirby.transform.position - transform.position;
-			rigidbody2D.velocity = vector / vector.sqrMagnitude * inhaleStrength;
+			rigidbody2D.velocity = (vector / vector.magnitude) * inhaleStrength;
 		}
 	}
 
