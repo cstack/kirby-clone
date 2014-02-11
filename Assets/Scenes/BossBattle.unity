@@ -373,7 +373,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 237281580}
   - 61: {fileID: 237281579}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: CollisionBox
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -743,7 +743,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
@@ -2102,7 +2102,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1498861421}
   - 61: {fileID: 1498861420}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: CollisionBox
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -2570,7 +2570,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbdc029afa3b4604894e304470ae5403, type: 2}
