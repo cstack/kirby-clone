@@ -82,6 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6384a82ecab174916a251033b178db57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energyWhip: {fileID: 11400010, guid: 9c3c1bec211fc40f98516e4ea27f407b, type: 2}
+  spark: {fileID: 11400002, guid: 2e5738a8d5cb24677ab4c161b2df68c1, type: 2}
+  flameThrower: {fileID: 11400002, guid: be69e2628d54e4008ab50dec6cb15caa, type: 2}
   speed: 15
   direction: 1
 --- !u!212 &21200000
