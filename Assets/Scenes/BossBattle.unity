@@ -1787,6 +1787,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   inhaleStrength: 200
   health: 10
+  inhaleChance: .5
 --- !u!4 &1237543074
 Transform:
   m_ObjectHideFlags: 0
