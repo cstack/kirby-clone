@@ -9,7 +9,7 @@ public abstract class CharacterBase : StateMachineBase {
 	public Ability ability;
 	protected Ability attack;
 
-	private Transform sprite;
+	protected Transform sprite;
 
 	public void Start() {
 		sprite = transform.Find("Sprite");

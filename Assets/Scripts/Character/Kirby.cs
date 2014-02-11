@@ -110,8 +110,12 @@ public class Kirby : CharacterBase {
 	private void OnCollideWithEnemy(GameObject enemy) {
 		enemyOther = enemy;
 		EnemyBase.killEnemy(enemy, true);
+		if (invulnurable) {
+			return;
+		}
 		TakeDamage();
 		LoseAbility();
+		StartCoroutine(Invulnerability());
 		CurrentState = (inhaledEnemy == false) ? State.Knockback : State.InhaledKnockback;
 	}
 
@@ -573,12 +577,19 @@ public class Kirby : CharacterBase {
 		CurrentState = (inhaledEnemy == false) ? State.Knockback : State.InhaledKnockback;
 		TakeDamage();
 		LoseAbility();
-		StartCoroutine("Invulnerability");
+		StartCoroutine(Invulnerability());
 	}
 
 	public IEnumerator Invulnerability() {
 		invulnurable = true;
-		yield return new WaitForSeconds (2f);
+		float duration = 2f;
+		float timestep = 0.1f;
+		for (float time = 0f; time < duration; time += timestep*2) {
+			sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 0.5f, 1f);
+			yield return new WaitForSeconds (timestep);
+			sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+			yield return new WaitForSeconds(timestep);
+		}
 		invulnurable = false;
 	}
 }
