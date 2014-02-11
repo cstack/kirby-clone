@@ -5,9 +5,11 @@ public class Boss : CharacterBase {
 
 	public float inhaleStrength = 100f;
 	public int health = 10;
+	public float inhaleChance = 0.5f;
 
 	private Kirby kirby;
 	private float startTime;
+	private float vel = 0f;
 
 	public enum State {
 		IdleOrWalking, Inhaling, Inhaled, Shooting, Swallowing
@@ -39,8 +41,32 @@ public class Boss : CharacterBase {
 		TakeAction();
 	}
 
+	public void IdleOrWalkingUpdate() {
+		updateXVelocity(vel);
+	}
+
 	public void TakeAction() {
-		CurrentState = State.Inhaling;
+		float r = Random.value;
+		if (r < inhaleChance) {
+			CurrentState = State.Inhaling;
+		} else {
+			StartCoroutine(WalkAround());
+		}
+	}
+
+	public IEnumerator WalkAround() {
+		vel = -2;
+		am.animate(1);
+		yield return new WaitForSeconds (3f);
+		vel = 0;
+		am.animate(0);
+		yield return new WaitForSeconds (3f);
+		vel = 2;
+		am.animate(1);
+		yield return new WaitForSeconds (3f);
+		vel = 0;
+		am.animate(0);
+		CurrentState = State.IdleOrWalking;
 	}
 
 	public IEnumerator InhalingEnterState() {
