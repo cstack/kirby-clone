@@ -16,6 +16,8 @@ public class StarProjectile : MonoBehaviour {
 			if (other.tag == "enemy") {
 				EnemyBase.killEnemy(other.gameObject, true);
 			}
+		} else if (other.tag == "boss") {
+			Boss.TakeDamage(other.gameObject);
 		}
 	}
 }
