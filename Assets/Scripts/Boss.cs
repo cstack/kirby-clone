@@ -44,6 +44,10 @@ public class Boss : CharacterBase {
 		updateXVelocity(vel);
 	}
 
+	public void IdleOrWalkingOnCollisionEnter2D(Collision2D collision) {
+		CommonOnCollisionEnter2D(collision);
+	}
+
 	public void TakeAction() {
 		float r = Random.value;
 		if (r < inhaleChance) {
@@ -104,5 +108,11 @@ public class Boss : CharacterBase {
 	public void Attract(CharacterBase character) {
 		Vector3 diff = transform.position - character.transform.position;
 		character.rigidbody2D.AddForce(diff/diff.magnitude * inhaleStrength);
+	}
+
+	public void CommonOnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.tag == "kirby") {
+			kirby.TakeHit(gameObject);
+		}
 	}
 }
