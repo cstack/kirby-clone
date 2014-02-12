@@ -19,7 +19,6 @@ public class SpawnAbilities : MonoBehaviour {
 				star.ability = star.flameThrower;
 				star.abilityCard = star.flameThrowerCard;
 			}
-			Debug.Log(star.ability);
 			star.transform.position = transform.position - new Vector3(0f, 0f, transform.position.z);
 			float xOffset = camera.pixelWidth / 16 * (Random.value - 0.5f);
 			star.transform.position += new Vector3(xOffset, 0f, 0f);

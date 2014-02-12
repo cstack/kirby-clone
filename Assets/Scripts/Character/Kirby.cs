@@ -71,7 +71,7 @@ public class Kirby : CharacterBase {
 
 	public enum State {
 		IdleOrWalking, Jumping, Flying, Knockback, Ducking, Sliding, Inhaling, Inhaled, Die,
-		InhaledJumping, InhaledKnockback, Shooting, Swallowing, UsingAbility
+		InhaledJumping, InhaledKnockback, Shooting, Swallowing, UsingAbility, Frozen
 	}
 	
 	new public void Start() {
@@ -603,5 +603,9 @@ public class Kirby : CharacterBase {
 			yield return new WaitForSeconds(timestep);
 		}
 		invulnurable = false;
+	}
+
+	public void OnBossDeath() {
+		CurrentState = State.Frozen;
 	}
 }

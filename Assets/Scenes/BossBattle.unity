@@ -1788,6 +1788,8 @@ MonoBehaviour:
   inhaleStrength: 200
   health: 10
   inhaleChance: .5
+  messagePrefab: {fileID: 100002, guid: 3079ad3f497494f21a4a89480e344d9b, type: 2}
+  message2Prefab: {fileID: 100002, guid: bfa9946beee5441929f897db53c2356f, type: 2}
 --- !u!4 &1237543074
 Transform:
   m_ObjectHideFlags: 0

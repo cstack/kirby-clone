@@ -6,13 +6,15 @@ public class Boss : CharacterBase {
 	public float inhaleStrength = 100f;
 	public int health = 10;
 	public float inhaleChance = 0.5f;
+	public GameObject messagePrefab;
+	public GameObject message2Prefab;
 
 	private Kirby kirby;
 	private float startTime;
 	private float vel = 0f;
 
 	public enum State {
-		IdleOrWalking, Inhaling, Inhaled, Shooting, Swallowing
+		IdleOrWalking, Inhaling, Inhaled, Shooting, Swallowing, Frozen
 	}
 
 	new public void Start() {
@@ -34,6 +36,38 @@ public class Boss : CharacterBase {
 		c.g -= 0.05f;
 		c.b -= 0.05f;
 		GetComponentInChildren<SpriteRenderer>().color = c;
+		if (health <= 0) {
+			StopAllCoroutines();
+			StartCoroutine(Die());
+		}
+	}
+
+	public IEnumerator Die() {
+		kirby.OnBossDeath();
+		CurrentState = State.Frozen;
+		Camera.main.GetComponent<SpawnAbilities>().StopAllCoroutines();
+		StartCoroutine(FallDown());
+		yield return new WaitForSeconds (2f);
+		GameObject message = Instantiate(messagePrefab) as GameObject;
+		yield return new WaitForSeconds (2f);
+		GameObject message2 = Instantiate(message2Prefab) as GameObject;
+		yield return new WaitForSeconds (3f);
+		Application.LoadLevel("Main");
+	}
+
+	public IEnumerator FallDown() {
+		for (int i = 0; i < 10; i++) {
+			transform.localEulerAngles = new Vector3 (0,0,-10*i);
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
+
+	public void FrozenUpdate() {
+		if (transform.position.x < 10) {
+			updateXVelocity(2f);
+		} else {
+			updateXVelocity(0f);
+		}
 	}
 
 	public IEnumerator IdleOrWalkingEnterState() {
