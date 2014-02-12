@@ -244,7 +244,8 @@ public class Kirby : CharacterBase {
 		} else {
 			if (Input.GetKeyUp(KeyCode.X)) {
 				vel.y = Mathf.Min(vel.y, 0);
-			} else if (Input.GetKey(KeyCode.Z)) {
+			} else if (Input.GetKeyDown(KeyCode.Z)) {
+				Debug.Log("Pressed");
 				if (ability == null) {
 					CurrentState = State.Inhaling;
 				} else {
@@ -290,8 +291,8 @@ public class Kirby : CharacterBase {
 		star.direction = (dir == Direction.Right ? 1 : -1);
 		inhaledAbility = null;
 		inhaledEnemy = false;
+		yield return new WaitForSeconds(0.5f);
 		CurrentState = State.Jumping;
-		yield break;
 	}
 
 	#endregion
