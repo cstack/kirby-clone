@@ -12,7 +12,7 @@ public class Boss : CharacterBase {
 	private float vel = 0f;
 
 	public enum State {
-		IdleOrWalking, Inhaling, Inhaled, Shooting, Swallowing
+		IdleOrWalking, Inhaling, Inhaled, Shooting, Swallowing, Knockback
 	}
 
 	new public void Start() {
@@ -29,11 +29,24 @@ public class Boss : CharacterBase {
 	}
 
 	public void TakeDamage() {
+		if (CurrentState.ToString() == State.Knockback.ToString()) {
+			return;
+		}
 		health -= 1;
 		Color c = GetComponentInChildren<SpriteRenderer>().color;
 		c.g -= 0.1f;
 		c.b -= 0.1f;
 		GetComponentInChildren<SpriteRenderer>().color = c;
+		CurrentState = State.Knockback;
+	}
+
+	public void TakeHit(GameObject particle) {
+		TakeDamage();
+	}
+
+	public IEnumerator KnockbackEnterState() {
+		yield return new WaitForSeconds(0.5f);
+		CurrentState = State.IdleOrWalking;
 	}
 
 	public IEnumerator IdleOrWalkingEnterState() {
