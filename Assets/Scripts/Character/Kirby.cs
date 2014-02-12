@@ -16,10 +16,6 @@ namespace AnimationEnums {
 		Flying, Exhaling
 	}
 
-	public enum Inhaling {
-		Inhaling, FinishInhaling
-	}
-
 	public enum Inhaled {
 		Idle, Walking
 	}
@@ -104,7 +100,7 @@ public class Kirby : CharacterBase {
 		Kirby.abilityCard = abilityCard;
 		inhaledAbility = ability;
 		inhaledEnemy = true;
-		am.animate((int) Inhaling.FinishInhaling);
+		CurrentState = Kirby.State.Inhaled;
 	}
 
 	private void OnCollideWithEnemy(GameObject enemy) {
@@ -557,7 +553,7 @@ public class Kirby : CharacterBase {
 		if (!slowingDown) {
 			updateXVelocity(0f);
 		}
-		if (inhaleStarted && !Input.GetKey(KeyCode.Z) && am.SubState != (int) Inhaling.FinishInhaling) {
+		if (inhaleStarted && !Input.GetKey(KeyCode.Z)) {
 			CurrentState = State.IdleOrWalking;
 		}
 	}
