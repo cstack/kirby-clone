@@ -71,6 +71,10 @@ public class AbilityStar : StateMachineBase {
 	}
 
 	public void BeingInhaledUpdate() {
+		if (kirby == null || kirby.gameObject == null || !kirby.gameObject.activeInHierarchy) {
+			CurrentState = State.Bouncing;
+			return;
+		}
 		rigidbody2D.velocity = (kirby.transform.position - transform.position) *
 			(8 - Vector3.Distance(kirby.transform.position, transform.position));
 	}
