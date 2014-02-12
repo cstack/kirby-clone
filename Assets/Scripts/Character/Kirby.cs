@@ -402,7 +402,7 @@ public class Kirby : CharacterBase {
 		StartCoroutine(SlowDown(air.rigidbody2D, 0.4f));
 		am.animate((int) Flying.Exhaling);
 		yield return new WaitForSeconds(0.4f);
-
+		
 		CurrentState = State.Jumping;
 		isExhaling = false;
 

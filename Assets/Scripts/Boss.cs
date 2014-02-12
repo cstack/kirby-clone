@@ -14,7 +14,7 @@ public class Boss : CharacterBase {
 	private float vel = 0f;
 
 	public enum State {
-		IdleOrWalking, Inhaling, Inhaled, Shooting, Swallowing, Frozen
+		IdleOrWalking, Inhaling, Inhaled, Shooting, Swallowing, Frozen, Knockback
 	}
 
 	new public void Start() {
@@ -31,11 +31,15 @@ public class Boss : CharacterBase {
 	}
 
 	public void TakeDamage() {
+		if (CurrentState.ToString() == State.Knockback.ToString()) {
+			return;
+		}
 		health -= 1;
 		Color c = GetComponentInChildren<SpriteRenderer>().color;
 		c.g -= 0.05f;
 		c.b -= 0.05f;
 		GetComponentInChildren<SpriteRenderer>().color = c;
+		CurrentState = State.Knockback;
 		if (health <= 0) {
 			StopAllCoroutines();
 			StartCoroutine(Die());
@@ -68,6 +72,15 @@ public class Boss : CharacterBase {
 		} else {
 			updateXVelocity(0f);
 		}
+	}
+
+	public void TakeHit(GameObject particle) {
+		TakeDamage();
+	}
+
+	public IEnumerator KnockbackEnterState() {
+		yield return new WaitForSeconds(0.5f);
+		CurrentState = State.IdleOrWalking;
 	}
 
 	public IEnumerator IdleOrWalkingEnterState() {

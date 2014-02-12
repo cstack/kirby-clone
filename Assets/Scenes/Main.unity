@@ -1008,6 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentStateName: 
   dir: 0
+  slowingDown: 0
   ability: {fileID: 0}
   speed: 6
   jumpSpeed: 12.5

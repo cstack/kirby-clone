@@ -92,7 +92,7 @@ public abstract class EnemyBase : CharacterBase {
 	}
 
 	public void TakeHit(GameObject particle) {
-		Destroy(gameObject);
+		killEnemy(gameObject, true);
 	}
 
 	protected void BounceOffWalls() {
