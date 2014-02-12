@@ -1254,7 +1254,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 37ba0ed3415de8b4f92cd4f4aa334e66, type: 3}
-  m_Color: {r: 1, g: .470588207, b: .470588207, a: 1}
+  m_Color: {r: 1, g: .666666687, b: .666666687, a: 1}
 --- !u!4 &828338145
 Transform:
   m_ObjectHideFlags: 0
@@ -1763,7 +1763,7 @@ GameObject:
   - 114: {fileID: 1237543073}
   - 50: {fileID: 1237543076}
   - 61: {fileID: 1237543075}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Boss
   m_TagString: boss
   m_Icon: {fileID: 0}
@@ -1821,7 +1821,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1

@@ -34,8 +34,8 @@ public class Boss : CharacterBase {
 		}
 		health -= 1;
 		Color c = GetComponentInChildren<SpriteRenderer>().color;
-		c.g -= 0.1f;
-		c.b -= 0.1f;
+		c.g -= 0.05f;
+		c.b -= 0.05f;
 		GetComponentInChildren<SpriteRenderer>().color = c;
 		CurrentState = State.Knockback;
 	}
@@ -56,6 +56,10 @@ public class Boss : CharacterBase {
 
 	public void IdleOrWalkingUpdate() {
 		updateXVelocity(vel);
+	}
+
+	public void IdleOrWalkingOnCollisionEnter2D(Collision2D collision) {
+		CommonOnCollisionEnter2D(collision);
 	}
 
 	public void TakeAction() {
@@ -118,5 +122,11 @@ public class Boss : CharacterBase {
 	public void Attract(CharacterBase character) {
 		Vector3 diff = transform.position - character.transform.position;
 		character.rigidbody2D.AddForce(diff/diff.magnitude * inhaleStrength);
+	}
+
+	public void CommonOnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.tag == "kirby") {
+			kirby.TakeHit(gameObject);
+		}
 	}
 }
