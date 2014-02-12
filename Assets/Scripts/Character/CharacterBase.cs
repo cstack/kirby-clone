@@ -87,12 +87,12 @@ public abstract class CharacterBase : StateMachineBase {
 
 	protected IEnumerator SlowDown(Rigidbody2D obj, float seconds) {
 		slowingDown = true;
-		float velX = rigidbody2D.velocity.x;
+		float velX = obj.velocity.x;
 		int iterations = 20;
 		float delay = seconds/iterations;
 		for (int i = 0; i < iterations; i++) {
 			if (obj == null) continue;
-			velX *= 0.5f;
+			velX *= 0.7f;
 			updateXVelocity(obj, velX);
 			yield return new WaitForSeconds(delay);
 		}
