@@ -80,6 +80,8 @@ public class Kirby : CharacterBase {
 		ability = persistantAbility;
 		if (abilityCard != null) {
 			GameObject.Find("Ability").GetComponent<SpriteRenderer>().sprite = abilityCard;
+		} else {
+			GameObject.Find("Ability").GetComponent<SpriteRenderer>().sprite = defaultAbilityCard;
 		}
 
 		animator = GetComponentInChildren<Animator>();
