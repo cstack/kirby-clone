@@ -31,8 +31,8 @@ public class Boss : CharacterBase {
 	public void TakeDamage() {
 		health -= 1;
 		Color c = GetComponentInChildren<SpriteRenderer>().color;
-		c.g -= 0.1f;
-		c.b -= 0.1f;
+		c.g -= 0.05f;
+		c.b -= 0.05f;
 		GetComponentInChildren<SpriteRenderer>().color = c;
 	}
 
