@@ -399,12 +399,9 @@ public class Kirby : CharacterBase {
 
 		int airDir = Direction.Right == dir ? 1 : -1;
 		air.rigidbody2D.velocity = Vector2.right * airDir * 35;
-		Debug.Log(air.rigidbody2D.velocity);
 		StartCoroutine(SlowDown(air.rigidbody2D, 0.4f));
 		am.animate((int) Flying.Exhaling);
-		Debug.Log(air.rigidbody2D.velocity);
 		yield return new WaitForSeconds(0.4f);
-		Debug.Log(air.rigidbody2D.velocity);
 		
 		CurrentState = State.Jumping;
 		isExhaling = false;
